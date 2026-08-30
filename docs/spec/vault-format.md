@@ -128,7 +128,7 @@ is rejected but the login form still succeeds.
 | `assignee` | yes | `agent/<name>` or a person's handle. Present but empty when unassigned. |
 | `parent` | no | Wikilink to the parent task. Absent at the top level. See 3.3. |
 | `labels` | no | List of wikilinks. See 3.3. |
-| `tags` | no | Obsidian's own tags, passed through untouched. |
+| `tags` | no | Obsidian's own tags. Nested with `/`. See 3.3. |
 | `created` | yes | UTC, RFC 3339. Never changes. |
 | `updated` | yes | UTC, RFC 3339. Set on every change. |
 | `aliases` | no | Obsidian's own alias field. Old keys carried in from another system. |
@@ -181,8 +181,23 @@ Both must be quoted. `labels: [[[auth]]]` unquoted is a nested sequence in YAML,
 The values are read either way while vaults written before this are migrated, and `docket check`
 reports the old form at rule 10. `docket check --fix` rewrites it.
 
-`tags` is Obsidian's own and is passed through. Obsidian shows tags in the graph when the graph
-is set to show them, and in its tag pane always.
+`tags` is the other thing Obsidian offers for grouping, and it is a different thing from a
+label. A label says what a task is about and can be a page that explains it. A tag says which
+slice of the work a task belongs to, and **nests**: `area/auth` is inside `area`, so a filter on
+`area` finds it. Obsidian's tag pane shows that hierarchy with counts, its `tag:` search reads
+it, and its graph draws tags as nodes when set to show them.
+
+```yaml
+tags: [area/auth, needs-review]
+```
+
+Written without the leading `#`, which is the inline form, and unquoted, which is how Obsidian's
+own property editor writes them. A tag may hold letters, digits, `_`, `-` and the `/` that nests
+it; it may not contain a space and may not be all digits. `docket` rewrites a space as a hyphen
+rather than splitting the tag in two, and drops what cannot be a tag at all.
+
+Narrowing by a tag anywhere in docket narrows by the whole subtree, which is what the same word
+does in Obsidian. Anything else would mean the two clients answer the same question differently.
 
 ### 3.4 Frontmatter is flat
 
