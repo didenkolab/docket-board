@@ -25,6 +25,10 @@ other; there is one set of files.
 - [[workspace]] — how several repositories become one Obsidian vault.
 - [[roadmap]] — what exists and what comes next.
 
+To see a vault rather than read about one, clone
+[docket-demo](https://github.com/vadymdidenkolab/docket-demo) and open it in Obsidian: two
+projects, a board, a backlog and a wiki, with nothing installed.
+
 ## The shape of it
 
 ```
