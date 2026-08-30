@@ -98,7 +98,7 @@ is rejected but the login form still succeeds.
 | `status` | yes | One of the status names in `project.yaml`. |
 | `status_category` | yes | The category of that status: `todo`, `doing` or `done`. |
 | `priority` | yes | One of `priorities` in `project.yaml`. |
-| `assignee` | yes | `agent/<name>` or a person's handle. Empty string when unassigned. |
+| `assignee` | yes | `agent/<name>` or a person's handle. Present but empty when unassigned. |
 | `parent` | no | Key of the parent task. Absent at the top level. |
 | `labels` | no | List of strings. |
 | `created` | yes | UTC, RFC 3339. Never changes. |

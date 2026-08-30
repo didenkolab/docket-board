@@ -1,5 +1,5 @@
 ---
-key: DKT-0
+key: 
 title: 
 type: task
 status: Backlog

@@ -11,8 +11,8 @@ in Obsidian as a board and a wiki.
 
 Built for agents first. An agent creates a task by writing a file and moves it by editing two
 lines — no API, no schema it cannot read. The same folder, opened in Obsidian, is a board with
-columns, a backlog, a linked wiki and a graph. Neither view is a export of the other; there is
-one set of files.
+columns, a backlog, a linked wiki and a graph. Neither view is an export of the other; there
+is one set of files.
 
 ## Start here
 
