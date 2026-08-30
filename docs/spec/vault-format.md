@@ -212,9 +212,28 @@ statuses:
 
 types: [task, bug, story, epic]
 priorities: [low, normal, high, urgent]
+
+# The workflow: which status may move to which. Leave it out and any task can
+# go anywhere.
+transitions:
+  Backlog: [In progress, Dropped]
+  In progress: [In review, Dropped]
+  In review: [Done, In progress]
+  Done: [In progress]
+  Dropped: [Backlog]
 ```
 
 Status order in the file is the column order on the board.
+
+`transitions` is the workflow, and it lives here rather than anywhere else for the same reason
+everything else does: a change to which moves are allowed is a change to how the team works,
+and it belongs in a diff someone can read and revert. An absent or empty `transitions` means
+any status may move to any other, which is what a new vault gets — a workflow nobody asked for
+is a workflow that gets in the way, and it is easier to add one later than to discover why a
+task will not move.
+
+A status may always stay where it is; that is not a move and is never listed. Renaming a status
+carries its moves with it, and removing one removes them.
 
 A project key is 2 to 10 characters, upper-case letters and digits, starting with a letter, and
 is not one of the reserved folder names. It is a folder name, the head of every key in the
@@ -286,6 +305,11 @@ A vault is valid when:
 8. Every `[[wikilink]]` resolves to a file or an alias in the vault.
 9. Every folder holding task files is a project in `docket.yaml`, and every project in
    `docket.yaml` is named by at least one board.
+
+`docket.yaml` itself must also parse and agree with itself — every status has one of the three
+categories, every project key is usable, and every name in `transitions` is a status the vault
+has. A file that fails those is refused at load rather than reported as a finding: nothing else
+can be checked against a vocabulary that does not make sense.
 
 Rules 1–7 are checkable from the project folders and `docket.yaml` alone. Rules 8 and 9 need the
 whole vault. `docket check` implements all nine and reports each finding with a file and a line.

@@ -34,12 +34,13 @@ before.
 ## 3. Server and web UI — done
 
 `docket serve` is an HTTP service over the same files: a board across every project with cards
-you drag between columns, task pages, the wiki, search, settings, and a JSON API. It is a
-second client — it holds no state the files do not have, reads from disk on every request, and
-commits every write.
+you drag between columns, task pages in the shape people know from Jira, the wiki, search,
+settings, and a JSON API. It is a second client — it holds no state the files do not have,
+reads from disk on every request, and commits every write.
 
-Not done: accounts and roles. The server assumes whoever can reach it may write, and attributes
-writes to the author it was started with unless a caller says who it is.
+People sign in against the git host that already holds the repository, and what they may do is
+what that host says — see [[0004-access-comes-from-git]] and [[DKT/15]]. Commits are authored
+by the person who made them.
 
 ## 4. Import from Jira and Confluence — done
 
