@@ -2,15 +2,16 @@
 key: DKT-28
 title: How two tasks are connected
 type: story
-status: Backlog
-status_category: todo
+status: Done
+status_category: done
 priority: high
 assignee: agent/claude
 labels: ["[[format]]", "[[jira]]"]
 created: 2026-08-30T23:33:04Z
-updated: 2026-08-30T23:33:04Z
+updated: 2026-08-30T23:33:22Z
 aliases: []
 tags: []
+relates: ["[[DKT-25 Relationships are links, not fields]]"]
 ---
 
 [[what-jira-models]] set Jira's model beside ours, and the largest gap was this: we could say two
