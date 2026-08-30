@@ -7,7 +7,7 @@ updated: 2026-08-30
 # Roadmap
 
 Released: [v0.2.0](https://github.com/vadymdidenkolab/docket/releases/tag/v0.2.0) — binaries for six
-platform pairs and an image for two architectures.
+platform pairs.
 
 Five stages. Each one is usable on its own — nothing here is a prerequisite that produces
 nothing until the next stage lands.
@@ -51,9 +51,10 @@ way past, so there is no activity table to fall out of step with the files.
 
 A card stays where it is dragged, in the column as well as between columns
 ([[DKT-20 A column stays in the order you drag it into]]); search narrows by project, status,
-type, priority, assignee and label ([[DKT-21 Search you can narrow]]); and there is an image, so
-a board can run somewhere other than a laptop
-([[DKT-22 An image, so a board can run somewhere other than a laptop]]).
+type, priority, assignee and label ([[DKT-21 Search you can narrow]]).
+
+Running it on a server is the binary and nothing else. There was an image for a while;
+[[DKT-22 An image to run the board in a container]] says why it was dropped.
 
 ## 4. An agent, over a protocol — done
 
