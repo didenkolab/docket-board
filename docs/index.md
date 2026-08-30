@@ -18,6 +18,7 @@ other; there is one set of files.
 ## Start here
 
 - [[purpose]] — what this is for. Everything else is checked against it.
+- [[git-as-the-database]] — why the store is a repository, and what that makes possible.
 - [[vault-format]] — what a vault is, normatively.
 - [[0001-vault-as-source-of-truth]] — why files and not a database.
 - [[0003-a-vault-holds-several-projects]] — why one vault holds many projects.
