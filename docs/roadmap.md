@@ -42,6 +42,10 @@ People sign in against the git host that already holds the repository, and what 
 what that host says — see [[0004-access-comes-from-git]] and [[DKT-15 Access comes from the git host, not from a user table]]. Commits are authored
 by the person who made them.
 
+Every change to a task is a commit, and the task page shows those commits as a history — who,
+when, and which fields moved ([[DKT-23 What happened to this task]]). It is read from git on the
+way past, so there is no activity table to fall out of step with the files.
+
 A card stays where it is dragged, in the column as well as between columns
 ([[DKT-20 A column stays in the order you drag it into]]); search narrows by project, status,
 type, priority, assignee and label ([[DKT-21 Search you can narrow]]); and there is an image, so
