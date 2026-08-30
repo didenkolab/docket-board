@@ -2,13 +2,13 @@
 key: DKT-23
 title: What happened to this task
 type: story
-status: Backlog
-status_category: todo
+status: Done
+status_category: done
 priority: high
 assignee: agent/claude
 labels: [server, git]
 created: 2026-08-30T21:40:48Z
-updated: 2026-08-30T21:40:48Z
+updated: 2026-08-30T21:40:57Z
 aliases: []
 ---
 
