@@ -1,5 +1,5 @@
 # The projects this vault holds, and the vocabulary they share.
-# A key is PROJECT/NUMBER and the project is a folder at the root.
+# A key is PROJECT-NUMBER and the project is a folder at the root.
 # transitions is the workflow; leaving it out means anything can move
 # to anything.
 name: docket

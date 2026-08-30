@@ -6,7 +6,7 @@ updated: 2026-08-30
 
 # Roadmap
 
-Four stages. Each one is usable on its own — nothing here is a prerequisite that produces
+Five stages. Each one is usable on its own — nothing here is a prerequisite that produces
 nothing until the next stage lands.
 
 ## 1. Format and vault — done
@@ -42,7 +42,20 @@ People sign in against the git host that already holds the repository, and what 
 what that host says — see [[0004-access-comes-from-git]] and [[DKT-15 Access comes from the git host, not from a user table]]. Commits are authored
 by the person who made them.
 
-## 4. Import from Jira and Confluence — done
+## 4. An agent, over a protocol — done
+
+`docket mcp` serves the vault over the Model Context Protocol: eight tools on stdin and stdout,
+covering the whole loop an agent runs — find work, read it, create, move, comment, write a
+page, validate. See [[DKT-19 An agent drives the vault over MCP]].
+
+It changes nothing about the format. An agent that would rather edit the Markdown still can,
+and [[AGENTS]] still says how. What it removes is the four ways a hand-written change goes
+quietly wrong: a key another branch already took, a `status` moved without its category, a move
+the workflow forbids, a retitle that leaves the file name behind. And `update_task` refuses a
+write whose fingerprint is stale, so an agent cannot discard an edit made in Obsidian while it
+was thinking.
+
+## 5. Import from Jira and Confluence — done
 
 A pipeline of `extract → plan → apply`: pull a cold snapshot of the source, propose mappings
 for fields, statuses, types and people, then write the vault in one reviewable commit.

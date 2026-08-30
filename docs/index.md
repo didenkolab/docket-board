@@ -10,9 +10,10 @@ A task tracker and a knowledge base that live in a git repository as Markdown fi
 in Obsidian as a board and a wiki.
 
 Built for agents first. An agent creates a task by writing a file and moves it by editing two
-lines — no API, no schema it cannot read. The same folder, opened in Obsidian, is a board with
-columns, a backlog, a linked wiki and a graph. Neither view is an export of the other; there
-is one set of files.
+lines — no API, no schema it cannot read — or drives the same files over MCP when it would
+rather one call did the validating and the committing. The same folder, opened in Obsidian, is
+a board with columns, a backlog, a linked wiki and a graph. Neither view is an export of the
+other; there is one set of files.
 
 ## Start here
 
