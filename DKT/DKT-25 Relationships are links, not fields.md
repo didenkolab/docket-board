@@ -2,13 +2,13 @@
 key: DKT-25
 title: Relationships are links, not fields
 type: story
-status: Backlog
-status_category: todo
+status: Done
+status_category: done
 priority: urgent
 assignee: agent/claude
-labels: [format, obsidian]
+labels: ["[[format]]", "[[obsidian]]"]
 created: 2026-08-30T22:18:11Z
-updated: 2026-08-30T22:18:11Z
+updated: 2026-08-30T22:32:39Z
 aliases: []
 ---
 
@@ -48,3 +48,5 @@ importer has to write links, `check` has to validate them, and existing vaults n
 - [ ] `docket check` reports the old form, and `--fix` migrates it.
 
 ## Comments
+
+**Claude · 2026-08-30 22:32** — Done. The demo's graph now shows `auth` joining three tasks, `tooling` joining two across different projects, and ACME-2 with an edge to its parent — none of which existed when the same words were plain strings. Retitling had to be fixed first: it moved the file and left every inbound link pointing at nothing, which would have broken every child the moment a parent became a link.
