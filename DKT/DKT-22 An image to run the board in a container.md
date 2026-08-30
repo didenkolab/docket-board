@@ -2,7 +2,7 @@
 key: DKT-22
 title: An image to run the board in a container
 type: task
-status: Done
+status: Dropped
 status_category: done
 priority: high
 assignee: agent/claude
