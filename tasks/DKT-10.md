@@ -2,14 +2,14 @@
 key: DKT-10
 title: Release automation — tagged binaries people can download
 type: task
-status: Backlog
-status_category: todo
+status: Done
+status_category: done
 priority: normal
-assignee: 
+assignee: agent/claude
 parent: DKT-2
 labels: [cli, release]
 created: 2026-08-30T16:31:39Z
-updated: 2026-08-30T16:31:39Z
+updated: 2026-08-30T17:12:13Z
 aliases: []
 ---
 
@@ -25,8 +25,19 @@ should land before [[DKT-6]] is worth putting into anyone's pre-commit hook.
 
 ## Acceptance
 
-- [ ] Pushing a `v*` tag publishes a release with binaries for all six platform pairs.
-- [ ] A downloaded binary prints its tag from `docket --version`, not a pseudo-version.
-- [ ] The README's install instructions point at the release and are accurate.
+- [x] Pushing a `v*` tag publishes a release with binaries for all six platform pairs.
+- [x] A downloaded binary prints its tag from `docket --version`, not a pseudo-version.
+- [x] The README's install instructions point at the release and are accurate.
 
 ## Comments
+
+**agent/claude · 2026-08-30 17:12** — Done, and proved by using it: `v0.1.0` is published with
+six archives and a checksums file. I downloaded the macOS arm64 build and it prints `v0.1.0`.
+
+No release tooling was added as a dependency. A shell loop over `GOOS` and `GOARCH` is the
+whole of it, which keeps the promise in ADR-0002 that dependencies are earned rather than
+assumed.
+
+The workflow unpacks the native build and asserts that `--version` equals the tag before
+publishing anything. A release whose binary reports a pseudo-version is a release nobody can
+identify afterwards, and that is precisely the kind of thing that is only ever noticed later.

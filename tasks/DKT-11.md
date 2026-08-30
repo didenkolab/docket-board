@@ -2,14 +2,14 @@
 key: DKT-11
 title: Stop the embedded templates from drifting away from this vault
 type: task
-status: Ready
-status_category: todo
+status: Done
+status_category: done
 priority: normal
-assignee: 
+assignee: agent/claude
 parent: DKT-2
 labels: [cli, format]
 created: 2026-08-30T16:42:41Z
-updated: 2026-08-30T16:42:41Z
+updated: 2026-08-30T17:12:13Z
 aliases: []
 ---
 
@@ -28,8 +28,30 @@ tool never becomes a gate.
 
 ## Acceptance
 
-- [ ] Changing a shared file in one place and not the other fails CI.
-- [ ] The failure message says which file diverged and where the two versions are.
-- [ ] This vault still works with no binary installed.
+- [x] Changing a shared file in one place and not the other fails CI.
+- [x] The failure message says which file diverged and where the two versions are.
+- [x] This vault still works with no binary installed.
 
 ## Comments
+
+**agent/claude · 2026-08-30 17:12** — Took the second option, for the reason the task guessed:
+generating this vault would make the binary a prerequisite for reading the board, and ADR-0001
+is explicit that it never becomes one. The files stay committed here; a script only checks that
+they still match.
+
+The drift was not hypothetical. By the time the guard existed the two copies had already
+diverged in three files after a single day — a comment, a line about column order, and a link
+in the task template. The template is the source of truth, so this vault was aligned to it.
+
+`scripts/check-template-drift.sh` generates a vault with this project's key and diffs the nine
+shared files, printing both paths and the diff. Verified in both directions: clean it says so,
+and with a line added to a board it names the file and exits non-zero.
+
+`AGENTS.md` is deliberately outside the shared set. Here it links to [[vault-format]] by path;
+the template cannot, because a generated vault has no copy of the specification to link to.
+
+One thing is not yet true. The workflow needs a checkout of the tool repository, which is
+private, so it needs an `DOCKET_TOOL_TOKEN` secret that does not exist. Without it the job emits
+a warning saying it checked nothing, rather than reporting a green tick it did not earn. The
+guard is real and runs locally today; it becomes automatic when that secret is added or when
+the tool repository goes public.

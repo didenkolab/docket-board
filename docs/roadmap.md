@@ -18,18 +18,18 @@ day one.
 What this already gives you: clone, open in Obsidian, work. Board, backlog, wiki, links,
 graph, full history in git. No installation.
 
-## 2. CLI
+## 2. CLI — done
 
 `docket init` scaffolds a vault. `docket new` creates a task with a valid key and a filled
 template. `docket check` runs the eight validation rules from [[vault-format]]. `docket workspace
-sync` clones and pulls projects from a manifest.
+sync` clones and pulls projects from a manifest. Released as a single binary for six platform
+pairs; see [[0002-go-and-a-single-binary]].
 
 Why it comes second and not first: everything it does can be done by hand, and building it
 before the format settled would have frozen the wrong format.
 
-Go, shipped as a single static binary — [[0002-go-and-a-single-binary]]. `docket init` works:
-it writes a complete vault from templates baked into the binary, so a new project is one
-command and no network. `new`, `check` and `workspace sync` are next.
+One dependency — a YAML parser — added when [[DKT-6]] needed to read frontmatter, and not
+before.
 
 ## 3. Server and web UI
 
