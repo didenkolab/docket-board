@@ -42,6 +42,12 @@ People sign in against the git host that already holds the repository, and what 
 what that host says — see [[0004-access-comes-from-git]] and [[DKT-15 Access comes from the git host, not from a user table]]. Commits are authored
 by the person who made them.
 
+A card stays where it is dragged, in the column as well as between columns
+([[DKT-20 A column stays in the order you drag it into]]); search narrows by project, status,
+type, priority, assignee and label ([[DKT-21 Search you can narrow]]); and there is an image, so
+a board can run somewhere other than a laptop
+([[DKT-22 An image, so a board can run somewhere other than a laptop]]).
+
 ## 4. An agent, over a protocol — done
 
 `docket mcp` serves the vault over the Model Context Protocol: eight tools on stdin and stdout,

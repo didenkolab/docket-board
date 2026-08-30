@@ -131,8 +131,26 @@ is rejected but the login form still succeeds.
 | `created` | yes | UTC, RFC 3339. Never changes. |
 | `updated` | yes | UTC, RFC 3339. Set on every change. |
 | `aliases` | no | Obsidian's own alias field. Old keys carried in from another system. |
+| `order` | no | Where the task sits in its column when somebody has arranged one. See 3.2. |
 
-### 3.2 Frontmatter is flat
+### 3.2 Where a task sits in its column
+
+`order` is an integer. Within a status, tasks sort by it ascending; a task without one sorts
+after every task that has one, and those sort by key, which is by age. So a column nobody has
+arranged reads oldest first, and arranging one card does not renumber the rest.
+
+The numbers are spaced a thousand apart, so a card dropped between two others usually lands in
+a gap and rewrites one file. When a gap runs out — about ten insertions into the same place —
+the column is renumbered into multiples of a thousand again, in one commit.
+
+It is a number on each task rather than a list of keys somewhere because a list is a second
+source of truth: a rename, a merge, or a task moved in Obsidian puts it out of step with the
+tasks it claims to order, and nothing says so. A number travels with the task it describes.
+
+Nothing has to set it. A vault where no task carries `order` is a vault sorted by key, which is
+what a board looks like until somebody drags a card.
+
+### 3.3 Frontmatter is flat
 
 No nested objects, at any depth. This is a hard constraint, not a style preference:
 
@@ -148,7 +166,7 @@ Fields carried in from another system are prefixed `x_` — `x_sprint`, `x_epic_
 keeps a foreign schema from colliding with the core one and makes imported data obvious to
 anyone reading the file.
 
-### 3.3 Status is a pair
+### 3.4 Status is a pair
 
 `status` is the name people say and see. `status_category` is one of three fixed values that
 machines act on:
@@ -168,7 +186,7 @@ A vault names its own statuses. `Dropped` sits in category `done`, because for e
 machine asks — is this in flight, is this closed — a dropped task behaves as closed. Imported
 workflows depend on this: systems commonly file `Cancelled` under a done-type category.
 
-### 3.4 Links and aliases
+### 3.5 Links and aliases
 
 **Link to a task by its whole note name**: `[[ACME-4 Session model]]`. Obsidian resolves a link
 without a slash against the names of notes anywhere in the vault, and names are unique because
@@ -181,7 +199,7 @@ as a broken link and prints the name to use instead.
 `aliases` is still worth filling: it drives the quick switcher and search, so a key carried in
 from another system stays findable by someone typing it. It does not make links work.
 
-### 3.5 Comments
+### 3.6 Comments
 
 Comments are appended to a `## Comments` section at the end of the body, oldest first:
 
@@ -194,7 +212,7 @@ region of the same file. That is accepted. A conflict at the end of a file is tr
 resolve, and the alternative — one file per comment — scatters a single conversation across a
 directory and makes the task unreadable without tooling.
 
-### 3.6 History
+### 3.7 History
 
 The change history of a task is its git history. `git log --follow -p "ACME/ACME-12 Fix login redirect loop.md"` shows who moved it,
 when, and what the previous value was. The core keeps no separate journal: a second record of
