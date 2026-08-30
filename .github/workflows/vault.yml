@@ -1,0 +1,64 @@
+name: Vault
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  # Validate the vault with docket check, and make sure the files this vault
+  # shares with the templates baked into the tool have not drifted.
+  #
+  # Both need a checkout of the tool. While that repository is private, the
+  # default GITHUB_TOKEN cannot reach it, so the job needs a DOCKET_TOOL_TOKEN
+  # secret with read access. Without one it says so loudly and stops, rather
+  # than reporting a green check it never performed. Once both repositories are
+  # public the secret becomes unnecessary.
+  tool:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Look for a token that can read the tool repository
+        id: access
+        env:
+          TOOL_TOKEN: ${{ secrets.DOCKET_TOOL_TOKEN }}
+        run: |
+          if [ -n "$TOOL_TOKEN" ]; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "available=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Say what is not being checked
+        if: steps.access.outputs.available != 'true'
+        run: |
+          echo "::warning title=Vault checks skipped::No DOCKET_TOOL_TOKEN secret, so \
+          the docket tool could not be fetched. Neither 'docket check' nor the template \
+          drift check ran. Add a read-only token for vadymdidenkolab/docket, or make \
+          that repository public."
+
+      - uses: actions/checkout@v5
+        if: steps.access.outputs.available == 'true'
+        with:
+          repository: vadymdidenkolab/docket
+          token: ${{ secrets.DOCKET_TOOL_TOKEN }}
+          path: .tool
+
+      - uses: actions/setup-go@v6
+        if: steps.access.outputs.available == 'true'
+        with:
+          go-version-file: .tool/go.mod
+
+      - name: Validate the vault
+        if: steps.access.outputs.available == 'true'
+        run: |
+          go build -C .tool -o "$GITHUB_WORKSPACE/docket" ./cmd/docket
+          ./docket check .
+
+      - name: Check for template drift
+        if: steps.access.outputs.available == 'true'
+        run: scripts/check-template-drift.sh .tool

@@ -1,9 +1,10 @@
-# Project definition. Read by boards, by agents, and later by the docket CLI.
+# Project definition. Read by boards, by agents, and by the docket CLI.
 key: DKT
 name: docket
 
 # A status is a pair: a name people use, and a category machines use.
-# Categories are fixed: todo | doing | done. Names are the project's own.
+# Categories are fixed: todo | doing | done. Names are this project's own.
+# The order below is the column order on the board.
 statuses:
   - name: Backlog
     category: todo

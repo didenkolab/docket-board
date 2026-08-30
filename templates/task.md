@@ -13,8 +13,7 @@ updated:
 aliases: []
 ---
 
-One paragraph on what needs to happen and why. Link to the pages that explain the context:
-[[vault-format]].
+One paragraph on what needs to happen and why. Link to the pages that explain the context.
 
 ## Acceptance
 
