@@ -300,16 +300,32 @@ filters:
       - file.inFolder("ACME")
       - file.inFolder("BETA")
     - 'note.status_category != "done"'
+properties:
+  note.title:
+    displayName: Title
 views:
   - type: cards
     name: Board
     groupBy:
       property: note.status
+      direction: ASC
     order:
       - note.title
       - note.assignee
       - note.priority
 ```
+
+Two details in that file were established by opening it in Obsidian, because the published
+syntax reference is wrong about both. Checked against Obsidian 1.13.7.
+
+`groupBy` needs `direction` as well as `property`. Given only a property, Obsidian refuses the
+whole file with "groupBy must be of type object" — which is true of the value and is not the
+reason. Its parser requires both keys and names neither.
+
+A property under `properties:` is written qualified — `note.title`, not `title`. The published
+example uses the bare form, and the bare form is accepted and silently ignored: the key is
+matched against the same qualified identifier `order` uses, so a display name written the short
+way never appears.
 
 Naming the projects is deliberate. A filter that recognised a task by the properties it carries
 would quietly include pages that happen to have a status and quietly exclude a project nobody

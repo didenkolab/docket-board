@@ -4,6 +4,19 @@ filters:
     - or:
       - file.inFolder("DKT")
     - 'note.status_category == "todo"'
+properties:
+  note.key:
+    displayName: Key
+  note.title:
+    displayName: Title
+  note.type:
+    displayName: Type
+  note.priority:
+    displayName: Priority
+  note.parent:
+    displayName: Parent
+  note.labels:
+    displayName: Labels
 views:
   - type: table
     name: Backlog

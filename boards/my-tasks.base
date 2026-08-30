@@ -5,6 +5,17 @@ filters:
       - file.inFolder("DKT")
     - 'note.assignee == "agent/claude"'
     - 'note.status_category != "done"'
+properties:
+  note.key:
+    displayName: Key
+  note.title:
+    displayName: Title
+  note.status:
+    displayName: Status
+  note.priority:
+    displayName: Priority
+  note.updated:
+    displayName: Updated
 views:
   - type: table
     name: My tasks
