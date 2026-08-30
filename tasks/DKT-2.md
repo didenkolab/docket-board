@@ -20,7 +20,7 @@ first would have frozen a format that had not settled yet. See [[roadmap]].
 
 ## Acceptance
 
-- [ ] [[DKT-3]], [[DKT-4]], [[DKT-5]], [[DKT-6]], [[DKT-7]] and [[DKT-10]] are done.
+- [ ] [[DKT-3]], [[DKT-4]], [[DKT-5]], [[DKT-6]], [[DKT-7]], [[DKT-10]] and [[DKT-11]] are done.
 - [ ] A vault created by `docket init` passes `docket check` with no findings.
 
 ## Comments
