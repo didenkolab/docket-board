@@ -27,6 +27,9 @@ sync` clones and pulls projects from a manifest.
 Why it comes second and not first: everything it does can be done by hand, and building it
 before the format settled would have frozen the wrong format.
 
+Go, shipped as a single static binary — [[0002-go-and-a-single-binary]]. The repository has a
+working skeleton: `version`, `help`, and CI. Everything else is planned.
+
 ## 3. Server and web UI
 
 An HTTP service over the same repositories: a board for people who do not have Obsidian, an

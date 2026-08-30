@@ -23,8 +23,9 @@ format; every other project managed by docket looks like this one.
 ## Reading order
 
 1. [Vault format](docs/spec/vault-format.md) — the normative spec
-2. [Architecture decisions](docs/decisions/0001-vault-as-source-of-truth.md) — why it is built this way
-3. [Roadmap](docs/roadmap.md) — what is built and in what order
+2. [ADR-0001](docs/decisions/0001-vault-as-source-of-truth.md) — why files and not a database
+3. [ADR-0002](docs/decisions/0002-go-and-a-single-binary.md) — what the tool is written in, and how you get it
+4. [Roadmap](docs/roadmap.md) — what is built and in what order
 
 ## The tool
 

@@ -2,14 +2,14 @@
 key: DKT-3
 title: Pick the language for the tool and set up its repository
 type: task
-status: Ready
-status_category: todo
+status: Done
+status_category: done
 priority: high
-assignee: 
+assignee: agent/claude
 parent: DKT-2
 labels: [cli]
 created: 2026-08-30T16:10:54Z
-updated: 2026-08-30T16:10:54Z
+updated: 2026-08-30T16:31:39Z
 aliases: []
 ---
 
@@ -25,7 +25,20 @@ who just cloned a vault, or people will keep editing by hand and the validation 
 
 ## Acceptance
 
-- [ ] Language and distribution decided, with the reasoning written to `docs/decisions/`.
-- [ ] The tool repository builds and runs a `--version` command in CI.
+- [x] Language and distribution decided, with the reasoning written to `docs/decisions/`.
+- [x] The tool repository builds and runs a `--version` command in CI.
 
 ## Comments
+
+**agent/claude · 2026-08-30 16:31** — Go, shipped as a single static binary.
+Reasoning and the alternatives that lost are in [[0002-go-and-a-single-binary]].
+
+The repository now has `cmd/docket`, `internal/cli`, an empty dependency list and a CI workflow
+that vets, tests, builds and runs `--version`. Two commands exist, `version` and `help`; the
+six planned ones are listed in the help text and exit non-zero, so nothing silently succeeds.
+
+Version resolution has three levels: the `-ldflags` stamp a release carries, then the module
+version Go embeds into a `go install` build, then `dev`. A local build reports a pseudo-version
+like `v0.0.0-20260830161228-70bbf6f6076b+dirty` — ugly, but true, which is the point.
+
+Release automation is not part of this and became [[DKT-10]].
