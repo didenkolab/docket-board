@@ -2,13 +2,13 @@
 key: DKT-20
 title: A column stays in the order you drag it into
 type: story
-status: Backlog
-status_category: todo
+status: Done
+status_category: done
 priority: high
 assignee: agent/claude
 labels: [board, format]
 created: 2026-08-30T19:31:33Z
-updated: 2026-08-30T19:31:33Z
+updated: 2026-08-30T19:31:41Z
 aliases: []
 ---
 
