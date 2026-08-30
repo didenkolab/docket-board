@@ -2,7 +2,7 @@
 key: DKT-22
 title: A container, so a board can run somewhere other than a laptop
 type: task
-status: Dropped
+status: Done
 status_category: done
 priority: high
 assignee: agent/claude
