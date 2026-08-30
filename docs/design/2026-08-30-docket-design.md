@@ -12,6 +12,11 @@ The design agreed on 2026-08-30, from which [[vault-format]], [[workspace]] and
 [[0001-vault-as-source-of-truth]] were written. Kept as the record of what was decided and
 what was rejected.
 
+**Partly superseded the same day by [[0003-a-vault-holds-several-projects]]**, which changed
+keys from `ACME-12` to `ACME/12` and let one vault hold several projects. The sections below
+are left as they were written: a design record that gets edited to match what happened later
+records nothing.
+
 ## Problem
 
 Agents do most of the work and are good at files, bad at web interfaces. People on the same

@@ -26,14 +26,16 @@ if [ -z "$TOOL" ] || [ ! -f "$TOOL/go.mod" ]; then
 fi
 
 VAULT=$(cd "$(dirname "$0")/.." && pwd)
-KEY=$(sed -n 's/^key: *//p' "$VAULT/project.yaml" | head -1)
-NAME=$(sed -n 's/^name: *//p' "$VAULT/project.yaml" | head -1)
+# The first project key, and the vault name — the two values `docket init`
+# stamps into the files being compared.
+KEY=$(sed -n 's/^ *- *{* *key: *\([A-Z0-9]*\).*/\1/p' "$VAULT/docket.yaml" | head -1)
+NAME=$(sed -n 's/^name: *//p' "$VAULT/docket.yaml" | head -1)
 
 # Files that must be identical in both places. AGENTS.md is deliberately not
 # here: inside this vault it links to the specification by path, and the
 # template cannot, because a generated vault has no copy of the specification.
 SHARED=(
-	project.yaml
+	docket.yaml
 	.gitignore
 	.obsidian/app.json
 	.obsidian/core-plugins.json

@@ -16,19 +16,22 @@ is one set of files.
 
 ## Start here
 
-- [[vault-format]] — what a vault is, normatively. One project, one repository, one vault.
-- [[workspace]] — how several projects become one vault without merging their repositories.
+- [[vault-format]] — what a vault is, normatively.
 - [[0001-vault-as-source-of-truth]] — why files and not a database.
+- [[0003-a-vault-holds-several-projects]] — why a key is `PROJECT/NUMBER` and why one vault
+  holds many projects.
+- [[workspace]] — how several repositories become one Obsidian vault.
 - [[roadmap]] — what exists and what comes next.
 
 ## The shape of it
 
 ```
-tasks/ACME-12.md      a task: flat YAML frontmatter, Markdown body, comments at the end
+docket.yaml            the projects, and the vocabulary they share
+ACME/12.md            a task: flat YAML frontmatter, Markdown body, comments at the end
+BETA/7.md             another project, same tree, links cross freely
 docs/                 a wiki: any tree of pages, connected by [[wikilinks]]
 boards/board.base     a view: cards grouped by status, rendered by core Obsidian
-project.yaml          the project's vocabulary: statuses, types, priorities
 ```
 
-Git is the history. `git log -p tasks/ACME-12.md` is the audit trail. `git clone` is the
-export.
+A key is the path, so `[[ACME/12]]` opens the task with no tool involved. Git is the history:
+`git log -p ACME/12.md` is the audit trail, and `git clone` is the export.

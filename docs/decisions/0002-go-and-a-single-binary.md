@@ -10,7 +10,7 @@ updated: 2026-08-30
 
 ## Context
 
-[[DKT-3]]. The `docket` repository holds a README and nothing else. Before any command is
+[[DKT/3]]. The `docket` repository holds a README and nothing else. Before any command is
 written, two things need settling: what the tool is written in, and how someone gets it.
 
 Distribution is the harder half. `docket check` only protects the format if it actually runs —
@@ -30,7 +30,7 @@ platform we care about. Nothing else on the shortlist matches that.
 
 **Stages 3 and 4 are ports, not rewrites.** An earlier private prototype already has, in Go, a
 working Jira and Confluence extractor, an ADF-to-Markdown converter, an attachment store, an
-HTTP server with a board UI, an MCP server, and its tests. [[DKT-8]] and [[DKT-9]] are planned
+HTTP server with a board UI, an MCP server, and its tests. [[DKT/8]] and [[DKT/9]] are planned
 as ports of that code. Choosing another language turns them into rewrites and buys nothing in
 return.
 
@@ -63,12 +63,12 @@ The version is stamped at build time with `-ldflags -X main.version=...`, and fa
 Go's embedded build info so that a `go install` build still reports something truthful rather
 than `dev`.
 
-Automating the release build is [[DKT-10]].
+Automating the release build is [[DKT/10]].
 
 ## Consequences
 
 **No dependencies until one is earned.** The CLI ships with an empty `go.mod` require block.
-The first dependency will be a YAML parser, when [[DKT-6]] needs to read frontmatter — added
+The first dependency will be a YAML parser, when [[DKT/6]] needs to read frontmatter — added
 then, not now.
 
 **The tool never becomes a gate.** ADR-0001 says a vault is usable by writing files. That

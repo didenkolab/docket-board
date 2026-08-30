@@ -7,58 +7,76 @@ updated: 2026-08-30
 
 # Vault format
 
-Normative specification of a docket vault. A vault is one project. It is a git repository and
-an Obsidian vault at the same time — the same folder, no export step between them.
+Normative specification of a docket vault. A vault is a git repository and an Obsidian vault at
+the same time — the same folder, no export step between them — and it holds one or more
+projects.
 
-Related: [[0001-vault-as-source-of-truth]], [[workspace]], [[roadmap]].
+Related: [[0001-vault-as-source-of-truth]], [[0003-a-vault-holds-several-projects]],
+[[workspace]], [[roadmap]].
 
 ## 1. Layout
 
 ```
-<project>/
+<vault>/
   .obsidian/          Obsidian config — plugins, appearance, hotkeys
-  project.yaml        project key, statuses, task types
+  docket.yaml          the projects, and the vocabulary they share
   AGENTS.md           instructions for an agent working in this vault
-  tasks/
-    ACME-1.md         one file per task, named after its key
-    ACME-2.md
+  ACME/               one folder per project
+    12.md             the task ACME/12
+    13.md
+    _history/12.jsonl imported history, if any
+  BETA/
+    7.md
   docs/               knowledge base: a free tree of pages
   boards/
-    board.base        Bases views over tasks/
+    board.base        Bases views over the projects
     backlog.base
+    my-tasks.base
   templates/
     task.md
     page.md
   attachments/        images and files referenced from tasks and pages
 ```
 
-Only `tasks/`, `project.yaml` and `boards/` are load-bearing. A vault with an empty `docs/`
-is valid; a vault without `project.yaml` is not.
+Only `docket.yaml`, the project folders and `boards/` are load-bearing. A vault with an empty
+`docs/` is valid; a vault without `docket.yaml` is not.
+
+`docs`, `boards`, `templates`, `attachments` and `scripts` are reserved: a project cannot be
+called any of them.
 
 ## 2. Identity
 
-A task's identity is its **key**: `<PROJECT>-<n>`, where `<PROJECT>` is `key` from
-`project.yaml` and `<n>` counts from 1.
+A task's key is `PROJECT/NUMBER`, where `PROJECT` is a project listed in `docket.yaml` and
+`NUMBER` counts from 1 within that project.
 
-The file path is a function of the key and nothing else: key `ACME-12` lives at
-`tasks/ACME-12.md`. Renaming a task, reassigning it, moving it between statuses or reparenting
-it never moves the file. Knowing the key is enough to open the file — no search, no index.
+**The key is the path.** `ACME/12` is the file `ACME/12.md`, relative to the vault root. Two
+things follow, and they are the reason for the shape:
+
+- Knowing the key is enough to open the file — no search, no index.
+- `[[ACME/12]]` resolves in Obsidian with no help from any tool, because Obsidian reads a
+  wikilink containing a slash as a vault-relative path. Links between projects work for the
+  same reason: the projects are one file tree.
+
+Renaming a task, reassigning it, moving it between statuses or reparenting it never moves the
+file. Only the key moves a file, and a key never changes.
 
 Keys are permanent and never reused. Gaps left by deleted tasks stay as gaps.
 
-The title is not in the file name. It is the `title` property, which boards display in place
-of the file name. This is the deliberate trade: the graph view shows bare keys, and in exchange
-a task can be retitled without breaking a single link.
+The title is not in the file name. It is the `title` property, which boards display. The cost
+is that Obsidian's graph view shows bare numbers, since a note's display name is its file name;
+the board and the file explorer both show more, so the cost is confined to the graph. This is
+the trade [[0003-a-vault-holds-several-projects]] makes deliberately.
 
 ### Allocation
 
-The next key is the highest existing number plus one, determined by listing `tasks/`. There is
-no counter file: a counter is a single line every task creation must touch, which turns routine
-parallel work into merge conflicts on that line.
+The next key in a project is its highest existing number plus one, determined by listing the
+project's folder. There is no counter file: a counter is a single line every task creation must
+touch, which turns routine parallel work into merge conflicts on that line.
 
 Two agents working in parallel branches can still choose the same number. That surfaces as a
 git add/add conflict on merge — loud, and resolvable by renaming one task. It is never a silent
-overwrite. A validator reports duplicate keys within a branch.
+overwrite. `docket new` additionally opens the file with `O_EXCL`, so a collision between the
+scan and the write fails rather than replacing what is there.
 
 ## 3. Task
 
@@ -66,21 +84,21 @@ A task is a Markdown file with YAML frontmatter.
 
 ```markdown
 ---
-key: ACME-12
+key: ACME/12
 title: Fix login redirect loop
 type: bug
 status: In progress
 status_category: doing
 priority: high
 assignee: agent/claude
-parent: ACME-4
+parent: ACME/4
 labels: [auth, regression]
 created: 2026-08-30T10:12:00Z
 updated: 2026-08-30T14:03:00Z
 aliases: []
 ---
 
-Free Markdown. Links to other tasks and pages: [[ACME-4]], [[docs/auth/session-model]].
+Free Markdown. Links to other tasks and pages: [[ACME/4]], [[BETA/7]], [[docs/auth/session-model]].
 
 ## Comments
 
@@ -92,12 +110,12 @@ is rejected but the login form still succeeds.
 
 | Property | Required | Meaning |
 |---|---|---|
-| `key` | yes | Identity. Equals the file basename. Never changes. |
+| `key` | yes | Identity, and the path. Never changes. |
 | `title` | yes | One line, human-readable. Free to change. |
-| `type` | yes | One of `types` in `project.yaml`. |
-| `status` | yes | One of the status names in `project.yaml`. |
+| `type` | yes | One of `types` in `docket.yaml`. |
+| `status` | yes | One of the status names in `docket.yaml`. |
 | `status_category` | yes | The category of that status: `todo`, `doing` or `done`. |
-| `priority` | yes | One of `priorities` in `project.yaml`. |
+| `priority` | yes | One of `priorities` in `docket.yaml`. |
 | `assignee` | yes | `agent/<name>` or a person's handle. Present but empty when unassigned. |
 | `parent` | no | Key of the parent task. Absent at the top level. |
 | `labels` | no | List of strings. |
@@ -114,12 +132,12 @@ No nested objects, at any depth. This is a hard constraint, not a style preferen
 - Bases filters, groups and sorts on top-level properties. A nested field cannot appear on a
   board or in a filter.
 
-Project-specific fields sit at the same level as core ones. A project that tracks story points
+Project-specific fields sit at the same level as core ones. A vault that tracks story points
 adds `points: 3`, not `fields: {points: 3}`.
 
-Fields carried in from another system are prefixed `x_` — `x_jira_sprint`, `x_jira_epic_link`.
-The prefix keeps a foreign schema from colliding with the core one and makes imported data
-obvious to anyone reading the file.
+Fields carried in from another system are prefixed `x_` — `x_sprint`, `x_epic_link`. The prefix
+keeps a foreign schema from colliding with the core one and makes imported data obvious to
+anyone reading the file.
 
 ### 3.3 Status is a pair
 
@@ -134,17 +152,17 @@ machines act on:
 
 Both live in the frontmatter and change together. Duplicating the category into every task is
 denormalisation, done for a reason: boards, filters and metrics need the category without
-loading and parsing `project.yaml` for every card, and a task file stays self-describing when
+loading and parsing `docket.yaml` for every card, and a task file stays self-describing when
 read on its own.
 
-A project names its own statuses. `Dropped` sits in category `done`, because for every
-question a machine asks — is this in flight, is this closed — a dropped task behaves as closed.
-Imported workflows depend on this: systems commonly file `Cancelled` under a done-type category.
+A vault names its own statuses. `Dropped` sits in category `done`, because for every question a
+machine asks — is this in flight, is this closed — a dropped task behaves as closed. Imported
+workflows depend on this: systems commonly file `Cancelled` under a done-type category.
 
 ### 3.4 Links and aliases
 
-`[[ACME-4]]` resolves because the file is named `ACME-4.md`. Obsidian resolves it natively;
-so does anything else that understands wikilinks.
+`[[ACME/4]]` resolves because the file is at `ACME/4.md`. Obsidian resolves it natively; so
+does anything else that understands wikilinks.
 
 `aliases` is Obsidian's built-in property, not ours. New tasks have it empty. Import fills it
 with the keys the task used to have elsewhere, so a key that leaked into seven years of commit
@@ -166,21 +184,24 @@ directory and makes the task unreadable without tooling.
 
 ### 3.6 History
 
-The change history of a task is its git history. `git log -p tasks/ACME-12.md` shows who moved
-it, when, and what the previous value was. The core keeps no separate journal: a second record
-of the same facts is a second thing that can be wrong.
+The change history of a task is its git history. `git log -p ACME/12.md` shows who moved it,
+when, and what the previous value was. The core keeps no separate journal: a second record of
+the same facts is a second thing that can be wrong.
 
-The one exception is import. A task carried in from another system arrives with a history that
-git never saw, so it is written to `tasks/_history/ACME-12.jsonl` — one JSON object per event,
+The one exception is import. A task carried in from another system arrives with a history git
+never saw, so it is written to `ACME/_history/12.jsonl` — one JSON object per event,
 append-only. Files under `_history/` are read-only after import.
 
-## 4. Project
+## 4. The vault configuration
 
-`project.yaml` defines the project's vocabulary:
+`docket.yaml` lists the projects and defines the vocabulary they share:
 
 ```yaml
-key: ACME
-name: Acme Platform
+name: Acme
+
+projects:
+  - {key: ACME, name: Acme Platform}
+  - {key: BETA, name: Beta}
 
 statuses:
   - {name: Backlog,     category: todo}
@@ -194,6 +215,15 @@ priorities: [low, normal, high, urgent]
 ```
 
 Status order in the file is the column order on the board.
+
+A project key is 2 to 10 characters, upper-case letters and digits, starting with a letter, and
+is not one of the reserved folder names. It is a folder name, the head of every key in the
+project, and permanent.
+
+The vocabulary is shared by every project in the vault rather than defined per project. That is
+what makes one board across projects mean anything — see
+[[0003-a-vault-holds-several-projects]]. A team that genuinely needs different workflows uses
+different vaults, and [[workspace]] assembles those into one Obsidian view.
 
 ## 5. Knowledge base
 
@@ -212,12 +242,14 @@ between the tracker and the knowledge base; there is no other coupling between t
 Boards are Obsidian Bases files under `boards/`. They are views, not data: deleting every
 `.base` file loses no information.
 
-`boards/board.base` — cards grouped by status, closed work hidden:
+A board selects tasks by naming the project folders:
 
 ```yaml
 filters:
   and:
-    - file.inFolder("tasks")
+    - or:
+      - file.inFolder("ACME")
+      - file.inFolder("BETA")
     - 'note.status_category != "done"'
 views:
   - type: cards
@@ -230,6 +262,11 @@ views:
       - note.priority
 ```
 
+Naming the projects is deliberate. A filter that recognised a task by the properties it carries
+would quietly include pages that happen to have a status and quietly exclude a project nobody
+remembered to add. `docket project add` regenerates the boards, and rule 9 below reports a
+project no board mentions.
+
 Bases is a core Obsidian plugin, so a freshly cloned vault renders its boards with nothing
 installed. Bases has no built-in drag-and-drop kanban; community plugins add one over the same
 files. Whether such a plugin is installed changes nothing about the data — it is a viewer.
@@ -238,15 +275,17 @@ files. Whether such a plugin is installed changes nothing about the data — it 
 
 A vault is valid when:
 
-1. Every file in `tasks/` has frontmatter, and its `key` equals its basename.
+1. Every task file has frontmatter, and its `key` equals its path without `.md`.
 2. Every key is unique.
-3. Every `status` appears in `project.yaml`, and `status_category` matches that status's
-   category there.
-4. `type` and `priority` appear in `project.yaml`.
+3. Every `status` appears in `docket.yaml`, and `status_category` matches that status's category
+   there.
+4. `type` and `priority` appear in `docket.yaml`.
 5. Every `parent` names an existing task, and the parent graph has no cycles.
 6. No frontmatter value is a nested object.
 7. `created` and `updated` parse as RFC 3339, and `updated` is not earlier than `created`.
 8. Every `[[wikilink]]` resolves to a file or an alias in the vault.
+9. Every folder holding task files is a project in `docket.yaml`, and every project in
+   `docket.yaml` is named by at least one board.
 
-Rules 1–7 are checkable by reading `tasks/` and `project.yaml` alone. Rule 8 needs the whole
-vault. `docket check` will implement all eight; until it exists, they are the review checklist.
+Rules 1–7 are checkable from the project folders and `docket.yaml` alone. Rules 8 and 9 need the
+whole vault. `docket check` implements all nine and reports each finding with a file and a line.
