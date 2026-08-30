@@ -96,6 +96,24 @@ it is for, found by checking it against that document rather than against a list
 so an epic has an edge to each of its tasks and a label is a hub joining everything that carries
 it, across projects.
 
-**[[DKT-26 A board across several repositories]]** — a repository is supposed to be a project,
-and a board is supposed to read several of them. It reads one. Several projects in one
-repository works and is not the same thing.
+[[DKT-26 A board across several repositories]] is done: a repository is a project, and a board
+reads several of them. Columns are the union of their statuses; a card is checked against its
+own project; a write is a commit in the repository that owns it.
+
+## What the two studies changed
+
+[[what-obsidian-gives]] and [[what-jira-models]] are the inventories: what each of them offers,
+what we take, and what we refuse. Both were read out of their documentation and checked in the
+app, and both turned up things worth having.
+
+From Obsidian: tags used rather than tolerated, callouts, and backlinks
+([[DKT-27 Tags, and everything else Obsidian gives]]).
+
+From Jira: typed relations between tasks, which was the largest thing missing
+([[DKT-28 How two tasks are connected]]).
+
+Still unbuilt, and named in [[what-jira-models]]: a **type hierarchy**, so an epic is a container
+rather than a word; **releases** as pages with `fix_version` as a link, which would make release
+notes a query over backlinks rather than a generation step; and the whole of the branching
+argument in [[git-as-the-database]] — a plan on a branch, reviewed as a pull request — which is
+the largest single thing this project has not done.

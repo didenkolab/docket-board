@@ -129,6 +129,7 @@ is rejected but the login form still succeeds.
 | `parent` | no | Wikilink to the parent task. Absent at the top level. See 3.3. |
 | `labels` | no | List of wikilinks. See 3.3. |
 | `tags` | no | Obsidian's own tags. Nested with `/`. See 3.3. |
+| `blocks`, `blocked_by`, `duplicates`, `duplicated_by`, `causes`, `caused_by`, `relates` | no | Typed links to other tasks. See 3.4. |
 | `created` | yes | UTC, RFC 3339. Never changes. |
 | `updated` | yes | UTC, RFC 3339. Set on every change. |
 | `aliases` | no | Obsidian's own alias field. Old keys carried in from another system. |
@@ -199,7 +200,39 @@ rather than splitting the tag in two, and drops what cannot be a tag at all.
 Narrowing by a tag anywhere in docket narrows by the whole subtree, which is what the same word
 does in Obsidian. Anything else would mean the two clients answer the same question differently.
 
-### 3.4 Frontmatter is flat
+### 3.4 A relation says how two tasks are connected
+
+`parent` is hierarchy. Everything else is an annotation, and the property name is the verb:
+
+```yaml
+blocked_by: ["[[ACME-4 Session model]]"]
+relates: ["[[BETA-7 Ship the widget]]"]
+```
+
+Seven of them, in inverse pairs: `blocks` / `blocked_by`, `duplicates` / `duplicated_by`,
+`causes` / `caused_by`, and `relates`, which is symmetric. They are Jira's set minus `clones`,
+which describes how a task came into existence rather than how it relates to the work — and
+which git records anyway.
+
+Written as links, like every other relationship, so each one is an edge in the graph and each
+one shows in backlinks. Jira keeps these in a table with an admin screen over it; here a
+relation is a line of frontmatter whose name is a verb.
+
+**They carry no structure.** `parent` decides what a board does — the column a card is in, the
+children a task shows, what a backlog excludes. A relation changes nothing except what somebody
+reads and acts on. Jira's own documentation warns about this exact confusion, because several
+marketplace apps ship a link type called "Parent-Child" that is not the parent field. One field
+is hierarchy; these are not.
+
+The one exception, because it is the one that changes what somebody picks up next: a task with
+an unfinished `blocked_by` is marked on the board. Blocked by something already done is not
+blocked.
+
+Each side is written independently. Nothing writes the inverse for you, because doing so would
+edit a task somebody did not ask to change — and in a workspace it may be in another
+repository. `docket check` reports a relation pointing at a task that is not there.
+
+### 3.5 Frontmatter is flat
 
 No nested objects, at any depth. This is a hard constraint, not a style preference:
 
@@ -215,7 +248,7 @@ Fields carried in from another system are prefixed `x_` — `x_sprint`, `x_epic_
 keeps a foreign schema from colliding with the core one and makes imported data obvious to
 anyone reading the file.
 
-### 3.5 Status is a pair
+### 3.6 Status is a pair
 
 `status` is the name people say and see. `status_category` is one of three fixed values that
 machines act on:
@@ -235,7 +268,7 @@ A vault names its own statuses. `Dropped` sits in category `done`, because for e
 machine asks — is this in flight, is this closed — a dropped task behaves as closed. Imported
 workflows depend on this: systems commonly file `Cancelled` under a done-type category.
 
-### 3.6 Links and aliases
+### 3.7 Links and aliases
 
 **Link to a task by its whole note name**: `[[ACME-4 Session model]]`. Obsidian resolves a link
 without a slash against the names of notes anywhere in the vault, and names are unique because
@@ -248,7 +281,7 @@ as a broken link and prints the name to use instead.
 `aliases` is still worth filling: it drives the quick switcher and search, so a key carried in
 from another system stays findable by someone typing it. It does not make links work.
 
-### 3.7 Comments
+### 3.8 Comments
 
 Comments are appended to a `## Comments` section at the end of the body, oldest first:
 
@@ -261,7 +294,7 @@ region of the same file. That is accepted. A conflict at the end of a file is tr
 resolve, and the alternative — one file per comment — scatters a single conversation across a
 directory and makes the task unreadable without tooling.
 
-### 3.8 History
+### 3.9 History
 
 The change history of a task is its git history. `git log --follow -p "ACME/ACME-12 Fix login redirect loop.md"` shows who moved it,
 when, and what the previous value was. The core keeps no separate journal: a second record of
@@ -401,8 +434,8 @@ A vault is valid when:
 8. Every `[[wikilink]]` resolves to a file or an alias in the vault.
 9. Every folder holding task files is a project in `docket.yaml`, and every project in
    `docket.yaml` is named by at least one board.
-10. Every relationship is a link: `parent` and every entry in `labels` are wikilinks, not bare
-    strings. See 3.3.
+10. Every relationship is a link: `parent`, every entry in `labels`, and every typed relation are
+    wikilinks, not bare strings. See 3.3 and 3.4.
 
 `docket.yaml` itself must also parse and agree with itself — every status has one of the three
 categories, every project key is usable, and every name in `transitions` is a status the vault
