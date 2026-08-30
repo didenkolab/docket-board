@@ -20,6 +20,7 @@ other; there is one set of files.
 - [[purpose]] — what this is for. Everything else is checked against it.
 - [[git-as-the-database]] — why the store is a repository, and what that makes possible.
 - [[what-obsidian-gives]] — what Obsidian offers, what we use, and what we do not.
+- [[what-jira-models]] — what Jira models, what we take, and what we refuse.
 - [[vault-format]] — what a vault is, normatively.
 - [[0001-vault-as-source-of-truth]] — why files and not a database.
 - [[0003-a-vault-holds-several-projects]] — why one vault holds many projects.
