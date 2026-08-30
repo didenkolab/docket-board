@@ -2,8 +2,8 @@
 key: DKT-19
 title: An agent drives the vault over MCP
 type: story
-status: Backlog
-status_category: todo
+status: Done
+status_category: done
 priority: high
 assignee: agent/claude
 labels: [agents, server]
