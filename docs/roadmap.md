@@ -6,6 +6,9 @@ updated: 2026-08-30
 
 # Roadmap
 
+Released: [v0.2.0](https://github.com/vadymdidenkolab/docket/releases/tag/v0.2.0) — binaries for six
+platform pairs and an image for two architectures.
+
 Five stages. Each one is usable on its own — nothing here is a prerequisite that produces
 nothing until the next stage lands.
 
