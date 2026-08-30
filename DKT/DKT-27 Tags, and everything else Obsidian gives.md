@@ -2,13 +2,13 @@
 key: DKT-27
 title: Tags, and everything else Obsidian gives
 type: story
-status: Backlog
-status_category: todo
+status: Done
+status_category: done
 priority: high
 assignee: agent/claude
 labels: ["[[obsidian]]", "[[format]]"]
 created: 2026-08-30T23:33:03Z
-updated: 2026-08-30T23:33:03Z
+updated: 2026-08-30T23:33:22Z
 aliases: []
 tags: []
 ---
