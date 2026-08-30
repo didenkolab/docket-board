@@ -2,8 +2,8 @@
 key: DKT-12
 title: See the boards render in Obsidian
 type: task
-status: Ready
-status_category: todo
+status: Done
+status_category: done
 priority: high
 assignee: agent/claude
 labels: [format, obsidian]
