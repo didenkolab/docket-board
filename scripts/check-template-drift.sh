@@ -34,11 +34,12 @@ NAME=$(sed -n 's/^name: *//p' "$VAULT/docket.yaml" | head -1)
 # Files that must be identical in both places. AGENTS.md is deliberately not
 # here: inside this vault it links to the specification by path, and the
 # template cannot, because a generated vault has no copy of the specification.
+# .obsidian/* is deliberately absent: Obsidian rewrites its own configuration
+# whenever a setting changes, so comparing it would make this guard cry wolf
+# every time somebody opens the vault.
 SHARED=(
 	docket.yaml
 	.gitignore
-	.obsidian/app.json
-	.obsidian/core-plugins.json
 	boards/board.base
 	boards/backlog.base
 	boards/my-tasks.base

@@ -1,5 +1,5 @@
 ---
-key: DKT/15
+key: DKT-15
 title: Access comes from the git host, not from a user table
 type: story
 status: Done
@@ -12,7 +12,7 @@ updated: 2026-08-30T18:16:57Z
 aliases: []
 ---
 
-[[DKT/8]] closed with no accounts at all: whoever could reach the server could write, and every
+[[DKT-8 Server and web UI]] closed with no accounts at all: whoever could reach the server could write, and every
 commit was attributed to the one author it was started with. That is not a tracker a team can
 use — nobody can tell who did what, and there is no way to let someone read without letting
 them write.

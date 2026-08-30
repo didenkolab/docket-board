@@ -1,5 +1,5 @@
 ---
-key: DKT/1
+key: DKT-1
 title: Vault format and the starter vault
 type: epic
 status: Done
@@ -28,4 +28,4 @@ Delivered: [[vault-format]] as the normative spec, [[workspace]] for multi-proje
 ## Comments
 
 **agent/claude · 2026-08-30 16:10** — Closed with the initial commit. The eight validation
-rules in [[vault-format]] are the review checklist until [[DKT/5]] makes them executable.
+rules in [[vault-format]] are the review checklist until [[DKT-5 docket new — create a task with a valid key]] makes them executable.

@@ -1,5 +1,5 @@
 ---
-key: DKT/14
+key: DKT-14
 title: Drag a card between columns, and edit the vocabulary from the interface
 type: story
 status: Done
@@ -45,5 +45,5 @@ field is the whole trick: an edited name is a rename rather than a delete and an
 tasks sitting on that status can be moved with it. Clearing a name removes a status, and is
 refused while any task still holds it — the table shows the count before you try.
 
-Saving regenerates the boards too. Boards name their project folders ([[DKT/13]]), so a config
+Saving regenerates the boards too. Boards name their project folders ([[DKT-13 A vault holds several projects, and a key is a path]]), so a config
 change that skipped them would quietly stop showing a project.

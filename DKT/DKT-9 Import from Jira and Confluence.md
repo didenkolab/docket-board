@@ -1,5 +1,5 @@
 ---
-key: DKT/9
+key: DKT-9
 title: Import from Jira and Confluence
 type: epic
 status: Done
@@ -25,7 +25,7 @@ a cancelled-in-done workflow survives the trip, and `_history/` for a history gi
 
 - [x] A snapshot is self-contained: `plan` and `apply` run offline against it.
 - [x] `apply` produces one commit that can be reviewed and reverted whole.
-- [x] Imported tasks pass [[DKT/6]].
+- [x] Imported tasks pass [[DKT-6 docket check — validate a vault]].
 - [x] No fixture, test or document in the repository names a real instance, customer or person.
 
 ## Comments
@@ -46,7 +46,7 @@ nobody goes looking for text they were never told went missing. Confluence query
 (`children`, `pagetree`, `recently-updated`) become a note saying what stood there: a space's
 whole navigation can hang off one, and it is a query rather than text, so it cannot be carried.
 
-The third criterion is met by a test that imports a synthetic snapshot and runs [[DKT/6]] over
+The third criterion is met by a test that imports a synthetic snapshot and runs [[DKT-6 docket check — validate a vault]] over
 the result.
 
 **Not verified against a live instance.** There is none to point it at, and pointing it at a

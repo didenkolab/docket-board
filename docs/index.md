@@ -18,20 +18,22 @@ is one set of files.
 
 - [[vault-format]] — what a vault is, normatively.
 - [[0001-vault-as-source-of-truth]] — why files and not a database.
-- [[0003-a-vault-holds-several-projects]] — why a key is `PROJECT/NUMBER` and why one vault
-  holds many projects.
+- [[0003-a-vault-holds-several-projects]] — why one vault holds many projects.
+- [[0004-access-comes-from-git]] — why there is no user table.
+- [[0005-a-file-is-named-after-its-task]] — why a file is named after its task.
 - [[workspace]] — how several repositories become one Obsidian vault.
 - [[roadmap]] — what exists and what comes next.
 
 ## The shape of it
 
 ```
-docket.yaml            the projects, and the vocabulary they share
-ACME/12.md            a task: flat YAML frontmatter, Markdown body, comments at the end
-BETA/7.md             another project, same tree, links cross freely
-docs/                 a wiki: any tree of pages, connected by [[wikilinks]]
-boards/board.base     a view: cards grouped by status, rendered by core Obsidian
+docket.yaml                              the projects, and the vocabulary they share
+ACME/ACME-12 Fix login redirect loop.md a task: flat frontmatter, Markdown body, comments
+BETA/BETA-7 Ship the widget.md          another project, same tree, links cross freely
+docs/                                   a wiki: any tree of pages, connected by wikilinks
+boards/board.base                       a view: cards by status, rendered by core Obsidian
 ```
 
-A key is the path, so `[[ACME/12]]` opens the task with no tool involved. Git is the history:
-`git log -p ACME/12.md` is the audit trail, and `git clone` is the export.
+A file is named after its task, so the graph and the file explorer say what everything is, and
+`[[ACME-12 Fix login redirect loop]]` opens it with no tool involved. Git is the history:
+`git log --follow -p` on the file is the audit trail, and `git clone` is the export.

@@ -1,12 +1,12 @@
 ---
-key: DKT/5
+key: DKT-5
 title: docket new — create a task with a valid key
 type: task
 status: Done
 status_category: done
 priority: normal
 assignee: agent/claude
-parent: DKT/2
+parent: DKT-2
 labels: [cli]
 created: 2026-08-30T16:10:54Z
 updated: 2026-08-30T17:12:13Z

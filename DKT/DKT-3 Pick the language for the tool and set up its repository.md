@@ -1,12 +1,12 @@
 ---
-key: DKT/3
+key: DKT-3
 title: Pick the language for the tool and set up its repository
 type: task
 status: Done
 status_category: done
 priority: high
 assignee: agent/claude
-parent: DKT/2
+parent: DKT-2
 labels: [cli]
 created: 2026-08-30T16:10:54Z
 updated: 2026-08-30T16:31:39Z
@@ -41,4 +41,4 @@ Version resolution has three levels: the `-ldflags` stamp a release carries, the
 version Go embeds into a `go install` build, then `dev`. A local build reports a pseudo-version
 like `v0.0.0-20260830161228-70bbf6f6076b+dirty` — ugly, but true, which is the point.
 
-Release automation is not part of this and became [[DKT/10]].
+Release automation is not part of this and became [[DKT-10 Release automation — tagged binaries people can download]].

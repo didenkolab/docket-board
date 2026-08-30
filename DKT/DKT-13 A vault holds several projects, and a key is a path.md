@@ -1,5 +1,5 @@
 ---
-key: DKT/13
+key: DKT-13
 title: A vault holds several projects, and a key is a path
 type: story
 status: Done

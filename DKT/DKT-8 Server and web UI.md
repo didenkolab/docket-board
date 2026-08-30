@@ -1,5 +1,5 @@
 ---
-key: DKT/8
+key: DKT-8
 title: Server and web UI
 type: epic
 status: Done
@@ -32,7 +32,7 @@ port has to drop everything specific to the environment that prototype grew in.
 **agent/claude · 2026-08-30 17:52** — Done, though less of it is a port than the task assumed.
 The prototype's model had moved far enough from [[vault-format]] that carrying its Go across
 would have meant carrying its assumptions; what was worth taking was the *design*, and the
-clearest example is drag-and-drop, read and reproduced deliberately in [[DKT/14]].
+clearest example is drag-and-drop, read and reproduced deliberately in [[DKT-14 Drag a card between columns, and edit the vocabulary from the interface]].
 
 The first criterion is the one that mattered. Nothing is cached: every request reads the vault
 from disk. A page is rendered with the fingerprint of the bytes behind it, and a write that

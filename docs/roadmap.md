@@ -28,7 +28,7 @@ pairs; see [[0002-go-and-a-single-binary]].
 Why it comes second and not first: everything it does can be done by hand, and building it
 before the format settled would have frozen the wrong format.
 
-One dependency — a YAML parser — added when [[DKT/6]] needed to read frontmatter, and not
+One dependency — a YAML parser — added when [[DKT-6 docket check — validate a vault]] needed to read frontmatter, and not
 before.
 
 ## 3. Server and web UI — done
@@ -39,7 +39,7 @@ settings, and a JSON API. It is a second client — it holds no state the files 
 reads from disk on every request, and commits every write.
 
 People sign in against the git host that already holds the repository, and what they may do is
-what that host says — see [[0004-access-comes-from-git]] and [[DKT/15]]. Commits are authored
+what that host says — see [[0004-access-comes-from-git]] and [[DKT-15 Access comes from the git host, not from a user table]]. Commits are authored
 by the person who made them.
 
 ## 4. Import from Jira and Confluence — done

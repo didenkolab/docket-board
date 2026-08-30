@@ -1,5 +1,5 @@
 ---
-key: DKT/17
+key: DKT-17
 title: A board you can drag on, and a task page in the shape people know
 type: story
 status: Done

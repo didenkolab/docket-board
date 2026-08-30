@@ -1,5 +1,5 @@
 ---
-key: DKT/16
+key: DKT-16
 title: The workflow lives in git, next to the statuses
 type: story
 status: Done

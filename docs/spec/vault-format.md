@@ -12,7 +12,7 @@ the same time — the same folder, no export step between them — and it holds 
 projects.
 
 Related: [[0001-vault-as-source-of-truth]], [[0003-a-vault-holds-several-projects]],
-[[workspace]], [[roadmap]].
+[[0005-a-file-is-named-after-its-task]], [[workspace]], [[roadmap]].
 
 ## 1. Layout
 
@@ -21,12 +21,12 @@ Related: [[0001-vault-as-source-of-truth]], [[0003-a-vault-holds-several-project
   .obsidian/          Obsidian config — plugins, appearance, hotkeys
   docket.yaml          the projects, and the vocabulary they share
   AGENTS.md           instructions for an agent working in this vault
-  ACME/               one folder per project
-    12.md             the task ACME/12
-    13.md
-    _history/12.jsonl imported history, if any
+  ACME/                             one folder per project
+    ACME-12 Fix login redirect loop.md
+    ACME-13 Session model.md
+    _history/12.jsonl               imported history, if any
   BETA/
-    7.md
+    BETA-7 Ship the widget.md
   docs/               knowledge base: a free tree of pages
   boards/
     board.base        Bases views over the projects
@@ -46,26 +46,34 @@ called any of them.
 
 ## 2. Identity
 
-A task's key is `PROJECT/NUMBER`, where `PROJECT` is a project listed in `docket.yaml` and
-`NUMBER` counts from 1 within that project.
-
-**The key is the path.** `ACME/12` is the file `ACME/12.md`, relative to the vault root. Two
-things follow, and they are the reason for the shape:
-
-- Knowing the key is enough to open the file — no search, no index.
-- `[[ACME/12]]` resolves in Obsidian with no help from any tool, because Obsidian reads a
-  wikilink containing a slash as a vault-relative path. Links between projects work for the
-  same reason: the projects are one file tree.
-
-Renaming a task, reassigning it, moving it between statuses or reparenting it never moves the
-file. Only the key moves a file, and a key never changes.
+A task's key is `PROJECT-NUMBER` — `ACME-12`. `PROJECT` is a project listed in `docket.yaml`,
+and `NUMBER` counts from 1 within it. One spelling, used in the frontmatter, in the file name,
+in links and in the server's URLs.
 
 Keys are permanent and never reused. Gaps left by deleted tasks stay as gaps.
 
-The title is not in the file name. It is the `title` property, which boards display. The cost
-is that Obsidian's graph view shows bare numbers, since a note's display name is its file name;
-the board and the file explorer both show more, so the cost is confined to the graph. This is
-the trade [[0003-a-vault-holds-several-projects]] makes deliberately.
+**A file is named after its task**: the key, a space, and the title.
+
+```
+ACME/ACME-12 Fix login redirect loop.md
+```
+
+The name carries the title because that is what Obsidian shows — in the graph, in the file
+explorer, in search, in backlinks. A vault of `1.md`, `2.md`, `12.md` renders a graph of
+numbers, which tells nobody anything. See [[0005-a-file-is-named-after-its-task]].
+
+The title goes into the name as written, in whatever language it was written in. Only what a
+file name or a wikilink cannot hold is replaced: `/` and `\` would make folders; `: * ? " < >
+|` are refused by one file system or another; `# ^ [ ]` are wikilink syntax, and a note holding
+them cannot be linked to. Everything else survives exactly.
+
+**Retitling renames the file.** Obsidian rewrites every link when it renames a note, and
+`docket` does the same, so nothing breaks — but a title change shows up in `git log` as a rename
+rather than a one-line diff, and reading a task's history wants `git log --follow`. That is the
+price of a readable graph, and the graph is looked at far more often.
+
+Finding a file by key is a glob — `ACME/ACME-12 *.md` — rather than a direct path. Cheap, and
+confined to the tool.
 
 ### Allocation
 
@@ -84,21 +92,22 @@ A task is a Markdown file with YAML frontmatter.
 
 ```markdown
 ---
-key: ACME/12
+key: ACME-12
 title: Fix login redirect loop
 type: bug
 status: In progress
 status_category: doing
 priority: high
 assignee: agent/claude
-parent: ACME/4
+parent: ACME-4
 labels: [auth, regression]
 created: 2026-08-30T10:12:00Z
 updated: 2026-08-30T14:03:00Z
 aliases: []
 ---
 
-Free Markdown. Links to other tasks and pages: [[ACME/4]], [[BETA/7]], [[docs/auth/session-model]].
+Free Markdown. Links to other tasks and pages: [[ACME-4 Session model]],
+[[BETA-7 Ship the widget]], [[docs/auth/session-model]].
 
 ## Comments
 
@@ -161,13 +170,16 @@ workflows depend on this: systems commonly file `Cancelled` under a done-type ca
 
 ### 3.4 Links and aliases
 
-`[[ACME/4]]` resolves because the file is at `ACME/4.md`. Obsidian resolves it natively; so
-does anything else that understands wikilinks.
+**Link to a task by its whole note name**: `[[ACME-4 Session model]]`. Obsidian resolves a link
+without a slash against the names of notes anywhere in the vault, and names are unique because
+keys are.
 
-`aliases` is Obsidian's built-in property, not ours. New tasks have it empty. Import fills it
-with the keys the task used to have elsewhere, so a key that leaked into seven years of commit
-messages, branch names and conversations keeps opening the right task. No resolver code is
-needed for this — Obsidian already does it.
+`[[ACME-4]]` on its own resolves to nothing. Obsidian's resolver does not consult `aliases` —
+this was checked before the format relied on it, not assumed. `docket check` reports a bare key
+as a broken link and prints the name to use instead.
+
+`aliases` is still worth filling: it drives the quick switcher and search, so a key carried in
+from another system stays findable by someone typing it. It does not make links work.
 
 ### 3.5 Comments
 
@@ -184,7 +196,7 @@ directory and makes the task unreadable without tooling.
 
 ### 3.6 History
 
-The change history of a task is its git history. `git log -p ACME/12.md` shows who moved it,
+The change history of a task is its git history. `git log --follow -p "ACME/ACME-12 Fix login redirect loop.md"` shows who moved it,
 when, and what the previous value was. The core keeps no separate journal: a second record of
 the same facts is a second thing that can be wrong.
 
@@ -294,7 +306,8 @@ files. Whether such a plugin is installed changes nothing about the data — it 
 
 A vault is valid when:
 
-1. Every task file has frontmatter, and its `key` equals its path without `.md`.
+1. Every task file has frontmatter; its name begins with its `key`; and the rest of the name is
+   the `title`.
 2. Every key is unique.
 3. Every `status` appears in `docket.yaml`, and `status_category` matches that status's category
    there.

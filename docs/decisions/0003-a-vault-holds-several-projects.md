@@ -9,7 +9,12 @@ updated: 2026-08-30
 # ADR-0003 — A vault holds several projects, and a key is a path
 
 Supersedes the parts of [[vault-format]] and [[0001-vault-as-source-of-truth]] that said one
-vault is one project and that a key looks like `ACME-12`.
+vault is one project.
+
+**The identity half of this decision was itself superseded the same day** by
+[[0005-a-file-is-named-after-its-task]], after the vault was opened in Obsidian and the cost
+accepted below turned out to be unlivable. Projects remain folders; the key stops being the
+path. What follows is left as written.
 
 ## Context
 
