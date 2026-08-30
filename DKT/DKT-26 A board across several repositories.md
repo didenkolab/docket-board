@@ -2,13 +2,13 @@
 key: DKT-26
 title: A board across several repositories
 type: story
-status: Backlog
-status_category: todo
+status: Done
+status_category: done
 priority: urgent
 assignee: agent/claude
 labels: ["[[server]]", "[[format]]"]
 created: 2026-08-30T22:18:11Z
-updated: 2026-08-30T22:18:11Z
+updated: 2026-08-30T23:33:22Z
 aliases: []
 ---
 
