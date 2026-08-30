@@ -2,13 +2,13 @@
 key: DKT-24
 title: The first minute with a new vault
 type: story
-status: Backlog
-status_category: todo
+status: Done
+status_category: done
 priority: high
 assignee: agent/claude
 labels: [server, cli]
 created: 2026-08-30T21:40:48Z
-updated: 2026-08-30T21:40:48Z
+updated: 2026-08-30T21:40:57Z
 aliases: []
 ---
 
