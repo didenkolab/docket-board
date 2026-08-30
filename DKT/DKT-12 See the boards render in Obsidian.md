@@ -5,30 +5,39 @@ type: task
 status: Ready
 status_category: todo
 priority: high
-assignee: 
+assignee: agent/claude
 labels: [format, obsidian]
 created: 2026-08-30T17:12:13Z
-updated: 2026-08-30T17:12:13Z
+updated: 2026-08-30T20:24:57Z
 aliases: []
 ---
 
 Every board in this vault and in the templates was written from the published Bases syntax and
-has never been opened in Obsidian. The whole premise of [[0001-vault-as-source-of-truth]] is
-that a person opens the folder and sees a board — and that half has been assumed, not observed.
+had never been opened in Obsidian. The whole premise of [[0001-vault-as-source-of-truth]] is
+that a person opens the folder and sees a board — and that half was assumed, not observed.
 
-The specific things to look at: does `boards/board.base` group into columns by `status`; does
-the card show `title` rather than the file name, which is the trade [[vault-format]] §2 makes
-when it names files after keys alone; does `file.inFolder("tasks")` do what the filter assumes;
-do `[[DKT-4 docket init — scaffold a vault]]` and the `aliases` property resolve; and does a workspace folder holding several
-project repositories open as one vault with nested `.obsidian` directories ignored.
+It was wrong. Opened in Obsidian 1.13.7, `boards/board.base` rendered nothing at all:
 
-Anything that turns out wrong is a fix in one `.base` file and in the template beside it, which
-[[DKT-11 Stop the embedded templates from drifting away from this vault]] now keeps in step.
+> Не удаётся обработать файл базы данных: в представлении "Board" "groupBy" должны быть типа object
+
+`groupBy` was a mapping, so the message is not the reason. Obsidian's parser requires
+`property` **and** `direction` together and names neither when one is missing. Adding
+`direction: ASC` makes the board render.
+
+The second finding came from the same session: a display name written the documented way —
+`title:` under `properties:` — is accepted and silently ignored. The key is matched against the
+qualified identifier that `order` uses, so it has to be `note.title`. Every column header read
+as a raw property name until this was fixed, and nothing said why.
+
+Both are recorded in [[vault-format]] §6, because the published reference is wrong about both
+and the next person to write one of these files will hit them again.
+
+The tables gained display names too, now that there is a form known to work.
 
 ## Acceptance
 
-- [ ] The three boards render, with columns and cards as intended.
-- [ ] Findings, if any, are fixed in both the vault and the templates.
-- [ ] [[vault-format]] §6 is corrected wherever the documented syntax turns out to be wrong.
+- [x] The three boards render, with columns and cards as intended.
+- [x] Findings, if any, are fixed in both the vault and the templates.
+- [x] [[vault-format]] §6 is corrected wherever the documented syntax turns out to be wrong.
 
 ## Comments
