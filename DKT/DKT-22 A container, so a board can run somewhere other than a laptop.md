@@ -6,7 +6,7 @@ status: Done
 status_category: done
 priority: high
 assignee: agent/claude
-labels: [server, release]
+labels: ["[[server]]", "[[release]]"]
 created: 2026-08-30T19:31:34Z
 updated: 2026-08-30T22:00:04Z
 aliases: []

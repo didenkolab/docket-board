@@ -6,7 +6,7 @@ status: Backlog
 status_category: todo
 priority: urgent
 assignee: agent/claude
-labels: [server, format]
+labels: ["[[server]]", "[[format]]"]
 created: 2026-08-30T22:18:11Z
 updated: 2026-08-30T22:18:11Z
 aliases: []

@@ -6,7 +6,7 @@ status: Done
 status_category: done
 priority: normal
 assignee: agent/claude
-labels: [import]
+labels: ["[[import]]"]
 created: 2026-08-30T16:10:54Z
 updated: 2026-08-30T17:52:58Z
 aliases: []

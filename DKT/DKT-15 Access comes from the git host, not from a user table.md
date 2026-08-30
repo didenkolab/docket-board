@@ -6,7 +6,7 @@ status: Done
 status_category: done
 priority: high
 assignee: agent/claude
-labels: [server, access]
+labels: ["[[server]]", "[[access]]"]
 created: 2026-08-30T18:16:57Z
 updated: 2026-08-30T18:16:57Z
 aliases: []

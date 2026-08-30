@@ -99,8 +99,8 @@ status: In progress
 status_category: doing
 priority: high
 assignee: agent/claude
-parent: ACME-4
-labels: [auth, regression]
+parent: "[[ACME-4 Session model]]"
+labels: ["[[auth]]", "[[regression]]"]
 created: 2026-08-30T10:12:00Z
 updated: 2026-08-30T14:03:00Z
 aliases: []
@@ -126,8 +126,9 @@ is rejected but the login form still succeeds.
 | `status_category` | yes | The category of that status: `todo`, `doing` or `done`. |
 | `priority` | yes | One of `priorities` in `docket.yaml`. |
 | `assignee` | yes | `agent/<name>` or a person's handle. Present but empty when unassigned. |
-| `parent` | no | Key of the parent task. Absent at the top level. |
-| `labels` | no | List of strings. |
+| `parent` | no | Wikilink to the parent task. Absent at the top level. See 3.3. |
+| `labels` | no | List of wikilinks. See 3.3. |
+| `tags` | no | Obsidian's own tags, passed through untouched. |
 | `created` | yes | UTC, RFC 3339. Never changes. |
 | `updated` | yes | UTC, RFC 3339. Set on every change. |
 | `aliases` | no | Obsidian's own alias field. Old keys carried in from another system. |
@@ -150,7 +151,40 @@ tasks it claims to order, and nothing says so. A number travels with the task it
 Nothing has to set it. A vault where no task carries `order` is a vault sorted by key, which is
 what a board looks like until somebody drags a card.
 
-### 3.3 Frontmatter is flat
+### 3.3 A relationship is a link
+
+`parent` and `labels` are wikilinks, not strings:
+
+```yaml
+parent: "[[ACME-4 Session model]]"
+labels: ["[[auth]]", "[[regression]]"]
+```
+
+A wikilink is the only pointer Obsidian resolves, draws in the graph, counts as a backlink and
+offers in the quick switcher. The same word written plainly connects nothing: it exists for
+docket's own tools and is absent from every place the relationship was supposed to show. That is
+the difference between this being Obsidian with tracking on top and being a database that keeps
+its rows in Markdown.
+
+A link resolves by **note name**, so a parent is `[[ACME-4 Session model]]` and never
+`[[ACME-4]]` — Obsidian does not consult `aliases`, so a bare key points at nothing.
+Retitling therefore rewrites every link to the renamed note, in bodies and in frontmatter
+alike, in the same commit as the rename.
+
+A label link need not resolve. An unresolved link is still an edge in the graph, so `[[auth]]`
+groups everything carrying it whether or not `auth.md` exists. Writing that page — anywhere
+under `docs/` — is what turns a label into something that can explain itself and gather what
+belongs to it.
+
+Both must be quoted. `labels: [[[auth]]]` unquoted is a nested sequence in YAML, not a link.
+
+The values are read either way while vaults written before this are migrated, and `docket check`
+reports the old form at rule 10. `docket check --fix` rewrites it.
+
+`tags` is Obsidian's own and is passed through. Obsidian shows tags in the graph when the graph
+is set to show them, and in its tag pane always.
+
+### 3.4 Frontmatter is flat
 
 No nested objects, at any depth. This is a hard constraint, not a style preference:
 
@@ -166,7 +200,7 @@ Fields carried in from another system are prefixed `x_` — `x_sprint`, `x_epic_
 keeps a foreign schema from colliding with the core one and makes imported data obvious to
 anyone reading the file.
 
-### 3.4 Status is a pair
+### 3.5 Status is a pair
 
 `status` is the name people say and see. `status_category` is one of three fixed values that
 machines act on:
@@ -186,7 +220,7 @@ A vault names its own statuses. `Dropped` sits in category `done`, because for e
 machine asks — is this in flight, is this closed — a dropped task behaves as closed. Imported
 workflows depend on this: systems commonly file `Cancelled` under a done-type category.
 
-### 3.5 Links and aliases
+### 3.6 Links and aliases
 
 **Link to a task by its whole note name**: `[[ACME-4 Session model]]`. Obsidian resolves a link
 without a slash against the names of notes anywhere in the vault, and names are unique because
@@ -199,7 +233,7 @@ as a broken link and prints the name to use instead.
 `aliases` is still worth filling: it drives the quick switcher and search, so a key carried in
 from another system stays findable by someone typing it. It does not make links work.
 
-### 3.6 Comments
+### 3.7 Comments
 
 Comments are appended to a `## Comments` section at the end of the body, oldest first:
 
@@ -212,7 +246,7 @@ region of the same file. That is accepted. A conflict at the end of a file is tr
 resolve, and the alternative — one file per comment — scatters a single conversation across a
 directory and makes the task unreadable without tooling.
 
-### 3.7 History
+### 3.8 History
 
 The change history of a task is its git history. `git log --follow -p "ACME/ACME-12 Fix login redirect loop.md"` shows who moved it,
 when, and what the previous value was. The core keeps no separate journal: a second record of
@@ -352,11 +386,15 @@ A vault is valid when:
 8. Every `[[wikilink]]` resolves to a file or an alias in the vault.
 9. Every folder holding task files is a project in `docket.yaml`, and every project in
    `docket.yaml` is named by at least one board.
+10. Every relationship is a link: `parent` and every entry in `labels` are wikilinks, not bare
+    strings. See 3.3.
 
 `docket.yaml` itself must also parse and agree with itself — every status has one of the three
 categories, every project key is usable, and every name in `transitions` is a status the vault
 has. A file that fails those is refused at load rather than reported as a finding: nothing else
 can be checked against a vocabulary that does not make sense.
 
-Rules 1–7 are checkable from the project folders and `docket.yaml` alone. Rules 8 and 9 need the
-whole vault. `docket check` implements all nine and reports each finding with a file and a line.
+Rules 1–7 and 10 are checkable from the project folders and `docket.yaml` alone. Rules 8 and 9
+need the whole vault. `docket check` implements all ten and reports each finding with a file and
+a line. Two of them have a right answer rather than a judgement — a name that drifted from its
+title, and a relationship still written as a string — and `docket check --fix` settles those.

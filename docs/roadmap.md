@@ -28,7 +28,7 @@ graph, full history in git. No installation.
 ## 2. CLI — done
 
 `docket init` scaffolds a vault. `docket new` creates a task with a valid key and a filled
-template. `docket check` runs the nine validation rules from [[vault-format]]. `docket workspace
+template. `docket check` runs the ten validation rules from [[vault-format]]. `docket workspace
 sync` clones and pulls projects from a manifest. Released as a single binary for six platform
 pairs; see [[0002-go-and-a-single-binary]].
 
@@ -92,9 +92,9 @@ against a stub server, and everything downstream against snapshots built in test
 These are not extras. They are places where the product does not yet do what [[purpose]] says
 it is for, found by checking it against that document rather than against a list of features.
 
-**[[DKT-25 Relationships are links, not fields]]** — `parent` and `labels` are plain strings, so
-an epic draws no edge to its tasks and a label connects nothing. In Obsidian, which is where
-this is supposed to show, they do not exist.
+[[DKT-25 Relationships are links, not fields]] is done: `parent` and `labels` are wikilinks now,
+so an epic has an edge to each of its tasks and a label is a hub joining everything that carries
+it, across projects.
 
 **[[DKT-26 A board across several repositories]]** — a repository is supposed to be a project,
 and a board is supposed to read several of them. It reads one. Several projects in one

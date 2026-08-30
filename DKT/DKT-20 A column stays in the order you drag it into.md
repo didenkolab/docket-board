@@ -6,7 +6,7 @@ status: Done
 status_category: done
 priority: high
 assignee: agent/claude
-labels: [board, format]
+labels: ["[[board]]", "[[format]]"]
 created: 2026-08-30T19:31:33Z
 updated: 2026-08-30T19:31:41Z
 aliases: []

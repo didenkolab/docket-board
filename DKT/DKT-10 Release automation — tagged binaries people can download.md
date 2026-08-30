@@ -6,8 +6,8 @@ status: Done
 status_category: done
 priority: normal
 assignee: agent/claude
-parent: DKT-2
-labels: [cli, release]
+parent: "[[DKT-2 docket CLI]]"
+labels: ["[[cli]]", "[[release]]"]
 created: 2026-08-30T16:31:39Z
 updated: 2026-08-30T17:12:13Z
 aliases: []
