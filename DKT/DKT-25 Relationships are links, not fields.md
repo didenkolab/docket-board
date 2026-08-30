@@ -17,14 +17,16 @@ strings, and both are invisible in Obsidian — which was checked, not assumed.
 
 `parent: ACME-4` is a plain key. The epic-to-task hierarchy, which is the whole reason an epic
 exists, draws no edge in the graph. `labels: [auth, regression]` are plain strings and draw
-nothing either. Opened in Obsidian 1.13.7 with a probe vault, a task carrying
-`labels: ["[[auth]]"]` had an edge to a real `auth` page and a task carrying `labels: [auth]`
+nothing either. Opened in Obsidian 1.13.7 with a probe vault, a task whose labels were
+written as links had an edge to a real page and a task whose labels were written as plain words
 had none — same word, same field, one connected and one inert.
 
 So both become links:
 
-    parent: "[[ACME-4 Session model]]"
-    labels: ["[[auth]]", "[[regression]]"]
+```yaml
+parent: "[[ACME-4 Session model]]"
+labels: ["[[auth]]", "[[regression]]"]
+```
 
 A label being a link means a label can be a page — `docs/labels/auth.md` — that says what it
 means and gathers everything carrying it. That is how a large number of documents come to be

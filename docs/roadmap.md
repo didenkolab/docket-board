@@ -6,6 +6,10 @@ updated: 2026-08-30
 
 # Roadmap
 
+What this is for is [[purpose]]. Two of its five points are not met yet, and they are named at
+the bottom of this page rather than buried: relationships are still fields rather than links,
+and a board still reads one repository rather than several.
+
 Released: [v0.2.0](https://github.com/vadymdidenkolab/docket/releases/tag/v0.2.0) — binaries for six
 platform pairs, and a container image for two architectures.
 
@@ -82,3 +86,16 @@ cancelled-in-done workflow survives the trip, and `_history/` for a history git 
 
 Not verified against a live instance: there is none to point it at. Extraction is exercised
 against a stub server, and everything downstream against snapshots built in tests.
+
+## Not done, and central
+
+These are not extras. They are places where the product does not yet do what [[purpose]] says
+it is for, found by checking it against that document rather than against a list of features.
+
+**[[DKT-25 Relationships are links, not fields]]** — `parent` and `labels` are plain strings, so
+an epic draws no edge to its tasks and a label connects nothing. In Obsidian, which is where
+this is supposed to show, they do not exist.
+
+**[[DKT-26 A board across several repositories]]** — a repository is supposed to be a project,
+and a board is supposed to read several of them. It reads one. Several projects in one
+repository works and is not the same thing.
