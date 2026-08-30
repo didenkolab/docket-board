@@ -2,13 +2,13 @@
 key: DKT-22
 title: An image, so a board can run somewhere other than a laptop
 type: task
-status: Backlog
-status_category: todo
+status: Done
+status_category: done
 priority: high
 assignee: agent/claude
 labels: [server, release]
 created: 2026-08-30T19:31:34Z
-updated: 2026-08-30T19:31:34Z
+updated: 2026-08-30T19:31:41Z
 aliases: []
 ---
 
