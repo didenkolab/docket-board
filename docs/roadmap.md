@@ -7,7 +7,7 @@ updated: 2026-08-30
 # Roadmap
 
 Released: [v0.2.0](https://github.com/vadymdidenkolab/docket/releases/tag/v0.2.0) — binaries for six
-platform pairs.
+platform pairs, and a container image for two architectures.
 
 Five stages. Each one is usable on its own — nothing here is a prerequisite that produces
 nothing until the next stage lands.
@@ -53,8 +53,10 @@ A card stays where it is dragged, in the column as well as between columns
 ([[DKT-20 A column stays in the order you drag it into]]); search narrows by project, status,
 type, priority, assignee and label ([[DKT-21 Search you can narrow]]).
 
-Running it on a server is the binary and nothing else. There was an image for a while;
-[[DKT-22 An image to run the board in a container]] says why it was dropped.
+Running it on a server is `docker compose up`, which builds from the checkout so that a
+registry is never between somebody and a running board
+([[DKT-22 A container, so a board can run somewhere other than a laptop]]) — or the binary and a
+clone, since that is all it ever was.
 
 ## 4. An agent, over a protocol — done
 
