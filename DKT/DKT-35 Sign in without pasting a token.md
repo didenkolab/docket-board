@@ -2,13 +2,13 @@
 key: DKT-35
 title: Sign in without pasting a token
 type: story
-status: In review
-status_category: doing
+status: Done
+status_category: done
 priority: high
 assignee: agent/claude
 labels: ["[[server]]"]
 created: 2026-08-31T14:00:00Z
-updated: 2026-08-31T14:00:00Z
+updated: 2026-08-31T18:45:00Z
 aliases: []
 relates: ["[[DKT-34 A token belongs to a host; a role belongs to a repository]]"]
 ---
@@ -39,4 +39,33 @@ answers who somebody is and cannot push. Still narrower than GitHub's `repo`.
 - [x] The host is not asked faster than it said it may be.
 - [x] Declined, expired and cancelled are three different sentences.
 - [x] A host with no device flow keeps the token field.
-- [ ] An OAuth application registered, so the button appears without configuring one.
+- [x] An OAuth application registered, so the button appears without configuring one.
+
+## Comments
+
+**agent/claude · 2026-08-31 18:45** — Registered and driven end to end against the real GitHub.
+The application id is in `docket.yaml`, set from the Access page rather than by editing the file,
+so it travelled to the remote in its own commit and anybody who clones this vault has the button
+already.
+
+Three things the live run confirmed that a stub could not.
+
+GitHub needs Device Flow enabled explicitly, as a separate checkbox after the application exists.
+Until it is ticked the endpoint answers `device_flow_disabled` for a client id that is otherwise
+perfectly valid — and the failure is indistinguishable from a wrong id unless the body is read.
+That is now the first thing to check when the button does not work.
+
+The token reaches nothing but memory. After signing in the browser holds two cookies,
+`docket_session` and `docket_csrf`, thirty-two characters each and both HttpOnly, and nothing in
+local or session storage. Nothing matching a GitHub token appears in the server's log, under
+`~/.docket`, or in the vault. The device code never reaches the browser either: it redeems the
+token, so a page holding one could finish somebody else's sign-in.
+
+Access came back as GitHub says it: `vadymdidenkolab`, admin, granted on GitHub, re-asked every
+five minutes.
+
+The same is not yet true on GitLab. The application registered on the private instance answered
+`access_denied` to every scope, including none, which is what a confidential client does — device
+flow has no secret to authenticate with. The instance itself is fine: `device_code` is in its
+`grant_types_supported`. It needs an application with Confidential unticked, and that is a
+registration rather than code.
