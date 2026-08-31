@@ -96,7 +96,13 @@ whoever is working in the tree. Nothing there can be written — the cards are n
 every write route refuses a ref — because committing to a branch nobody has checked out is a
 thing git can do and a thing no interface should do quietly.
 
-Still unbuilt:
+A change now goes on to where everybody else reads it —
+[[DKT-37 Every change goes on to where everybody else reads it]]. Until that, every write was a
+commit and stopped there: the commits sat in whichever clone the server happened to run over,
+and somebody who took the project as a clone got everything except what the board did. Which
+undid this page's own first claim, quietly, for as long as it was true.
+
+Still unbuilt, and named in [[DKT-43 A pull request read as a plan change]]:
 
 - **Two branches side by side**, so a choice between plans is one screen rather than two tabs.
 - **`git blame` on a task**, so a line of an acceptance criterion says who wrote it and when.
