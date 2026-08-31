@@ -34,7 +34,7 @@ pairs; see [[0002-go-and-a-single-binary]].
 Why it comes second and not first: everything it does can be done by hand, and building it
 before the format settled would have frozen the wrong format.
 
-One dependency — a YAML parser — added when [[DKT-6 docket check — validate a vault]] needed to read frontmatter, and not
+One dependency — a YAML parser — added when `DKT-6` needed to read frontmatter, and not
 before.
 
 ## 3. Server and web UI — done
@@ -45,27 +45,27 @@ settings, and a JSON API. It is a second client — it holds no state the files 
 reads from disk on every request, and commits every write.
 
 People sign in against the git host that already holds the repository, and what they may do is
-what that host says — see [[0004-access-comes-from-git]] and [[DKT-15 Access comes from the git host, not from a user table]]. Commits are authored
+what that host says — see [[0004-access-comes-from-git]] and `DKT-15`. Commits are authored
 by the person who made them.
 
 Every change to a task is a commit, and the task page shows those commits as a history — who,
-when, and which fields moved ([[DKT-23 What happened to this task]]). It is read from git on the
+when, and which fields moved `DKT-23`. It is read from git on the
 way past, so there is no activity table to fall out of step with the files.
 
 A card stays where it is dragged, in the column as well as between columns
-([[DKT-20 A column stays in the order you drag it into]]); search narrows by project, status,
-type, priority, assignee and label ([[DKT-21 Search you can narrow]]).
+`DKT-20`; search narrows by project, status,
+type, priority, assignee and label `DKT-21`.
 
 Running it on a server is `docker compose up`, which builds from the checkout so that a
 registry is never between somebody and a running board
-([[DKT-22 A container, so a board can run somewhere other than a laptop]]) — or the binary and a
+`DKT-22` — or the binary and a
 clone, since that is all it ever was.
 
 ## 4. An agent, over a protocol — done
 
 `docket mcp` serves the vault over the Model Context Protocol: eight tools on stdin and stdout,
 covering the whole loop an agent runs — find work, read it, create, move, comment, write a
-page, validate. See [[DKT-19 An agent drives the vault over MCP]].
+page, validate. See `DKT-19`.
 
 It changes nothing about the format. An agent that would rather edit the Markdown still can,
 and [[AGENTS]] still says how. What it removes is the four ways a hand-written change goes
@@ -106,10 +106,10 @@ what we take, and what we refuse. Both were read out of their documentation and 
 app, and both turned up things worth having.
 
 From Obsidian: tags used rather than tolerated, callouts, and backlinks
-([[DKT-27 Tags, and everything else Obsidian gives]]).
+`DKT-27`.
 
 From Jira: typed relations between tasks, which was the largest thing missing
-([[DKT-28 How two tasks are connected]]).
+`DKT-28`.
 
 All three of those are now built.
 

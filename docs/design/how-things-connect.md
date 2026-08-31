@@ -178,6 +178,29 @@ estimates, no sprint and nobody on it, which had been fused to everything else p
 sprint pages saying "we did not take this again". That island is question four at the top of this
 page finally being answered.
 
+## 5a. A link in a hub carries a line saying why
+
+§5 is a test you apply to a page that already exists. This is the rule that decides what goes in
+one while it is being written, and it is sharper:
+
+> **A context is not a folder. It is an annotated list — every link carries one line saying why
+> that note is here.**
+
+A link with a sentence around it is doing the work: standing at the target, "the roadmap says I
+was the point where this stopped being a tracker in git" is worth having. A link in parentheses
+after a clause — `(see [[X]])` — is a citation in passing, and it costs an edge to say what the
+key alone would have said. Write the key: `` `DKT-21` ``.
+
+Applied to this project's own roadmap it removed nine links of twenty-seven and took the page
+from twenty-four per cent of every edge to nineteen. The eighteen that remain each have their
+sentence, and nineteen per cent is what a narrative spine over a whole project costs. When a
+context grows past that, the answer is not to strip the annotations — it is **recursion**: a
+context of contexts, each holding its own part, which is how a large map stays readable without
+becoming an index.
+
+Taken from a working vault that had reached the same conclusion by a different road, where the
+rule reads "Контекст — не папка, а аннотированный список".
+
 ## 6. Density has a budget
 
 A task ends up with about five edges: one parent, one or two labels, nought to two relations, and
