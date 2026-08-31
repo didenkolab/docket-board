@@ -2,13 +2,13 @@
 key: DKT-30
 title: A release is a tag
 type: story
-status: Backlog
-status_category: todo
+status: Done
+status_category: done
 priority: high
 assignee: agent/claude
 labels: ["[[git]]", "[[server]]"]
 created: 2026-08-31T00:29:54Z
-updated: 2026-08-31T00:29:54Z
+updated: 2026-08-31T00:30:13Z
 aliases: []
 tags: []
 ---
