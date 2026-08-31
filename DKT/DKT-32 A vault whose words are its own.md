@@ -8,7 +8,7 @@ priority: high
 assignee: agent/claude
 labels: ["[[format]]", "[[obsidian]]"]
 created: 2026-08-31T01:10:43Z
-updated: 2026-08-31T01:11:00Z
+updated: 2026-08-31T12:29:55Z
 aliases: []
 tags: []
 relates: ["[[DKT-33 Columns in the order the workflow says]]"]
@@ -40,3 +40,5 @@ agrees with us about everything.
 - [x] A history worth reading: tags, branches, four authors.
 
 ## Comments
+
+**didenkolab · 2026-08-31 12:29** — Проверка: пуш из доски должен доехать до GitHub сам.
