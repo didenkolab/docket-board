@@ -441,6 +441,52 @@ a vocabulary the vault chose, offered by the interface and enforced by rule 12.
 A vault that has not declared a unit is a vault that does not estimate: no field is offered, and
 a number written into a task by hand is in no unit anybody reading it can name.
 
+### 4.4 A vault adds the fields it needs
+
+Twelve properties belong to the format. A team needs more than twelve, and a tracker where
+adding one means a schema migration is a tracker with a spreadsheet beside it. So `docket.yaml`
+declares them:
+
+```yaml
+fields:
+  - name: found_in            # the property, as written in frontmatter
+    label: Found in           # what a person reads; the name will do without it
+    kind: text                # text | number | date | datetime | choice | flag | link
+    types: [bug]              # which types carry it; empty means all of them
+    required: true
+    help: Which build it was seen on
+  - name: risk
+    kind: choice
+    choices: [low, high]      # a choice, and only a choice, has these
+```
+
+A field is a frontmatter property and nothing else. That is what makes it work in Obsidian
+without the tool: it appears in the property editor, it filters in a Base, and it is still
+there if the binary is deleted. Nothing here invents a store.
+
+**A field is a property of one task.** Every kind above is a scalar for that reason: anything
+that joins two tasks is a link, and [[how-things-connect]] §3 says which mechanism answers which
+question. A choice whose values want a page behind them is a label.
+
+**A property name may be in any script**, because the vault's words are the vault's — a project
+whose fields are Russian declares Russian names, and the importer writes exactly those. What it
+may not be is a property the format already owns: `status` as a free text field is a board that
+cannot draw a column.
+
+**The level of checking is deliberate.** Rule 15 asks whether a number parses and whether a
+choice is on the list. It does not ask whether the value is right, and a rule that tried would
+be a rule people switch off.
+
+**A field is not refused on the way in.** A value that does not match its declaration is written
+and then reported — the opposite of how a status is handled, and on purpose. A status the board
+cannot read breaks the board; a field that says the wrong thing is a mistake in somebody's data,
+and a form that will not save until every unrelated property is correct is a form nobody can use
+on a vault imported from a system that had no such rule.
+
+**Removing a field from the vocabulary leaves the values in the files.** Deleting a property
+from a thousand tasks because somebody edited a settings page is not something a form does
+behind you; `docket check` simply stops having an opinion about a field nobody declares.
+
 ## 5. Knowledge base
 
 `docs/` is a free tree of Markdown pages. The tree is free — a page goes wherever it belongs, and
@@ -651,17 +697,23 @@ A vault is valid when:
 14. Every page under `docs/` says what kind of document it is, and a decision has the shape a
     decision has: the four sections, a number no other decision uses, a `status` from the three
     and the `date` it was taken, and a `supersedes` written as a link. See [[documents]].
+15. Every value of a field the vault declared means what its `kind` says: a number parses, a
+    date is `YYYY-MM-DD`, a `datetime` is a moment, a choice is on the list, a flag is true or
+    false, and a link has a scheme and a host. A required field is present, and a field
+    belonging only to other types is not. See 4.4.
 
 `docket.yaml` itself must also parse and agree with itself — every status has one of the three
 categories, every project key is usable, every name in `transitions` is a status the vault has,
-and `estimates` has a `unit` if it is there at all. A file that fails those is refused at load
+`estimates` has a `unit` if it is there at all, and every declared field has a usable property
+name the format does not already own, a kind that exists, and choices if and only if it is a
+choice. A file that fails those is refused at load
 rather than reported as a finding: nothing else can be checked against a vocabulary that does not
 make sense.
 
-Rules 1–7, 10 and 12 are checkable from the project folders and `docket.yaml` alone, and rule 14
-from `docs/` alone. Rules 8, 9, 11 and 13 need the whole vault: whether a link resolves, whether
+Rules 1–7, 10, 12 and 15 are checkable from the project folders and `docket.yaml` alone, and rule
+14 from `docs/` alone. Rules 8, 9, 11 and 13 need the whole vault: whether a link resolves, whether
 a tag is carried twice, whether a container has children, and whether a sprint page exists are
-all questions about the other files. `docket check` implements all fourteen and reports each
+all questions about the other files. `docket check` implements all fifteen and reports each
 finding with a file and a line.
 Two of them have a right answer rather than a judgement — a name that drifted from its title,
 and a relationship still written as a string — and `docket check --fix` settles those.
