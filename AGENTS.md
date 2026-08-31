@@ -106,6 +106,28 @@ task in a column the board cannot render. Both change in the same edit.
   `**<author> · <YYYY-MM-DD HH:mm>** — text`.
 - Link to other tasks and pages by note name: `[[DKT-4 docket init — scaffold a vault]]`, `[[vault-format]]`.
 
+## Estimates and sprints
+
+Both are optional, and each is one line of frontmatter.
+
+**An estimate** is a plain unquoted number written after `priority`: `estimate: 3`. The unit and
+the values allowed are in `docket.yaml` under `estimates`; a vault that has not declared them does
+not estimate, and the field belongs nowhere until it does. Two ways to get it wrong, and `docket
+check` reports both: a number that is not on the declared scale, which is a finding rather than
+something to round, and an estimate on a task that has children, because a container's estimate is
+the sum of its children's and is added up when it is shown. Writing that sum down is a second
+record of one fact, and it is the one that will disagree. Absent is not `0`: `0` says there is no
+work in the task, absent says nobody has estimated it — so leave the field out rather than filling
+it with a guess.
+
+**A sprint** is a page under `docs/sprints/`, named after its title, carrying `starts`, `ends` and
+a body that is the goal, what was cut and why, and the retrospective. It has no state field:
+whether a sprint is running is a question about its dates and today. A task is in one by linking
+to it, after `assignee` — `sprint: "[[Sprint 24]]"`, quoted like every other link, by note name.
+One sprint at a time: carrying a task over means pointing the field at the new sprint, and the old
+sprint's retrospective is where it is recorded that the task did not finish. Do not add a list of
+tasks to a sprint page; its contents are its backlinks. See [[vault-format]] §5.3.
+
 ## Writing documentation
 
 Pages go anywhere under `docs/`, in whatever tree makes sense. There is no schema — it is a

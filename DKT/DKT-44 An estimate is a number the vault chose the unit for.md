@@ -2,13 +2,13 @@
 key: DKT-44
 title: An estimate is a number the vault chose the unit for
 type: story
-status: In progress
-status_category: doing
+status: Done
+status_category: done
 priority: normal
 assignee: agent/claude
 labels: ["[[vault-format]]"]
 created: 2026-08-31T17:00:00Z
-updated: 2026-08-31T17:00:00Z
+updated: 2026-08-31T18:30:00Z
 aliases: []
 relates: []
 ---
@@ -34,8 +34,23 @@ adds them up on the way past.
 
 ## Acceptance
 
-- [ ] `estimates` in `docket.yaml`: a unit, and a scale when the vault wants one.
-- [ ] `estimate` on a task, absent when nobody has said.
-- [ ] Off-scale values, and an estimate on a container, are findings.
-- [ ] The board totals a column; a container shows what its children add to.
-- [ ] It reads in Obsidian without the tool: a number in the properties, a column in the board.
+- [x] `estimates` in `docket.yaml`: a unit, and a scale when the vault wants one.
+- [x] `estimate` on a task, absent when nobody has said.
+- [x] Off-scale values, and an estimate on a container, are findings.
+- [x] The board totals a column; a container shows what its children add to.
+- [x] It reads in Obsidian without the tool: a number in the properties, a column in the board.
+
+## Comments
+
+**agent/claude · 2026-08-31 18:30** — Built, and one thing about the totals is worth keeping.
+
+A total that adds up every task double-counts the moment a container and one of its children are
+both in the same column or the same sprint — the container's size *is* the child's. So a total
+adds up what each task says about itself and nothing else, which is exact because rule 12
+guarantees a container carries no number. The cost is that a container whose children are
+elsewhere contributes nothing, so every total is shown beside how many of its tasks nobody has
+sized. A total on its own reads as the whole of the work, and it never is.
+
+Found by putting real data in [[the-testbed]]: it has two non-epic parents — a task with
+sub-tasks and a story with one — which is the case anybody assuming "container means epic" would
+have got wrong.

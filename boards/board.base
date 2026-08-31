@@ -16,6 +16,8 @@ properties:
     displayName: Assignee
   note.priority:
     displayName: Priority
+  note.estimate:
+    displayName: Size
   note.tags:
     displayName: Tags
 views:
@@ -28,5 +30,6 @@ views:
       - note.title
       - note.assignee
       - note.priority
+      - note.estimate
       - note.labels
       - note.tags

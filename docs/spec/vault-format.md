@@ -2,7 +2,7 @@
 title: Vault format
 type: spec
 status: normative
-updated: 2026-08-30
+updated: 2026-08-31
 ---
 
 # Vault format
@@ -28,6 +28,8 @@ Related: [[0001-vault-as-source-of-truth]], [[0003-a-vault-holds-several-project
   BETA/
     BETA-7 Ship the widget.md
   docs/               knowledge base: a free tree of pages
+    sprints/
+      Sprint 24.md                  one page per sprint, in a vault that has them
   boards/
     board.base        Bases views over the projects
     backlog.base
@@ -98,7 +100,9 @@ type: bug
 status: In progress
 status_category: doing
 priority: high
+estimate: 3
 assignee: agent/claude
+sprint: "[[Sprint 24]]"
 parent: "[[ACME-4 Session model]]"
 labels: ["[[auth]]", "[[regression]]"]
 created: 2026-08-30T10:12:00Z
@@ -125,7 +129,9 @@ is rejected but the login form still succeeds.
 | `status` | yes | One of the status names in `docket.yaml`. |
 | `status_category` | yes | The category of that status: `todo`, `doing` or `done`. |
 | `priority` | yes | One of `priorities` in `docket.yaml`. |
+| `estimate` | no | A number, in the unit `docket.yaml` declares. Absent is nobody having said. See 3.10. |
 | `assignee` | yes | `agent/<name>` or a person's handle. Present but empty when unassigned. |
+| `sprint` | no | Wikilink to the sprint the task is in now. One at a time. See 5.3. |
 | `parent` | no | Wikilink to the parent task. Absent at the top level. See 3.3. |
 | `labels` | no | List of wikilinks. See 3.3. |
 | `tags` | no | Obsidian's own tags. Nested with `/`. See 3.3. |
@@ -241,8 +247,8 @@ No nested objects, at any depth. This is a hard constraint, not a style preferen
 - Bases filters, groups and sorts on top-level properties. A nested field cannot appear on a
   board or in a filter.
 
-Project-specific fields sit at the same level as core ones. A vault that tracks story points
-adds `points: 3`, not `fields: {points: 3}`.
+Project-specific fields sit at the same level as core ones. A vault that tracks which
+environment a bug appeared in adds `env: staging`, not `fields: {env: staging}`.
 
 Fields carried in from another system are prefixed `x_` — `x_sprint`, `x_epic_link`. The prefix
 keeps a foreign schema from colliding with the core one and makes imported data obvious to
@@ -303,6 +309,32 @@ the same facts is a second thing that can be wrong.
 The one exception is import. A task carried in from another system arrives with a history git
 never saw, so it is written to `ACME/_history/12.jsonl` — one JSON object per event,
 append-only. Files under `_history/` are read-only after import.
+
+### 3.10 An estimate is a number
+
+```yaml
+estimate: 3
+```
+
+A plain unquoted number, written after `priority`, and a field rather than a link deliberately.
+An estimate is the one thing that is supposed to fail the test in [[how-things-connect]] §1:
+standing at a task, nobody needs to know what else in the vault was estimated at three.
+`priority` is the precedent — a property of one task, sorted and totalled, never navigated.
+
+The unit and the values allowed are the vault's, declared in `docket.yaml`; see 4.3. A declared
+scale means the interface offers those values and nothing else, and rule 12 refuses a number off
+it.
+
+**Absent and `0` are different.** `0` claims there is no work in the task. Absent is nobody
+having said, which is the state a task is created in and stays in until somebody estimates it —
+so a vault where nothing carries the field is a vault that has not estimated, not a vault of
+zeroes.
+
+**A task that has children may not carry one.** A container's estimate is the sum of its
+children's, added up by whatever is displaying it and written down nowhere: an epic carrying
+`estimate: 8` whose tasks add to thirteen is two records of one fact, which is what [[purpose]]
+§4 exists to refuse. Rule 12 reports an estimate on a task that something else names as its
+parent.
 
 ## 4. The vault configuration
 
@@ -390,6 +422,25 @@ The level cannot be guessed from the name. A real project's types are the team's
 the team's own language: `Эпик`, `История`, `Подзадача`. `Эпик` is an epic only because
 somebody says so.
 
+### 4.3 The vault chooses the unit an estimate is in
+
+```yaml
+estimates:
+  unit: points
+  scale: [1, 2, 3, 5, 8, 13]
+```
+
+The block is optional. `unit` is required when it is there and is a free string — a team that
+counts hours says `unit: hours` — because what a number of points means is a local agreement and
+no list of units we wrote would hold every team's.
+
+`scale` is the values the vault estimates in. It is optional: absent means any number, which is
+what a team counting hours wants. Present, it is the same shape as `statuses` and `priorities` —
+a vocabulary the vault chose, offered by the interface and enforced by rule 12.
+
+A vault that has not declared a unit is a vault that does not estimate: no field is offered, and
+a number written into a task by hand is in no unit anybody reading it can name.
+
 ## 5. Knowledge base
 
 `docs/` is a free tree of Markdown pages with no schema. It is a wiki, and a wiki that demands
@@ -435,13 +486,14 @@ A front page is allowed to link the few pages somebody must read — that is a r
 
 ### 5.2 Which document carries what
 
-Four mechanisms, four jobs. Using one for another is what produces a graph nobody opens.
+Five mechanisms, five jobs. Using one for another is what produces a graph nobody opens.
 
 | | What it is | Draws an edge | On a task | On a page |
 |---|---|---|---|---|
 | `parent` | hierarchy — this is inside that | yes | exactly one, one level up | never |
 | relations | a named relationship between two tasks | yes | as many as are true | never |
 | `labels` | a theme work gathers around | yes | one or two | never on a label page |
+| `sprint` | the fortnight the work was planned into | yes | one at a time, or none | never — a sprint page is what is pointed at |
 | `tags` | a slice to search by | no | as needed | as needed |
 
 - **One or two labels.** A task with five is a task whose labels each mean too little. A label
@@ -456,6 +508,65 @@ Four mechanisms, four jobs. Using one for another is what produces a graph nobod
   `area/платежи`, `риск/деньги`, `регресс` may be used liberally. A wikilink is an edge and is
   spent deliberately.
 - **A sub-task usually needs no labels at all.** It is inside a task that has them.
+- **A sprint page never links a task, in a list or in prose.** Its contents are its backlinks.
+  Measured on a forty-six note vault, the `sprint` property cost thirteen per cent of every edge
+  and the wikilinks in three sprint pages' prose cost twenty-eight per cent more, collapsing the
+  largest cluster from thirty of forty-three notes to forty-three of forty-six. In prose, name a
+  task by its key in backticks: `` `PROJ-12` ``. Rule 13 reports it.
+
+### 5.3 A sprint is a page
+
+A sprint is a page under `docs/sprints/`, named after its title the way a task is named after
+its own:
+
+```markdown
+---
+title: Sprint 24
+type: sprint
+starts: 2026-08-17
+ends: 2026-08-28
+updated: 2026-08-28
+---
+```
+
+`docs/sprints/Sprint 24.md`. The dates are plain unquoted `YYYY-MM-DD`, which is the form
+Obsidian reads as a date and can sort on. Retitling a sprint renames the file and rewrites the
+links to it, exactly as retitling a task does.
+
+A sprint's name is unique in the vault, because a link resolves by note name and `docs/` is one
+tree. Two projects on different cadences either name their sprints differently or live in
+different vaults — the same answer §4 gives about statuses, and for the same reason.
+
+`type: sprint` is what the page says it is. `types` in `docket.yaml` is the task vocabulary and
+rule 4 checks tasks; a page is free to call itself what it is. This is the one shaped document in
+an otherwise unschematised tree, and it is shaped because a task points at it and something has
+to be able to tell what it is pointing at.
+
+**There is no state field.** A sprint runs between two dates, and whether it is on is a question
+about today — which cannot go stale. A field saying `active` is a second record of what the dates
+already say, and it is the copy that rots: a sprint nobody remembered to close sits `started`
+for a year, which is the most familiar piece of stale data in any tracker that has sprints.
+
+The body is the goal in more than one line, what was cut and why, and the retrospective. That is
+the part Jira has no room for, written where the work is rather than in a document in another
+tool — and it is also what makes the page worth being a hub at all, because a page of two dates
+teaches nobody anything ([[how-things-connect]] §5).
+
+**Membership is a wikilink on the task**, written after `assignee`:
+
+```yaml
+sprint: "[[Sprint 24]]"
+```
+
+One sprint at a time. A carried-over task names the sprint it is in **now**; that it did not
+finish in the previous one is said in that sprint's retrospective, in a sentence that also says
+why — which is the thing a task belonging to two sprints never manages to say.
+
+The link is on the task rather than a list on the sprint page for one decisive reason: Bases
+filters on a property of the note it is drawing, so a sprint board is `note.sprint` and nothing
+else, and a vault with nothing installed has one only if the task carries the field ([[purpose]]
+§5). Both directions draw the same undirected edge in the graph, so the choice was never about
+the graph — it was about who maintains the fact and who can read it.
 
 ## 6. Boards
 
@@ -523,15 +634,27 @@ A vault is valid when:
 8. Every `[[wikilink]]` resolves to a file or an alias in the vault.
 9. Every folder holding task files is a project in `docket.yaml`, and every project in
    `docket.yaml` is named by at least one board.
-10. Every relationship is a link: `parent`, every entry in `labels`, and every typed relation are
-    wikilinks, not bare strings. See 3.3 and 3.4.
+10. Every relationship is a link: `parent`, every entry in `labels`, and every typed relation
+    are wikilinks, not bare strings. See 3.3 and 3.4.
+11. Every tag is carried by more than one note, and no tag repeats a label. A tag is a set
+    somebody asks for, and a set of one is not a set. See 5.2.
+12. Every `estimate` is on the `scale` in `docket.yaml` when the vault declared one, and no task
+    that has children carries one at all — a container's estimate is the sum of its children's
+    and is never stored. See 3.10 and 4.3.
+13. Every `sprint` is a wikilink naming a page whose `type` is `sprint`; every sprint page's
+    `starts` and `ends` are dates in that order; no two sprints cover the same day; and no
+    sprint page links a task — a sprint's contents are its backlinks, and in prose a task is
+    named by its key in backticks. See 5.3.
 
 `docket.yaml` itself must also parse and agree with itself — every status has one of the three
-categories, every project key is usable, and every name in `transitions` is a status the vault
-has. A file that fails those is refused at load rather than reported as a finding: nothing else
-can be checked against a vocabulary that does not make sense.
+categories, every project key is usable, every name in `transitions` is a status the vault has,
+and `estimates` has a `unit` if it is there at all. A file that fails those is refused at load
+rather than reported as a finding: nothing else can be checked against a vocabulary that does not
+make sense.
 
-Rules 1–7 and 10 are checkable from the project folders and `docket.yaml` alone. Rules 8 and 9
-need the whole vault. `docket check` implements all ten and reports each finding with a file and
-a line. Two of them have a right answer rather than a judgement — a name that drifted from its
-title, and a relationship still written as a string — and `docket check --fix` settles those.
+Rules 1–7, 10 and 12 are checkable from the project folders and `docket.yaml` alone. Rules 8, 9,
+11 and 13 need the whole vault: whether a link resolves, whether a tag is carried twice, whether
+a container has children, and whether a sprint page exists are all questions about the other
+files. `docket check` implements all thirteen and reports each finding with a file and a line.
+Two of them have a right answer rather than a judgement — a name that drifted from its title,
+and a relationship still written as a string — and `docket check --fix` settles those.

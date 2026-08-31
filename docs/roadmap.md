@@ -1,7 +1,7 @@
 ---
 title: Roadmap
 type: page
-updated: 2026-08-30
+updated: 2026-08-31
 ---
 
 # Roadmap
@@ -171,15 +171,30 @@ beside it: two branches side by side, and `git blame` on a task. A pull request 
 into the branch list resolves to its branch — the host is asked, the ref is fetched, nothing is
 checked out — which is how a proposal actually arrives: as a link, not as a branch name.
 
-What is genuinely open:
+Estimates and sprints were the two things this page called deliberately unscheduled. They are
+being built now, in the shape the format could carry rather than the shape Jira has:
+
+**[[DKT-44 An estimate is a number the vault chose the unit for]]** — `estimates: {unit: points,
+scale: [1, 2, 3, 5, 8, 13]}` in `docket.yaml`, and `estimate: 3` on a task. The vault owns the
+unit and the scale, the way it already owns its statuses and its priorities, so a team counting
+hours writes `unit: hours` and gets a free number. A container's estimate is never stored — it is
+the sum of its children, added up on the way past, because two records of one fact is what
+[[purpose]] §4 refuses.
+
+**[[DKT-45 A sprint is a page, and being in it is a link]]** — a page under `docs/sprints/` with
+two dates and a body, and `sprint: "[[Sprint 24]]"` on the task. There is no state field: a
+sprint runs between its dates, and whether it is on is a question about today, which cannot go
+stale. The body is the goal, what was cut and why, and the retrospective — the part Jira has no
+room for, written where the work is. The link sits on the task because Bases filters on a
+property of the note it draws, so that is the only arrangement a sprint board can be read from
+with nothing installed.
+
+What is left after those is the one thing on this page that is not code:
 
 - **An OAuth application for the device flow.** The last box of
   [[DKT-35 Sign in without pasting a token]]: the flow is built and tested, and the button
   appears once an application is registered and its client id configured. Signing in works
   without it — the machine's own git credentials, or a token.
-- **Estimates and sprints.** Deliberately not scheduled. Both are cheap to add and expensive to
-  get wrong, and neither has been asked for by anything the vault is actually used for yet.
-  Adding them because Jira has them is the reasoning [[purpose]] exists to refuse.
 
 There is a second vault to judge new work in. [[the-testbed]] is a fictional team's board
 with an eight-stage pipeline and a vocabulary that is not English —
