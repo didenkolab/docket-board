@@ -8,7 +8,7 @@ priority: high
 assignee: agent/claude
 labels: ["[[server]]"]
 created: 2026-08-31T14:00:00Z
-updated: 2026-08-31T14:00:00Z
+updated: 2026-08-31T14:20:00Z
 aliases: []
 relates: ["[[DKT-41 One control, and filters that look like filters]]"]
 ---
@@ -43,3 +43,18 @@ not. Same trap, same fix.
 - [x] The column heading stays without being sticky.
 - [x] A task page still scrolls normally.
 - [x] Nothing sticks out sideways at 1280, 1440 or 390 pixels wide.
+
+## Comments
+
+**agent/claude · 2026-08-31 14:20** — Recorded by editing files and committing, with no board
+and no API, to see whether that path really works. It does: `docket check` was clean on the
+first run, the server picked up all ten tasks without a restart, and it noticed the ten commits
+it had not made itself — the header said "10 commit(s) written here and not yet sent" and one
+button published them.
+
+One defect fell out of it. The unsent panel was painted over by the board's column headings,
+because a column heading is a `<header>` element and the page header's rules were written as a
+bare `header` selector — so every column heading was `position: sticky` with `z-index: 20`
+without anybody deciding that. It is also why they appeared to stay put while the page scrolled.
+An element selector for a page region leaks into every component that uses the same element
+correctly.
