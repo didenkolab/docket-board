@@ -6,9 +6,8 @@ updated: 2026-08-30
 
 # Roadmap
 
-What this is for is [[purpose]]. Two of its five points are not met yet, and they are named at
-the bottom of this page rather than buried: relationships are still fields rather than links,
-and a board still reads one repository rather than several.
+What this is for is [[purpose]]. All five of its points are met; what is left is at the bottom
+of this page, and it is smaller than what is above it.
 
 Released: [v0.2.0](https://github.com/vadymdidenkolab/docket/releases/tag/v0.2.0) — binaries for six
 platform pairs, and a container image for two architectures.
@@ -156,15 +155,33 @@ The scaffold left the binary — [[DKT-39 The template is a repository, not some
 [[DKT-41 One control, and filters that look like filters]] is the pass that gave the controls
 one shape and turned seven dropdowns saying "Any" into filters that say what they are doing.
 [[DKT-42 The board went off the bottom of the window]] is the layout bug that kept coming back
-until it was fixed at the root rather than patched. The task page, releases, branches and
-settings have not had that pass yet.
+until it was fixed at the root rather than patched.
+
+The pass reached every page. The last three were the ones where the fault was the same in each:
+the page showed what it had rather than what was being asked of it. A release page listed every
+task of every release and left "how much of this was actually finished at the tag" to be worked
+out by counting chips; the branch list set the commit subject larger than the branch name, so it
+read as commits that happened to have branches; and settings is one form four screens long with
+the save at the bottom of it.
 
 ## What is left
 
-[[DKT-43 A pull request read as a plan change]], and the two smaller things beside it: two
-branches side by side, and `git blame` on a task.
+[[DKT-43 A pull request read as a plan change]] is done, and so are the two smaller things
+beside it: two branches side by side, and `git blame` on a task. A pull request address pasted
+into the branch list resolves to its branch — the host is asked, the ref is fetched, nothing is
+checked out — which is how a proposal actually arrives: as a link, not as a branch name.
 
-There is now a second vault to judge that work in. [[the-testbed]] is a fictional team's board
+What is genuinely open:
+
+- **An OAuth application for the device flow.** The last box of
+  [[DKT-35 Sign in without pasting a token]]: the flow is built and tested, and the button
+  appears once an application is registered and its client id configured. Signing in works
+  without it — the machine's own git credentials, or a token.
+- **Estimates and sprints.** Deliberately not scheduled. Both are cheap to add and expensive to
+  get wrong, and neither has been asked for by anything the vault is actually used for yet.
+  Adding them because Jira has them is the reasoning [[purpose]] exists to refuse.
+
+There is a second vault to judge new work in. [[the-testbed]] is a fictional team's board
 with an eight-stage pipeline and a vocabulary that is not English —
 [[DKT-32 A vault whose words are its own]] — and it found two defects on its first day that a
 vault written in our own words could not have shown us.
