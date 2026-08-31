@@ -8,7 +8,7 @@ priority: high
 assignee: agent/claude
 labels: ["[[server]]", "[[git]]"]
 created: 2026-08-31T14:00:00Z
-updated: 2026-08-31T14:50:00Z
+updated: 2026-08-31T15:00:00Z
 aliases: []
 relates: ["[[DKT-31 A plan on a branch]]"]
 ---
@@ -36,8 +36,8 @@ so a line of an acceptance criterion says who wrote it and when.
 - [x] What moved, what arrived, what was dropped, what was rewritten.
 - [x] Reachable from the branch list and from the board drawn at a branch.
 - [ ] Reachable from a pull request URL, by resolving it to a branch.
-- [ ] Two branches side by side.
-- [ ] `git blame` on a task.
+- [x] Two branches side by side.
+- [x] `git blame` on a task.
 
 ## Comments
 
@@ -54,3 +54,11 @@ The vocabulary is reported apart and first: a proposal that adds a status is a p
 how the team works, and it is the thing most likely to be skimmed past in a diff.
 
 On the testbed's real proposal it is five lines where the diff is about a hundred and twenty.
+
+**agent/claude · 2026-08-31 15:00** — The two smaller things are done, and one detail is worth
+keeping. Blame follows renames with `-C`: retitling a task moves its file, and a blame that
+stopped at the rename would credit the whole task to whoever renamed it. On the first real task
+I opened, the blame put the `updated:` line on a different commit from the rest — which is "who
+moved this and when", answered by the storage rather than by an activity feed.
+
+Only resolving a pull request URL to its branch is left.
