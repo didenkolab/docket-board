@@ -166,37 +166,26 @@ the save at the bottom of it.
 
 ## What is left
 
-[[DKT-43 A pull request read as a plan change]] is done, and so are the two smaller things
-beside it: two branches side by side, and `git blame` on a task. A pull request address pasted
-into the branch list resolves to its branch — the host is asked, the ref is fetched, nothing is
-checked out — which is how a proposal actually arrives: as a link, not as a branch name.
+The five points of [[purpose]] are met and the format is settled. What has been built since is
+in the tasks; what remains is short.
 
-Estimates and sprints were the two things this page called deliberately unscheduled. They are
-being built now, in the shape the format could carry rather than the shape Jira has:
+**Not code.** An OAuth application on the private GitLab, so signing in there works the way it
+does on GitHub — the flow is built and driven by a test against both hosts, and it needs a
+registration with Confidential unticked and the device grant turned on. And the Confluence half
+of the import: the pipeline takes `--spaces` and nobody has named one yet.
 
-**[[DKT-44 An estimate is a number the vault chose the unit for]]** — `estimates: {unit: points,
-scale: [1, 2, 3, 5, 8, 13]}` in `docket.yaml`, and `estimate: 3` on a task. The vault owns the
-unit and the scale, the way it already owns its statuses and its priorities, so a team counting
-hours writes `unit: hours` and gets a free number. A container's estimate is never stored — it is
-the sum of its children, added up on the way past, because two records of one fact is what
-[[purpose]] §4 refuses.
+**[[DKT-46 A page is named after its title, like a task is]]** — nine pages under `docs/` still
+carry a hyphenated spelling of their titles. It is a migration rather than an edit, which is why
+it is a task and not a commit.
 
-**[[DKT-45 A sprint is a page, and being in it is a link]]** — a page under `docs/sprints/` with
-two dates and a body, and `sprint: "[[Sprint 24]]"` on the task. There is no state field: a
-sprint runs between its dates, and whether it is on is a question about today, which cannot go
-stale. The body is the goal, what was cut and why, and the retrospective — the part Jira has no
-room for, written where the work is. The link sits on the task because Bases filters on a
-property of the note it draws, so that is the only arrangement a sprint board can be read from
-with nothing installed.
+**Estimates and sprints are done**, and so are the vault'"'"'s own fields — see
+[[DKT-44 An estimate is a number the vault chose the unit for]],
+[[DKT-45 A sprint is a page, and being in it is a link]] and
+[[DKT-47 A vault adds the fields it needs]]. The graph is configured and measurable
+([[DKT-48 The graph is configured, and measured]]), and every change now goes both ways
+([[DKT-49 What arrived on the remote, and every change sent]]).
 
-What is left after those is the one thing on this page that is not code:
-
-- **An OAuth application for the device flow.** The last box of
-  [[DKT-35 Sign in without pasting a token]]: the flow is built and tested, and the button
-  appears once an application is registered and its client id configured. Signing in works
-  without it — the machine's own git credentials, or a token.
-
-There is a second vault to judge new work in. [[the-testbed]] is a fictional team's board
-with an eight-stage pipeline and a vocabulary that is not English —
-[[DKT-32 A vault whose words are its own]] — and it found two defects on its first day that a
-vault written in our own words could not have shown us.
+There is a second vault to judge new work in. [[the-testbed]] is a fictional team'"'"'s board with an
+eight-stage pipeline and a vocabulary that is not English — [[DKT-32 A vault whose words are its own]]
+— and a third that is not fictional: a real project of eleven hundred tasks, imported, which
+found four defects in the import pipeline on its first run.
