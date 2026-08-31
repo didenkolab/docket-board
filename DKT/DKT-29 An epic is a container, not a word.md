@@ -2,13 +2,13 @@
 key: DKT-29
 title: An epic is a container, not a word
 type: story
-status: Backlog
-status_category: todo
+status: Done
+status_category: done
 priority: high
 assignee: agent/claude
 labels: ["[[format]]", "[[jira]]"]
 created: 2026-08-31T00:29:53Z
-updated: 2026-08-31T00:29:53Z
+updated: 2026-08-31T00:30:13Z
 aliases: []
 tags: []
 ---
