@@ -2,13 +2,13 @@
 key: DKT-41
 title: One control, and filters that look like filters
 type: story
-status: In review
-status_category: doing
+status: Done
+status_category: done
 priority: high
 assignee: agent/claude
 labels: ["[[server]]"]
 created: 2026-08-31T14:00:00Z
-updated: 2026-08-31T14:35:00Z
+updated: 2026-08-31T16:45:00Z
 aliases: []
 ---
 
@@ -50,7 +50,7 @@ swapped them after paint would flash the wrong theme on every load.
 - [x] Pages are a tree, by title, in file-name order.
 - [x] Light, dark, or whatever the system says — arriving with the page.
 - [x] The task page: an order in the side column, and criteria that read as criteria.
-- [ ] Releases, branches and settings have not had this pass.
+- [x] Releases, branches and settings have had the pass too.
 
 ## Comments
 
@@ -59,3 +59,19 @@ weight not matching importance: a side column where the task's properties, a fil
 delete button had the same weight; an action row of five controls when one of them changes
 anything; and an acceptance list that arrived with two markers, because GFM renders a Markdown
 task list as a disabled native checkbox inside an ordinary list item.
+
+**agent/claude · 2026-08-31 16:45** — The last three pages, and each had the same kind of fault:
+it showed what it had rather than what was being asked of it.
+
+Releases listed every task of every release, flat — the testbed's three tags came to two and a
+half thousand pixels, and "how much shipped, and how much of it was actually finished at the
+tag" could only be answered by counting chips. Each release now states itself in a line and
+only the newest is spelled out. The page also says out loud what it never did: the status shown
+is the status as it stood at the tag, which is the whole difference between this and a report.
+
+Branches set the commit subject larger than the branch name, so it read as a list of commits
+that happened to have branches attached. And the checked-out branch was in the list of
+proposals, which it is not one of: it is the plan they are arguments about.
+
+Settings is one form four screens long. The save control follows you down it now — sticky, in
+the flow of the form, no script.
