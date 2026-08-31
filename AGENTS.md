@@ -130,9 +130,36 @@ tasks to a sprint page; its contents are its backlinks. See [[vault-format]] §5
 
 ## Writing documentation
 
-Pages go anywhere under `docs/`, in whatever tree makes sense. There is no schema — it is a
-wiki. The one convention: connect pages with `[[wikilinks]]`, so the graph and backlinks stay
-useful. A page that nothing links to is a page nobody will find.
+Every page under `docs/` carries `title`, `type` and `updated`, and `type` says where it lives:
+
+| `type` | What it is | Where |
+|---|---|---|
+| `decision` | A choice that was hard to make and is expensive to revisit | `docs/decisions/NNNN-kebab-title.md` |
+| `design` | How something works and why it is that way | `docs/design/` |
+| `spec` | What must be true; the thing `docket check` enforces | `docs/spec/`, with `status: normative` |
+| `sprint` | A fortnight: the goal, what was cut, the retrospective | `docs/sprints/`, with `starts` and `ends` |
+| `page` | Everything else | anywhere under `docs/` |
+
+`updated` is a plain `YYYY-MM-DD` and you set it on every change.
+
+**A decision is the only kind with a required shape**, and it is `## Context`, `## Decision`,
+`## What this costs`, `## Alternatives considered`, spelled that way and in that order. It also
+carries `status: proposed | accepted | superseded` and `date`. Numbers run from `0001` in the
+order the decisions were taken and are never reused or renumbered, because the number is what
+gets cited. The other four kinds have no required sections: they are arguments, and a required
+shape flattens an argument.
+
+Write a decision only when there was a real fork — alternatives somebody would have argued for,
+and a cost that was accepted. Explaining how a mechanism works is a design page, even when it
+argues hard for itself. Getting this wrong in the other direction is worse: a fork recorded as a
+design page never writes its alternatives down, and the argument gets had again.
+
+Everything else — what each section must contain, how a page is named, superseding, a worked
+example, and what `docket check` can and cannot tell you — is in [[documents]]. Read it before
+writing a decision or a spec.
+
+Connect pages with `[[wikilinks]]`, and do not write a page whose purpose is to list other pages.
+A page nothing links to is a page nobody finds, and `docket graph` reports it.
 
 ## Committing
 

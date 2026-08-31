@@ -3,7 +3,8 @@ title: A vault holds several projects, and a key is a path
 type: decision
 status: accepted
 date: 2026-08-30
-updated: 2026-08-30
+supersedes: "[[0001-vault-as-source-of-truth]]"
+updated: 2026-08-31
 ---
 
 # ADR-0003 — A vault holds several projects, and a key is a path

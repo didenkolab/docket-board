@@ -3,7 +3,7 @@ title: The vault is the source of truth
 type: decision
 status: accepted
 date: 2026-08-30
-updated: 2026-08-30
+updated: 2026-08-31
 ---
 
 # ADR-0001 — The vault is the source of truth
@@ -36,6 +36,29 @@ Consequences that follow, and that we accept:
 5. **Access boundaries are repository boundaries.** One project, one repository, one vault.
    Cross-project reading is a matter of who cloned what — see [[workspace]].
 
+The normative consequences are written up in [[vault-format]] and [[workspace]].
+
+## What this costs
+
+The five above are the rule. Read the other way round, they are the bill.
+
+**No query engine, and no index anybody may trust.** A question the files do not answer directly
+is answered by reading them. Anything built to make that faster is derived, has to be fully
+rebuildable from the files, and loses to them whenever the two disagree — so no part of the core
+may hold a fact that only it holds.
+
+**Nothing can be made compulsory.** An agent creates a task by writing a file, which means it can
+just as easily write a file that is wrong. The CLI and the server add validation, and validation
+that is not the only door is something that reports rather than something that prevents.
+
+**The history is git's, and it is read on git's terms.** There is no activity feed to filter and
+no query over who changed what. The answer is in `git log`, and getting it out is git's interface
+rather than one we designed.
+
+**Nowhere to stand and see everything.** One project is one repository, so there is no vantage
+point from which every project is visible and no permission that grants one. Somebody who needs
+two at once clones two, which is a layout problem rather than a lookup — [[workspace]].
+
 ## Alternatives considered
 
 **A server with a database, files exported on demand.** Rejected: the export is always stale,
@@ -47,7 +70,3 @@ the thing Obsidian already is, before writing a single feature that is actually 
 **Obsidian's Kanban plugin as the board.** Rejected: it stores a board as one Markdown file
 containing the cards, which makes the board the source of truth and the task files derived —
 exactly inverted. Bases reads the task files instead and stores nothing.
-
-## Status
-
-Accepted. The normative consequences are written up in [[vault-format]] and [[workspace]].

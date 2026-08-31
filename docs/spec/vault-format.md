@@ -443,12 +443,15 @@ a number written into a task by hand is in no unit anybody reading it can name.
 
 ## 5. Knowledge base
 
-`docs/` is a free tree of Markdown pages with no schema. It is a wiki, and a wiki that demands
-a schema stops getting written in.
+`docs/` is a free tree of Markdown pages. The tree is free — a page goes wherever it belongs, and
+a wiki that demands a folder for everything stops getting written in — but a page is not
+shapeless. Every page carries `title`, `type` and `updated`, and each of the five values `type`
+may take says where the page lives and what, if anything, it must contain. That is [[documents]],
+which is normative and is what an agent follows when it writes one. The five kinds, the shape of
+a decision and the rest live there rather than here, because this file is about tasks.
 
-The only convention is that pages link to each other with `[[wikilinks]]`, which is what makes
-the graph view and backlinks worth opening. Pages may carry frontmatter — `title`, `type`,
-`updated` — and boards can be built over them, but nothing requires it.
+Pages link to each other with `[[wikilinks]]`, which is what makes the graph view and backlinks
+worth opening, and boards can be built over the frontmatter.
 
 Tasks link to pages and pages link back. That shared link layer is the whole of the integration
 between the tracker and the knowledge base; there is no other coupling between them.
@@ -645,6 +648,9 @@ A vault is valid when:
     `starts` and `ends` are dates in that order; no two sprints cover the same day; and no
     sprint page links a task — a sprint's contents are its backlinks, and in prose a task is
     named by its key in backticks. See 5.3.
+14. Every page under `docs/` says what kind of document it is, and a decision has the shape a
+    decision has: the four sections, a number no other decision uses, a `status` from the three
+    and the `date` it was taken, and a `supersedes` written as a link. See [[documents]].
 
 `docket.yaml` itself must also parse and agree with itself — every status has one of the three
 categories, every project key is usable, every name in `transitions` is a status the vault has,
@@ -652,9 +658,10 @@ and `estimates` has a `unit` if it is there at all. A file that fails those is r
 rather than reported as a finding: nothing else can be checked against a vocabulary that does not
 make sense.
 
-Rules 1–7, 10 and 12 are checkable from the project folders and `docket.yaml` alone. Rules 8, 9,
-11 and 13 need the whole vault: whether a link resolves, whether a tag is carried twice, whether
-a container has children, and whether a sprint page exists are all questions about the other
-files. `docket check` implements all thirteen and reports each finding with a file and a line.
+Rules 1–7, 10 and 12 are checkable from the project folders and `docket.yaml` alone, and rule 14
+from `docs/` alone. Rules 8, 9, 11 and 13 need the whole vault: whether a link resolves, whether
+a tag is carried twice, whether a container has children, and whether a sprint page exists are
+all questions about the other files. `docket check` implements all fourteen and reports each
+finding with a file and a line.
 Two of them have a right answer rather than a judgement — a name that drifted from its title,
 and a relationship still written as a string — and `docket check --fix` settles those.

@@ -3,7 +3,7 @@ title: Go, and a single binary
 type: decision
 status: accepted
 date: 2026-08-30
-updated: 2026-08-30
+updated: 2026-08-31
 ---
 
 # ADR-0002 — Go, and a single binary
@@ -37,21 +37,7 @@ return.
 **The standard library covers what a vault tool does.** Files, YAML-adjacent parsing, HTTP,
 subprocess calls to git. Go needs no framework to do any of it.
 
-## Alternatives considered
-
-**TypeScript.** The one real argument for it: Obsidian plugins are TypeScript, so a future
-docket plugin could share code. That argument has no claim here, because we decided in
-[[0001-vault-as-source-of-truth]] not to write our own plugin — Bases is core and renders the
-boards already. What TypeScript costs is exactly what we are trying to avoid: Node on every
-machine that wants to run a validator in a git hook.
-
-**Rust.** The same single-binary story as Go, and a nicer CLI ecosystem. But there is nothing
-to port, and it is slower to write. Distribution parity plus a rewrite is not a trade.
-
-**Python.** Fastest to write, worst to hand to someone. A validator that requires a virtualenv
-is a validator that runs on one machine.
-
-## How it is distributed
+### How it is distributed
 
 - **GitHub Releases** — cross-compiled binaries for macOS, Linux and Windows on amd64 and
   arm64. This is the path we point people at.
@@ -65,13 +51,40 @@ than `dev`.
 
 Automating the release build is [[DKT-10 Release automation — tagged binaries people can download]].
 
-## Consequences
+## What this costs
 
-**No dependencies until one is earned.** The CLI ships with an empty `go.mod` require block.
-The first dependency will be a YAML parser, when [[DKT-6 docket check — validate a vault]] needs to read frontmatter — added
-then, not now.
+**Every release is six artefacts.** Three operating systems on two architectures means six
+binaries built and published every time a version is cut, and no package manager is doing it for
+us. That is work an install step through a package index never asks of anybody, and it is exactly
+what buys the install step being one file.
 
-**The tool never becomes a gate.** ADR-0001 says a vault is usable by writing files. That
-still holds: everything the binary does can be done by hand, and a vault where nobody has the
-binary installed is a working vault. This decision is about making the convenient path
-available, not about making it mandatory.
+**No dependency arrives for free.** The CLI ships with an empty `go.mod` require block, and the
+first entry will be a YAML parser, when [[DKT-6 docket check — validate a vault]] needs to read
+frontmatter — added then, not now. Keeping it that way means the claim above, that the standard
+library covers what a vault tool does, has to keep being true, and where it stops being true the
+code is written rather than imported.
+
+**The tool never becomes a gate.** [[0001-vault-as-source-of-truth]] says a vault is usable by
+writing files, and that still holds: everything the binary does can be done by hand, and a vault
+where nobody has it installed is a working vault. So this decision can make the convenient path
+available and can never make it mandatory. `docket check` protects the format only where somebody
+chose to run it, which is why the distribution half of this decision mattered more than the
+language half.
+
+**Nothing is ever shared with an Obsidian plugin.** The one thing the language choice forfeits,
+and it is forfeit only for as long as ADR-0001 holds. If this project ever does write a plugin,
+the plugin is TypeScript and shares no code with the binary.
+
+## Alternatives considered
+
+**TypeScript.** The one real argument for it: Obsidian plugins are TypeScript, so a future
+docket plugin could share code. That argument has no claim here, because we decided in
+[[0001-vault-as-source-of-truth]] not to write our own plugin — Bases is core and renders the
+boards already. What TypeScript costs is exactly what we are trying to avoid: Node on every
+machine that wants to run a validator in a git hook.
+
+**Rust.** The same single-binary story as Go, and a nicer CLI ecosystem. But there is nothing
+to port, and it is slower to write. Distribution parity plus a rewrite is not a trade.
+
+**Python.** Fastest to write, worst to hand to someone. A validator that requires a virtualenv
+is a validator that runs on one machine.

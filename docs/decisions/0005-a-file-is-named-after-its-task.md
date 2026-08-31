@@ -3,7 +3,8 @@ title: A file is named after its task
 type: decision
 status: accepted
 date: 2026-08-30
-updated: 2026-08-30
+supersedes: "[[0003-a-vault-holds-several-projects]]"
+updated: 2026-08-31
 ---
 
 # ADR-0005 — A file is named after its task

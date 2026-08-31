@@ -3,7 +3,7 @@ title: Access comes from git
 type: decision
 status: accepted
 date: 2026-08-30
-updated: 2026-08-30
+updated: 2026-08-31
 ---
 
 # ADR-0004 — Access comes from git
