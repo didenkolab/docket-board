@@ -161,6 +161,36 @@ writing a decision or a spec.
 Connect pages with `[[wikilinks]]`, and do not write a page whose purpose is to list other pages.
 A page nothing links to is a page nobody finds, and `docket graph` reports it.
 
+## Fields this vault added
+
+Twelve properties belong to the format. Everything else a task carries is declared in
+`docket.yaml` under `fields:` — a property name, a `kind`, and optionally a label, the types that
+carry it, whether it is required, and one line of help.
+
+```yaml
+fields:
+  - {name: found_in, label: Found in, kind: text, types: [bug], required: true}
+  - {name: risk, kind: choice, choices: [low, high]}
+```
+
+Seven kinds: `text`, `number`, `date` (a day), `datetime` (a moment), `choice`, `flag` (true or
+false), `link` (a URL elsewhere). Write a number, a date, a datetime and a flag unquoted, so
+Obsidian shows them as a number, a date and a checkbox rather than as strings of them.
+
+Two ways to get it wrong, and rule 15 reports both: a value that is not what the kind says, and
+a field belonging to a type this task is not — which happens after a task is retyped and the old
+property is left behind holding a value nothing reads.
+
+A field is a property of one task. Anything that joins two tasks is a link: see
+[[how-things-connect]] §3. A choice whose values want a page behind them is a label.
+
+## Making a section
+
+`docs/` is a free tree. A folder exists in git because a file is in it, so a section starts with
+its first page — write `docs/runbooks/Reconciliation.md` and the folder is there. Do not add an
+index page listing the others: [[how-things-connect]] §5 measured what that costs, and it is
+more than it gives.
+
 ## Committing
 
 One commit per logical change, describing what changed for the reader, not which files moved.
