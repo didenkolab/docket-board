@@ -2,15 +2,16 @@
 key: DKT-33
 title: Columns in the order the workflow says
 type: bug
-status: Backlog
-status_category: todo
+status: Done
+status_category: done
 priority: high
 assignee: agent/claude
 labels: ["[[obsidian]]", "[[format]]"]
 created: 2026-08-31T01:10:44Z
-updated: 2026-08-31T01:10:44Z
+updated: 2026-08-31T01:11:00Z
 aliases: []
 tags: []
+caused_by: ["[[DKT-32 A vault whose words are its own]]"]
 ---
 
 Obsidian drew the board's columns in alphabetical order. On the testbed that is Business
