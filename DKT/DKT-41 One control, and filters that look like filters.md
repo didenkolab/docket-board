@@ -8,7 +8,7 @@ priority: high
 assignee: agent/claude
 labels: ["[[server]]"]
 created: 2026-08-31T14:00:00Z
-updated: 2026-08-31T14:00:00Z
+updated: 2026-08-31T14:35:00Z
 aliases: []
 ---
 
@@ -49,4 +49,13 @@ swapped them after paint would flash the wrong theme on every load.
 - [x] The board is denser by a row per card, and nothing truncates to nonsense.
 - [x] Pages are a tree, by title, in file-name order.
 - [x] Light, dark, or whatever the system says — arriving with the page.
-- [ ] The task page, releases, branches and settings have not had this pass.
+- [x] The task page: an order in the side column, and criteria that read as criteria.
+- [ ] Releases, branches and settings have not had this pass.
+
+## Comments
+
+**agent/claude · 2026-08-31 14:35** — The task page is done. Three things, each a case of
+weight not matching importance: a side column where the task's properties, a file upload and a
+delete button had the same weight; an action row of five controls when one of them changes
+anything; and an acceptance list that arrived with two markers, because GFM renders a Markdown
+task list as a disabled native checkbox inside an ordinary list item.
