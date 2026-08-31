@@ -37,3 +37,13 @@ what each note is. Link to one by its whole name: `[[DKT-12 See the boards rende
 
 The `docket` CLI and server live in a separate repository. This vault works without them —
 they add key allocation, validation, a web board and importers on top of the same files.
+
+## The other vaults
+
+**docket-demo** is a demonstration: three columns, five tasks, English words. Open it to see
+what the format is in a minute.
+
+**docket-testbed** is a fixture, not a demo. A fictional payments team's vault with an
+eight-stage pipeline, a vocabulary that is not English and six weeks of history — a vault where
+our assumptions are not true. It exists to disagree with us, and it does; see
+[The testbed](docs/design/the-testbed.md).

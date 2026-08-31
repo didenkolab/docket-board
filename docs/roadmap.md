@@ -130,3 +130,8 @@ live instance.
 
 What is left is named at the bottom of [[git-as-the-database]]: two branches side by side, `git
 blame` on a task, and a pull request read as a plan change rather than as a YAML diff.
+
+There is now a second vault to judge that work in. [[the-testbed]] is a fictional team's board
+with an eight-stage pipeline and a vocabulary that is not English —
+[[DKT-32 A vault whose words are its own]] — and it found two defects on its first day that a
+vault written in our own words could not have shown us.
