@@ -402,6 +402,9 @@ the graph view and backlinks worth opening. Pages may carry frontmatter — `tit
 Tasks link to pages and pages link back. That shared link layer is the whole of the integration
 between the tracker and the knowledge base; there is no other coupling between them.
 
+The principle these two rules come from — what the graph is for, and why each mechanism exists
+— is [[how-things-connect]]. This section is the normative part of it.
+
 ### 5.1 A link is a relationship, not a route
 
 **A page whose purpose is to list other pages must not be written.** No index of labels, no
