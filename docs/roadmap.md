@@ -178,12 +178,9 @@ of the import: the pipeline takes `--spaces` and nobody has named one yet.
 carry a hyphenated spelling of their titles. It is a migration rather than an edit, which is why
 it is a task and not a commit.
 
-**Estimates and sprints are done**, and so are the vault'"'"'s own fields — see
-[[DKT-44 An estimate is a number the vault chose the unit for]],
-[[DKT-45 A sprint is a page, and being in it is a link]] and
-[[DKT-47 A vault adds the fields it needs]]. The graph is configured and measurable
-([[DKT-48 The graph is configured, and measured]]), and every change now goes both ways
-([[DKT-49 What arrived on the remote, and every change sent]]).
+**Estimates, sprints and the vault's own fields are done** — `DKT-44`, `DKT-45`, `DKT-47`.
+The graph is configured and measurable, `DKT-48`, and every change now goes both ways,
+`DKT-49`.
 
 There is a second vault to judge new work in. [[the-testbed]] is a fictional team'"'"'s board with an
 eight-stage pipeline and a vocabulary that is not English — [[DKT-32 A vault whose words are its own]]
