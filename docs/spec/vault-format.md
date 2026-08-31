@@ -402,6 +402,58 @@ the graph view and backlinks worth opening. Pages may carry frontmatter — `tit
 Tasks link to pages and pages link back. That shared link layer is the whole of the integration
 between the tracker and the knowledge base; there is no other coupling between them.
 
+### 5.1 A link is a relationship, not a route
+
+**A page whose purpose is to list other pages must not be written.** No index of labels, no
+"see also" that names every sibling, no front page that links every epic.
+
+The graph is a picture of what relates to what. A table of contents connects everything it
+lists, so it lands in the middle of the graph and collapses the distance between clusters that
+have nothing to do with each other. Getting from a payment bug to an antifraud story becomes
+two hops through a list somebody made, and the graph stops answering the only question it is
+good at.
+
+This is measurable, and it was measured on a vault of 42 notes:
+
+| | With an index of labels and a front page listing the epics | Without them |
+|---|---|---|
+| Edges | 85 | 70 |
+| Largest cluster | 43 of 43 — one blob | 30 of 42 — clusters |
+| Most connected notes | `метки` (11), `index` (9) | a task (8), a label (8) |
+
+Eighteen per cent of every edge in the vault was navigation, and the two most connected notes
+in it were both tables of contents. Removing them is what let the graph fall into clusters.
+
+What replaces an index: the file explorer, the tag pane, the quick switcher, and backlinks.
+Obsidian ships four ways to find a page. None of them draws an edge.
+
+A front page is allowed to link the few pages somebody must read — that is a relationship
+("read this first"), and there are three or four of them. It is not allowed to link everything.
+
+### 5.2 Which document carries what
+
+Four mechanisms, four jobs. Using one for another is what produces a graph nobody opens.
+
+| | What it is | Draws an edge | On a task | On a page |
+|---|---|---|---|---|
+| `parent` | hierarchy — this is inside that | yes | exactly one, one level up | never |
+| relations | a named relationship between two tasks | yes | as many as are true | never |
+| `labels` | a theme work gathers around | yes | one or two | never on a label page |
+| `tags` | a slice to search by | no | as needed | as needed |
+
+- **One or two labels.** A task with five is a task whose labels each mean too little. A label
+  is a place where work gathers, and it earns its edges by being the reason those tasks are
+  near each other.
+- **A label page never links another label page.** Its value is its backlinks. Linking siblings
+  turns the labels themselves into the blob.
+- **A label and a tag never say the same thing.** Both `labels: ["[[оплата]]"]` and
+  `tags: [оплата]` on one task is one fact recorded twice, and the second copy is the one that
+  goes stale.
+- **Tags are free, links are not.** A tag is not a node and costs the graph nothing, so
+  `area/платежи`, `риск/деньги`, `регресс` may be used liberally. A wikilink is an edge and is
+  spent deliberately.
+- **A sub-task usually needs no labels at all.** It is inside a task that has them.
+
 ## 6. Boards
 
 Boards are Obsidian Bases files under `boards/`. They are views, not data: deleting every
