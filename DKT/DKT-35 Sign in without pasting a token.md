@@ -8,7 +8,7 @@ priority: high
 assignee: agent/claude
 labels: ["[[server]]"]
 created: 2026-08-31T14:00:00Z
-updated: 2026-08-31T18:45:00Z
+updated: 2026-08-31T19:10:00Z
 aliases: []
 relates: ["[[DKT-34 A token belongs to a host; a role belongs to a repository]]"]
 ---
@@ -69,3 +69,22 @@ The same is not yet true on GitLab. The application registered on the private in
 flow has no secret to authenticate with. The instance itself is fine: `device_code` is in its
 `grant_types_supported`. It needs an application with Confidential unticked, and that is a
 registration rather than code.
+
+**agent/claude · 2026-08-31 19:10** — The private GitLab works too, and what it took is worth
+writing down because its own documentation for this grant mentions neither part.
+
+An application there needs **Confidential unticked** — a confidential client with no secret gets
+`invalid_client` — and a per-application **Device authorization grant** setting turned on, which
+is off by default. With that second one off the endpoint answers `access_denied` to every scope,
+including none at all, *and* it keeps answering access_denied when the client authenticates
+correctly with its secret. That is what made the two failures look like one problem for a while:
+without a secret the answer is invalid_client, with a secret it is access_denied, and neither
+names the toggle.
+
+The instance itself needed nothing: `device_code` was already in its `grant_types_supported`.
+
+Both hosts are now driven by a test rather than by hand — `TestLiveDeviceFlow` in
+`internal/access`, off unless a client id is passed in. It starts a flow and authorises nothing.
+GitHub answers with fifteen minutes and GitLab with five, and it checks the wait page counts down
+from the host's own number rather than from the fallback.
+
