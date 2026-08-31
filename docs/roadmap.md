@@ -128,8 +128,41 @@ proposal about the plan, and the Branches page draws the board it would produce,
 object database. No tracker can do this: a plan change in Jira is applied immediately to the one
 live instance.
 
-What is left is named at the bottom of [[git-as-the-database]]: two branches side by side, `git
-blame` on a task, and a pull request read as a plan change rather than as a YAML diff.
+## Access, and getting the work out
+
+Three things that were slogans and are now how it works.
+
+**[[DKT-34 A token belongs to a host; a role belongs to a repository]]** — ADR-0004 said the
+repository is the trust boundary and the server did not implement it: one authority, one host,
+permissions by URL path. In a workspace spanning two hosts that let somebody write to a
+repository they had no access to at all.
+
+**[[DKT-37 Every change goes on to where everybody else reads it]]** — every write was a commit
+and stopped there. A clone somebody took was missing everything the board had done.
+
+**[[DKT-38 Connect a repository, and make a new one]]** — a project is a repository, so making
+one and connecting one belong here rather than in a terminal and a host's web form.
+
+Signing in stopped being a chore twice over:
+[[DKT-35 Sign in without pasting a token]] is the device flow, and
+[[DKT-36 Sign in with the credentials already on this machine]] is the observation that a board
+run over your own clone is run by somebody whose git already talks to that host.
+
+The scaffold left the binary — [[DKT-39 The template is a repository, not something in the binary]]
+— so a team can make its own without waiting for a release.
+
+## The interface
+
+[[DKT-41 One control, and filters that look like filters]] is the pass that gave the controls
+one shape and turned seven dropdowns saying "Any" into filters that say what they are doing.
+[[DKT-42 The board went off the bottom of the window]] is the layout bug that kept coming back
+until it was fixed at the root rather than patched. The task page, releases, branches and
+settings have not had that pass yet.
+
+## What is left
+
+[[DKT-43 A pull request read as a plan change]], and the two smaller things beside it: two
+branches side by side, and `git blame` on a task.
 
 There is now a second vault to judge that work in. [[the-testbed]] is a fictional team's board
 with an eight-stage pipeline and a vocabulary that is not English —
