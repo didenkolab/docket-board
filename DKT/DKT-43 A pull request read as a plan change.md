@@ -2,13 +2,13 @@
 key: DKT-43
 title: A pull request read as a plan change
 type: story
-status: Backlog
-status_category: todo
+status: In review
+status_category: doing
 priority: high
 assignee: agent/claude
 labels: ["[[server]]", "[[git]]"]
 created: 2026-08-31T14:00:00Z
-updated: 2026-08-31T14:00:00Z
+updated: 2026-08-31T14:50:00Z
 aliases: []
 relates: ["[[DKT-31 A plan on a branch]]"]
 ---
@@ -32,8 +32,25 @@ so a line of an acceptance criterion says who wrote it and when.
 
 ## Acceptance
 
-- [ ] A branch is summarised as a change to the plan, in the vault's vocabulary.
-- [ ] What moved, what arrived, what was dropped, what was rewritten.
-- [ ] Reachable from the branch it is about, and from a pull request URL.
+- [x] A branch is summarised as a change to the plan, in the vault's vocabulary.
+- [x] What moved, what arrived, what was dropped, what was rewritten.
+- [x] Reachable from the branch list and from the board drawn at a branch.
+- [ ] Reachable from a pull request URL, by resolving it to a branch.
 - [ ] Two branches side by side.
 - [ ] `git blame` on a task.
+
+## Comments
+
+**agent/claude · 2026-08-31 14:50** — The summary is built. Three decisions worth recording.
+
+Compared against the merge base rather than the working tree: a proposal made a week ago has
+not undone everything that happened since, and saying it did is worse than saying nothing.
+
+A body change is counted in criteria rather than lines — "eleven lines changed" is the diff
+again, and criteria are the part of a body that is a commitment. A body that changed without
+touching any still reports that it was rewritten, because the wording of a task is its scope.
+
+The vocabulary is reported apart and first: a proposal that adds a status is a proposal about
+how the team works, and it is the thing most likely to be skimmed past in a diff.
+
+On the testbed's real proposal it is five lines where the diff is about a hundred and twenty.
