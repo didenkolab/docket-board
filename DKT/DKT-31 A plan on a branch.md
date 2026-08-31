@@ -2,15 +2,16 @@
 key: DKT-31
 title: A plan on a branch
 type: story
-status: Backlog
-status_category: todo
+status: Done
+status_category: done
 priority: high
 assignee: agent/claude
 labels: ["[[git]]", "[[server]]"]
 created: 2026-08-31T00:29:54Z
-updated: 2026-08-31T00:29:54Z
+updated: 2026-08-31T00:30:13Z
 aliases: []
 tags: []
+relates: ["[[DKT-30 A release is a tag]]"]
 ---
 
 The largest thing in [[git-as-the-database]], and the one with no counterpart in any tracker.
