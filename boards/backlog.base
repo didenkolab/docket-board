@@ -4,6 +4,7 @@ filters:
     - or:
       - file.inFolder("DKT")
     - 'note.status_category == "todo"'
+    - 'note.type != "subtask"'
 properties:
   note.key:
     displayName: Key

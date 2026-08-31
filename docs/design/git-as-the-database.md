@@ -86,14 +86,22 @@ flat, one-thing-per-file and diff-friendly — which the format already does, an
 
 ## What is unbuilt
 
-The history is read ([[DKT-23 What happened to this task]]). Nothing yet uses branching, which
-is the largest single thing on this page:
+The history is read ([[DKT-23 What happened to this task]]), and a release is a tag rather than
+an object somebody maintains — the Releases page is `git log v1.1.0..v1.2.0` with the task files
+parsed, so it cannot be out of date.
 
-- A board over a branch, and a way to switch which one.
-- A plan change proposed as a branch and reviewed as a pull request, with the interface showing
-  what it would do rather than a raw diff.
-- `git blame` on a task, so a line of an acceptance criterion says who wrote it and when.
-- Two branches compared as two boards.
+A board over a branch is built: the Branches page lists them, and opening one draws the board as
+it would be, read out of the object database so that looking at a proposal cannot disturb
+whoever is working in the tree. Nothing there can be written — the cards are not draggable and
+every write route refuses a ref — because committing to a branch nobody has checked out is a
+thing git can do and a thing no interface should do quietly.
 
-These are not conveniences. They are the reason to keep the store in git rather than in a
-table, and until they exist the argument on this page is mostly potential.
+Still unbuilt:
+
+- **Two branches side by side**, so a choice between plans is one screen rather than two tabs.
+- **`git blame` on a task**, so a line of an acceptance criterion says who wrote it and when.
+- **A pull request read as a plan change** — the interface showing what a proposal would do to
+  the board, rather than leaving somebody to read a YAML diff on a hosting site.
+
+The first two are small. The third is where this stops being a tracker in git and becomes a way
+of working, and it is the one worth doing next.

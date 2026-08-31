@@ -121,7 +121,7 @@ is rejected but the login form still succeeds.
 |---|---|---|
 | `key` | yes | Identity, and the path. Never changes. |
 | `title` | yes | One line, human-readable. Free to change. |
-| `type` | yes | One of `types` in `docket.yaml`. |
+| `type` | yes | One of `types` in `docket.yaml`. Its level decides what it may hold — see 4.2. |
 | `status` | yes | One of the status names in `docket.yaml`. |
 | `status_category` | yes | The category of that status: `todo`, `doing` or `done`. |
 | `priority` | yes | One of `priorities` in `docket.yaml`. |
@@ -355,6 +355,40 @@ The vocabulary is shared by every project in the vault rather than defined per p
 what makes one board across projects mean anything — see
 [[0003-a-vault-holds-several-projects]]. A team that genuinely needs different workflows uses
 different vaults, and [[workspace]] assembles those into one Obsidian view.
+
+### 4.2 A type has a level
+
+```yaml
+types:
+  - name: epic
+    level: 1
+  - task
+  - bug
+  - name: subtask
+    level: -1
+```
+
+A bare name is level 0. A level says how the types stack, and it is what makes an epic a
+container rather than a word:
+
+| Level | What it is |
+|---|---|
+| `1` and above | Holds standard work. Higher levels are allowed and unnamed — a vault that wants an initiative above its epics says `2`. |
+| `0` | The ordinary unit of work, and the default. |
+| `-1` | Work inside one task. Never appears in a backlog on its own. |
+
+**A parent sits above its child.** Jira says exactly one level above, which is right for its
+fixed three-level model and too strict here, where a vault may use levels 0, 1 and 3 and mean
+it. Above is the rule, and it is the one that stops a bug from owning an epic.
+
+**Nothing is enforced until a vault says something.** A `types` list of bare names means what it
+has always meant — any task may hold any other — and only a vault that describes its hierarchy
+gets it checked. Turning the rule on for everybody would make existing vaults wrong about
+themselves overnight.
+
+The level cannot be guessed from the name. A real project's types are the team's own words in
+the team's own language: `Эпик`, `История`, `Подзадача`. `Эпик` is an epic only because
+somebody says so.
 
 ## 5. Knowledge base
 

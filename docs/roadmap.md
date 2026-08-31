@@ -112,8 +112,21 @@ From Obsidian: tags used rather than tolerated, callouts, and backlinks
 From Jira: typed relations between tasks, which was the largest thing missing
 ([[DKT-28 How two tasks are connected]]).
 
-Still unbuilt, and named in [[what-jira-models]]: a **type hierarchy**, so an epic is a container
-rather than a word; **releases** as pages with `fix_version` as a link, which would make release
-notes a query over backlinks rather than a generation step; and the whole of the branching
-argument in [[git-as-the-database]] — a plan on a branch, reviewed as a pull request — which is
-the largest single thing this project has not done.
+All three of those are now built.
+
+**[[DKT-29 An epic is a container, not a word]]** — a type carries a level, so a parent sits
+above its child and a sub-task stays out of the backlog. Checked against a real Jira project,
+whose types are named in the team's own language at the standard levels — which is why a level
+has to be declared rather than guessed.
+
+**[[DKT-30 A release is a tag]]** — better than the page-and-link this page used to propose. A
+tag is the release, and what shipped is `git log v1.1.0..v1.2.0` with the task files parsed. It
+is computed, so it cannot be stale, and there is nothing to set on a task.
+
+**[[DKT-31 A plan on a branch]]** — the largest thing in [[git-as-the-database]]. A branch is a
+proposal about the plan, and the Branches page draws the board it would produce, read out of the
+object database. No tracker can do this: a plan change in Jira is applied immediately to the one
+live instance.
+
+What is left is named at the bottom of [[git-as-the-database]]: two branches side by side, `git
+blame` on a task, and a pull request read as a plan change rather than as a YAML diff.

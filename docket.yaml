@@ -20,10 +20,13 @@ statuses:
   - name: Dropped
     category: done
 types:
+  - name: epic
+    level: 1
   - task
   - bug
   - story
-  - epic
+  - name: subtask
+    level: -1
 priorities:
   - low
   - normal
