@@ -2,22 +2,23 @@
 key: DKT-32
 title: A vault whose words are its own
 type: story
-status: Backlog
-status_category: todo
+status: Done
+status_category: done
 priority: high
 assignee: agent/claude
 labels: ["[[format]]", "[[obsidian]]"]
 created: 2026-08-31T01:10:43Z
-updated: 2026-08-31T01:10:43Z
+updated: 2026-08-31T01:11:00Z
 aliases: []
 tags: []
+relates: ["[[DKT-33 Columns in the order the workflow says]]"]
 ---
 
 A second vault — [docket-testbed](https://github.com/vadymdidenkolab/docket-testbed) — modelled
 on the shape of a real board rather than on our defaults, so that docket is exercised against
 a team it did not design itself.
 
-[[DKT-1 A demonstration vault]] shows what a vault looks like. This shows what one looks like
+[[DKT-1 Vault format and the starter vault]] shows what a vault looks like. This shows what one looks like
 after a team has had it for a quarter: an eight-stage deployment pipeline with a workflow that
 moves forward one stage and back to «В работе» when a stage fails; types, statuses and
 priorities in the team's own language; four epics with sub-tasks under them; all seven typed
