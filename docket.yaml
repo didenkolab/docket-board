@@ -27,6 +27,10 @@ types:
   - story
   - name: subtask
     level: -1
+  - name: objective
+    level: 2
+  - name: key_result
+    level: 1
 priorities:
   - low
   - normal
@@ -41,6 +45,31 @@ fields:
       - release
       - hotfix
     help: Which list this work is held to. The lists themselves are documents.
+  - name: target
+    label: Target
+    kind: number
+    types:
+      - key_result
+    required: true
+    help: The number that means done. "Ninety per cent" is 90.
+  - name: current
+    label: Current
+    kind: number
+    types:
+      - key_result
+  - name: measure
+    label: Measured by
+    kind: text
+    types:
+      - key_result
+    required: true
+    help: Where the number comes from. A key result nobody can measure is a wish.
+  - name: quarter
+    label: Quarter
+    kind: text
+    types:
+      - objective
+      - key_result
 pages:
   - name: time-in-status
     title: Time in status
@@ -83,5 +112,11 @@ apps:
   - name: portfolio
     source: /Volumes/Develop/develop/docket-apps#portfolio
     version: "1"
+  - name: okr
+    source: https://github.com/vadymdidenkolab/docket-apps.git
+    version: "1"
+relations:
+  - name: contributes_to
+    inverse: advanced_by
 sign_in:
   device_client_id: Ov23liIniOAW6leu5Lkn
