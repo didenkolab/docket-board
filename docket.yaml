@@ -32,6 +32,15 @@ priorities:
   - normal
   - high
   - urgent
+fields:
+  - name: definition_of_done
+    label: Definition of done
+    kind: choice
+    choices:
+      - team
+      - release
+      - hotfix
+    help: Which list this work is held to. The lists themselves are documents.
 pages:
   - name: time-in-status
     title: Time in status
@@ -39,12 +48,40 @@ pages:
   - name: anomalies
     title: Anomalies
     run: hooks/anomalies.sh
+  - name: workload
+    title: Workload
+    run: hooks/workload.sh
+  - name: acceptance
+    title: Acceptance across the board
+    run: hooks/across.sh
+  - name: unsized
+    title: Not sized
+    run: hooks/unsized.sh
+  - name: portfolio
+    title: Portfolio
+    run: hooks/portfolio.sh
+panels:
+  - name: progress
+    title: Acceptance
+    run: hooks/progress.sh
 apps:
   - name: time_in_status
     source: /Volumes/Develop/develop/docket-apps#time-in-status
     version: "1"
   - name: anomalies
     source: /Volumes/Develop/develop/docket-apps#anomalies
+    version: "1"
+  - name: workload
+    source: /Volumes/Develop/develop/docket-apps#workload
+    version: "1"
+  - name: checklists
+    source: /Volumes/Develop/develop/docket-apps#checklists
+    version: "1"
+  - name: estimation
+    source: /Volumes/Develop/develop/docket-apps#estimation
+    version: "1"
+  - name: portfolio
+    source: /Volumes/Develop/develop/docket-apps#portfolio
     version: "1"
 sign_in:
   device_client_id: Ov23liIniOAW6leu5Lkn
