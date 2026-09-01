@@ -32,5 +32,19 @@ priorities:
   - normal
   - high
   - urgent
+pages:
+  - name: time-in-status
+    title: Time in status
+    run: hooks/time-in-status.sh
+  - name: anomalies
+    title: Anomalies
+    run: hooks/anomalies.sh
+apps:
+  - name: time_in_status
+    source: /Volumes/Develop/develop/docket-apps#time-in-status
+    version: "1"
+  - name: anomalies
+    source: /Volumes/Develop/develop/docket-apps#anomalies
+    version: "1"
 sign_in:
   device_client_id: Ov23liIniOAW6leu5Lkn
