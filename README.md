@@ -99,7 +99,7 @@ why it is that way.
 | [`docket-template`](https://github.com/vadymdidenkolab/docket-template) | What a new vault starts as. `docket init` clones it |
 | [`docket-demo`](https://github.com/vadymdidenkolab/docket-demo) | A demonstration: two projects, seven tasks, a page. Open it to see what the format is, in a minute |
 | [`docket-testbed`](https://github.com/vadymdidenkolab/docket-testbed) | A fixture, not a demo: a fictional payments team's vault with an eight-stage pipeline, a vocabulary that is not English and six weeks of history. It exists to disagree with us, and it does — see [The testbed](docs/design/the-testbed.md) |
-| `docket-showcase` | An invented company's vault: three products, six people, twelve weeks, and every app installed — built by a generator |
+| [`docket-showcase`](https://github.com/vadymdidenkolab/docket-showcase) | The whole of it on a team's worth of work: three products, six people, twelve weeks and every app, all invented and built by a generator. Open it to see what a board looks like after a quarter |
 | [`northlight`](https://github.com/vadymdidenkolab/northlight) | That invented company's code, beside its vault |
 
 Only `docket-template` is public today; the rest need access.

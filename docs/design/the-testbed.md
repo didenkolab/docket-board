@@ -1,16 +1,24 @@
 ---
 title: The testbed
 type: design
-updated: 2026-08-31
+updated: 2026-09-07
 ---
 
 # The testbed
 
-There are two vaults besides this one. They are not the same kind of thing, and keeping them
+There are three vaults besides this one. They are not the same kind of thing, and keeping them
 apart is the point.
 
 **docket-demo** is a demonstration. Three columns, English words, five tasks, enough to open in
 Obsidian and understand the format in a minute. It exists to be read.
+
+**docket-showcase** is the whole of it on a team's worth of work: three products, six people,
+twelve weeks and every app, all invented and built by a generator. Open it to see what a board
+looks like after a quarter — 532 tasks, 1358 commits by six people who do not exist, sixty
+scenarios run against seventeen real revisions of a code repository written for the purpose, and
+three anomalies planted so that `docket anomalies` has something true to say. It is neither a
+demonstration nor a fixture: it is the answer to "what does this look like when it is being
+used", and it is rebuilt from a tag by `.showcase/build.py` rather than edited.
 
 **docket-testbed** is a fixture. A fictional payments team's vault, modelled on the shape of a
 real board: eight statuses in a deployment pipeline, a workflow that moves forward one stage
