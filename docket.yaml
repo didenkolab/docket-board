@@ -95,22 +95,22 @@ panels:
     run: hooks/progress.sh
 apps:
   - name: time_in_status
-    source: /Volumes/Develop/develop/docket-apps#time-in-status
+    source: https://github.com/vadymdidenkolab/docket-apps.git#time-in-status
     version: "1"
   - name: anomalies
-    source: /Volumes/Develop/develop/docket-apps#anomalies
+    source: https://github.com/vadymdidenkolab/docket-apps.git#anomalies
     version: "1"
   - name: workload
-    source: /Volumes/Develop/develop/docket-apps#workload
+    source: https://github.com/vadymdidenkolab/docket-apps.git#workload
     version: "1"
   - name: checklists
-    source: /Volumes/Develop/develop/docket-apps#checklists
+    source: https://github.com/vadymdidenkolab/docket-apps.git#checklists
     version: "1"
   - name: estimation
-    source: /Volumes/Develop/develop/docket-apps#estimation
+    source: https://github.com/vadymdidenkolab/docket-apps.git#estimation
     version: "1"
   - name: portfolio
-    source: /Volumes/Develop/develop/docket-apps#portfolio
+    source: https://github.com/vadymdidenkolab/docket-apps.git#portfolio
     version: "1"
   - name: okr
     source: https://github.com/vadymdidenkolab/docket-apps.git
