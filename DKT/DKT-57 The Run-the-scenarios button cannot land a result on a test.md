@@ -10,7 +10,7 @@ labels: ["[[apps]]"]
 created: 2026-09-07T19:56:39Z
 updated: 2026-09-07T19:56:39Z
 aliases: []
-tags: [area/tests]
+tags: []
 ---
 
 `hooks/run-tests.sh` (the tests app's "Run the scenarios" button) collects every gherkin block in the vault into one feature file, hands it to the repository's `./run-tests <feature> <junit-out>`, and imports whatever is at `<junit-out>`. Three things in that chain do not meet:
