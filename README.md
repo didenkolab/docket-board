@@ -109,10 +109,12 @@ All of them are public.
 
 ## State of the project
 
-**Released: [v0.5.0](https://github.com/didenkolab/docket/releases/tag/v0.5.0)**, the first
-under this name — binaries for six platform pairs and a container image, built from the tag by
-`release.yml`. The project was called **igile** until 2026-09-21; the repositories are new and
-the old ones are gone. [`docket/CHANGELOG.md`](https://github.com/didenkolab/docket/blob/main/CHANGELOG.md)
+**Released: [v0.6.0](https://github.com/didenkolab/docket/releases/tag/v0.6.0)** — binaries for
+six platform pairs and a container image, built from the tag by `release.yml`, and
+`go install github.com/didenkolab/docket/cmd/docket@latest`. v0.5.0 was the first release under
+this name but predates the move to `github.com/didenkolab`, so `go install` against it fails on
+the module path; v0.6.0 is the one to name. The project was called **igile** until 2026-09-21;
+the repositories are new and the old ones are gone. [`docket/CHANGELOG.md`](https://github.com/didenkolab/docket/blob/main/CHANGELOG.md)
 says what changed and how to migrate a vault.
 
 What is built: the vault format, the CLI, the server and board, the MCP endpoint, the Jira and
