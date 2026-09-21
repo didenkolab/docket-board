@@ -117,6 +117,9 @@ the module path; v0.6.0 is the one to name. The project was called **igile** unt
 the repositories are new and the old ones are gone. [`docket/CHANGELOG.md`](https://github.com/didenkolab/docket/blob/main/CHANGELOG.md)
 says what changed and how to migrate a vault.
 
+What is **not** done — signing on macOS, a merge driver, notifications, an announcement nobody
+has made yet — is [[What is left]], in the order it should be done.
+
 What is built: the vault format, the CLI, the server and board, the MCP endpoint, the Jira and
 Confluence import, twelve apps, and a skill an agent reads to drive all of it. The five points of
 [purpose](docs/What%20docket%20is%20for.md) are met; [roadmap](docs/Roadmap.md) says in what order it happened.
