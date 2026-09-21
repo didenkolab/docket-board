@@ -2,8 +2,8 @@
 key: DKT-65
 title: A tag that is not a version is shown as a release
 type: task
-status: Backlog
-status_category: todo
+status: Done
+status_category: done
 priority: normal
 assignee:
 labels: []
@@ -34,7 +34,17 @@ Found while taking the screenshots the README had never had.
 
 ## Acceptance
 
-- [ ] A decision is written down — this is a fork worth a decision page, not a patch.
-- [ ] Whatever is chosen, the showcase's release page opens on `v1.0.0`.
+- [x] A decision is written down — this is a fork worth a decision page, not a patch.
+- [x] Whatever is chosen, the showcase's release page opens on `v1.0.0`.
 
 ## Comments
+
+**vadym · 2026-09-21 12:15** — Decided in
+[[0006-a-release-is-a-version-tag]] and shipped in 6bd948c. A tag names a release when it names a
+version; anything else is a bookmark. The showcase page now opens on v1.0.0.
+
+Taking the screenshot afterwards found a second thing on the same page: the newest release is
+opened by default, and the newest real one was 254 tasks, which pushed the other four off the
+screen. It opens now only when it is short enough to be worth opening — the code comment already
+said a page of every release spelled out is a page nobody reaches the bottom of, and had not
+noticed that one release can be that page on its own.
