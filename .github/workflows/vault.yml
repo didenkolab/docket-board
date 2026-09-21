@@ -38,13 +38,13 @@ jobs:
         run: |
           echo "::warning title=Vault checks skipped::No DOCKET_TOOL_TOKEN secret, so \
           the docket tool could not be fetched. Neither 'docket check' nor the template \
-          drift check ran. Add a read-only token for vadymdidenkolab/docket, or make \
+          drift check ran. Add a read-only token for didenkolab/docket, or make \
           that repository public."
 
       - uses: actions/checkout@v5
         if: steps.access.outputs.available == 'true'
         with:
-          repository: vadymdidenkolab/docket
+          repository: didenkolab/docket
           token: ${{ secrets.DOCKET_TOOL_TOKEN }}
           path: .tool
 

@@ -16,14 +16,14 @@ format; every vault docket manages looks like this one.
 ## Quick start
 
 ```bash
-git clone https://github.com/vadymdidenkolab/docket-board.git
+git clone https://github.com/didenkolab/docket-board.git
 open -a Obsidian docket-board    # macOS. Elsewhere: Obsidian → Open folder as vault
 ```
 
 The left pane is the file tree — `DKT/` is the work, `docs/` is the wiki. Open `boards/board`
 for the board, `boards/backlog` for the backlog, and the graph view for how it all connects.
 
-With the [docket](https://github.com/vadymdidenkolab/docket) binary you can have the same thing in
+With the [docket](https://github.com/didenkolab/docket) binary you can have the same thing in
 a browser instead:
 
 ```bash
@@ -43,7 +43,7 @@ editor reads them. Nothing here needs Go, Python or Docker.
 
 Nothing to install — this is a vault, not a program, and `git clone` is the whole of it. The
 tool that reads it is a separate, optional download; see
-[docket](https://github.com/vadymdidenkolab/docket).
+[docket](https://github.com/didenkolab/docket).
 
 ## Usage
 
@@ -97,22 +97,22 @@ why it is that way.
 
 | Repository | What |
 |---|---|
-| [`docket`](https://github.com/vadymdidenkolab/docket) | The tool: the CLI, the server and the MCP endpoint, as one Go binary |
-| [`docket-apps`](https://github.com/vadymdidenkolab/docket-apps) | Packs of vocabulary and files a vault takes on — twelve of them |
-| [`docket-template`](https://github.com/vadymdidenkolab/docket-template) | What a new vault starts as. `docket init` clones it |
-| [`docket-demo`](https://github.com/vadymdidenkolab/docket-demo) | A demonstration: two projects, seven tasks, a page. Open it to see what the format is, in a minute |
-| [`docket-testbed`](https://github.com/vadymdidenkolab/docket-testbed) | A fixture, not a demo: a fictional payments team's vault with an eight-stage pipeline, a vocabulary that is not English and six weeks of history. It exists to disagree with us, and it does — see [The testbed](docs/design/the-testbed.md) |
-| [`docket-showcase`](https://github.com/vadymdidenkolab/docket-showcase) | The whole of it on a team's worth of work: three products, six people, twelve weeks and every app, all invented and built by a generator. Open it to see what a board looks like after a quarter |
-| [`northlight`](https://github.com/vadymdidenkolab/northlight) | That invented company's code, beside its vault |
+| [`docket`](https://github.com/didenkolab/docket) | The tool: the CLI, the server and the MCP endpoint, as one Go binary |
+| [`docket-apps`](https://github.com/didenkolab/docket-apps) | Packs of vocabulary and files a vault takes on — twelve of them |
+| [`docket-template`](https://github.com/didenkolab/docket-template) | What a new vault starts as. `docket init` clones it |
+| [`docket-demo`](https://github.com/didenkolab/docket-demo) | A demonstration: two projects, seven tasks, a page. Open it to see what the format is, in a minute |
+| [`docket-testbed`](https://github.com/didenkolab/docket-testbed) | A fixture, not a demo: a fictional payments team's vault with an eight-stage pipeline, a vocabulary that is not English and six weeks of history. It exists to disagree with us, and it does — see [The testbed](docs/design/the-testbed.md) |
+| [`docket-showcase`](https://github.com/didenkolab/docket-showcase) | The whole of it on a team's worth of work: three products, six people, twelve weeks and every app, all invented and built by a generator. Open it to see what a board looks like after a quarter |
+| [`northlight`](https://github.com/didenkolab/northlight) | That invented company's code, beside its vault |
 
 Every repository is private today. Nothing has been published.
 
 ## State of the project
 
-**Released: [v0.5.0](https://github.com/vadymdidenkolab/docket/releases/tag/v0.5.0)**, the first
+**Released: [v0.5.0](https://github.com/didenkolab/docket/releases/tag/v0.5.0)**, the first
 under this name — binaries for six platform pairs and a container image, built from the tag by
 `release.yml`. The project was called **igile** until 2026-09-21; the repositories are new and
-the old ones are gone. [`docket/CHANGELOG.md`](https://github.com/vadymdidenkolab/docket/blob/main/CHANGELOG.md)
+the old ones are gone. [`docket/CHANGELOG.md`](https://github.com/didenkolab/docket/blob/main/CHANGELOG.md)
 says what changed and how to migrate a vault.
 
 What is built: the vault format, the CLI, the server and board, the MCP endpoint, the Jira and
@@ -136,7 +136,7 @@ files — `docket export --open` is the same answer as data.
 Five commands, no trust required:
 
 ```bash
-git clone https://github.com/vadymdidenkolab/docket.git && cd docket
+git clone https://github.com/didenkolab/docket.git && cd docket
 go test ./...                                   # the suite, offline and with no git identity
 go build -o docket ./cmd/docket
 ./docket check ../docket-board                  # and every other vault

@@ -19,7 +19,7 @@ a demo and a showcase — and nothing else. Concretely:
   fixtures, documents, commit messages or commit history. Examples say ACME and BETA, hosts
   say `example.com`.
 - **One author.** Every commit in every public repository is
-  `Vadym Didenko <vadym@didenkolab.com>`, which GitHub attributes to `vadymdidenkolab`. The
+  `Vadym Didenko <vadym@didenkolab.com>`, which GitHub attributes to `didenkolab`. The
   one exception is `agent@docket.local`: those commits were made through `docket mcp` and
   `docket serve`, and a history that says which writes an agent made is the product's own
   argument. They stay.
@@ -149,7 +149,7 @@ README and the scaffolding are committed by the owner as `vadym@didenkolab.com`.
   in `northlight` that the vault names.
 - `docket-board` has this page and [[the-testbed]] updated to mention the third vault;
   `core/README.md` names the showcase.
-- Both repositories exist under `vadymdidenkolab`, private, ready to be flipped.
+- Both repositories exist under `didenkolab`, private, ready to be flipped.
 
 ### 2.6 Not in this work
 

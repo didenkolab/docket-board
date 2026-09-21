@@ -61,7 +61,7 @@ local or session storage. Nothing matching a GitHub token appears in the server'
 `~/.docket`, or in the vault. The device code never reaches the browser either: it redeems the
 token, so a page holding one could finish somebody else's sign-in.
 
-Access came back as GitHub says it: `vadymdidenkolab`, admin, granted on GitHub, re-asked every
+Access came back as GitHub says it: `didenkolab`, admin, granted on GitHub, re-asked every
 five minutes.
 
 The same is not yet true on GitLab. The application registered on the private instance answered

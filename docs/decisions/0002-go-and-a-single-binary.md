@@ -41,7 +41,7 @@ subprocess calls to git. Go needs no framework to do any of it.
 
 - **GitHub Releases** — cross-compiled binaries for macOS, Linux and Windows on amd64 and
   arm64. This is the path we point people at.
-- **`go install github.com/vadymdidenkolab/docket/cmd/docket@latest`** — for people who already
+- **`go install github.com/didenkolab/docket/cmd/docket@latest`** — for people who already
   have Go and would rather not download anything.
 - **A Homebrew tap** later, once there is a command worth tapping for.
 

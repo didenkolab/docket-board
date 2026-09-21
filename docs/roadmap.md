@@ -9,7 +9,7 @@ updated: 2026-08-31
 What this is for is [[purpose]]. All five of its points are met; what is left is at the bottom
 of this page, and it is smaller than what is above it.
 
-Released: [v0.3.0](https://github.com/vadymdidenkolab/docket/releases/tag/v0.3.0) — binaries for six
+Released: [v0.3.0](https://github.com/didenkolab/docket/releases/tag/v0.3.0) — binaries for six
 platform pairs, and a container image for two architectures.
 
 v0.2.0 was a board an individual could run. v0.3.0 is the one a team can: access that belongs to

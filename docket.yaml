@@ -95,25 +95,25 @@ panels:
     run: hooks/progress.sh
 apps:
   - name: time_in_status
-    source: https://github.com/vadymdidenkolab/docket-apps.git#time-in-status
+    source: https://github.com/didenkolab/docket-apps.git#time-in-status
     version: "1"
   - name: anomalies
-    source: https://github.com/vadymdidenkolab/docket-apps.git#anomalies
+    source: https://github.com/didenkolab/docket-apps.git#anomalies
     version: "1"
   - name: workload
-    source: https://github.com/vadymdidenkolab/docket-apps.git#workload
+    source: https://github.com/didenkolab/docket-apps.git#workload
     version: "1"
   - name: checklists
-    source: https://github.com/vadymdidenkolab/docket-apps.git#checklists
+    source: https://github.com/didenkolab/docket-apps.git#checklists
     version: "1"
   - name: estimation
-    source: https://github.com/vadymdidenkolab/docket-apps.git#estimation
+    source: https://github.com/didenkolab/docket-apps.git#estimation
     version: "1"
   - name: portfolio
-    source: https://github.com/vadymdidenkolab/docket-apps.git#portfolio
+    source: https://github.com/didenkolab/docket-apps.git#portfolio
     version: "1"
   - name: okr
-    source: https://github.com/vadymdidenkolab/docket-apps.git
+    source: https://github.com/didenkolab/docket-apps.git
     version: "1"
 relations:
   - name: contributes_to

@@ -14,7 +14,7 @@ tags: []
 relates: ["[[DKT-33 Columns in the order the workflow says]]"]
 ---
 
-A second vault — [docket-testbed](https://github.com/vadymdidenkolab/docket-testbed) — modelled
+A second vault — [docket-testbed](https://github.com/didenkolab/docket-testbed) — modelled
 on the shape of a real board rather than on our defaults, so that docket is exercised against
 a team it did not design itself.
 
