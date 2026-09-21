@@ -17,7 +17,7 @@ Allocate the next key by scanning `tasks/` for the highest number, fill `templat
 and write the file. Timestamps in UTC, `status` and `status_category` taken as a pair from
 `project.yaml` so they cannot drift apart.
 
-No counter file — see the reasoning in [[vault-format]] §2.
+No counter file — see the reasoning in [[Vault format]] §2.
 
 ## Acceptance
 

@@ -29,7 +29,7 @@ The second finding came from the same session: a display name written the docume
 qualified identifier that `order` uses, so it has to be `note.title`. Every column header read
 as a raw property name until this was fixed, and nothing said why.
 
-Both are recorded in [[vault-format]] §6, because the published reference is wrong about both
+Both are recorded in [[Vault format]] §6, because the published reference is wrong about both
 and the next person to write one of these files will hit them again.
 
 The tables gained display names too, now that there is a form known to work.
@@ -38,6 +38,6 @@ The tables gained display names too, now that there is a form known to work.
 
 - [x] The three boards render, with columns and cards as intended.
 - [x] Findings, if any, are fixed in both the vault and the templates.
-- [x] [[vault-format]] §6 is corrected wherever the documented syntax turns out to be wrong.
+- [x] [[Vault format]] §6 is corrected wherever the documented syntax turns out to be wrong.
 
 ## Comments

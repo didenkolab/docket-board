@@ -34,9 +34,9 @@ Consequences that follow, and that we accept:
 4. **The change log is `git log`.** We do not keep a parallel audit trail of facts git already
    records.
 5. **Access boundaries are repository boundaries.** One project, one repository, one vault.
-   Cross-project reading is a matter of who cloned what — see [[workspace]].
+   Cross-project reading is a matter of who cloned what — see [[Workspace]].
 
-The normative consequences are written up in [[vault-format]] and [[workspace]].
+The normative consequences are written up in [[Vault format]] and [[Workspace]].
 
 ## What this costs
 
@@ -57,7 +57,7 @@ rather than one we designed.
 
 **Nowhere to stand and see everything.** One project is one repository, so there is no vantage
 point from which every project is visible and no permission that grants one. Somebody who needs
-two at once clones two, which is a layout problem rather than a lookup — [[workspace]].
+two at once clones two, which is a layout problem rather than a lookup — [[Workspace]].
 
 ## Alternatives considered
 

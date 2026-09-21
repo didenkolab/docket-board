@@ -16,7 +16,7 @@ written, two things need settling: what the tool is written in, and how someone 
 Distribution is the harder half. `docket check` only protects the format if it actually runs —
 in a pre-commit hook, in CI, on the machine of someone who cloned a vault an hour ago. Any
 install step that starts with "first install a runtime" means it will not run, people will keep
-editing by hand, and the validation rules in [[vault-format]] become decoration.
+editing by hand, and the validation rules in [[Vault format]] become decoration.
 
 ## Decision
 

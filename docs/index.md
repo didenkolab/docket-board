@@ -17,17 +17,17 @@ other; there is one set of files.
 
 ## Start here
 
-- [[purpose]] — what this is for. Everything else is checked against it.
-- [[git-as-the-database]] — why the store is a repository, and what that makes possible.
-- [[what-obsidian-gives]] — what Obsidian offers, what we use, and what we do not.
-- [[what-jira-models]] — what Jira models, what we take, and what we refuse.
-- [[vault-format]] — what a vault is, normatively.
+- [[What docket is for]] — what this is for. Everything else is checked against it.
+- [[Git as the database]] — why the store is a repository, and what that makes possible.
+- [[What Obsidian gives, and what we take]] — what Obsidian offers, what we use, and what we do not.
+- [[What Jira models, and what we take]] — what Jira models, what we take, and what we refuse.
+- [[Vault format]] — what a vault is, normatively.
 - [[0001-vault-as-source-of-truth]] — why files and not a database.
 - [[0003-a-vault-holds-several-projects]] — why one vault holds many projects.
 - [[0004-access-comes-from-git]] — why there is no user table.
 - [[0005-a-file-is-named-after-its-task]] — why a file is named after its task.
-- [[workspace]] — how several repositories become one Obsidian vault.
-- [[roadmap]] — what exists and what comes next.
+- [[Workspace]] — how several repositories become one Obsidian vault.
+- [[Roadmap]] — what exists and what comes next.
 
 To see a vault rather than read about one, clone
 [docket-demo](https://github.com/didenkolab/docket-demo) and open it in Obsidian: two

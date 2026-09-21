@@ -13,8 +13,8 @@ aliases: []
 tags: []
 ---
 
-`tags` was a field that parsed and did nothing, which is [[purpose]] §3 not being met by half.
-Studying Obsidian's documentation properly — see [[what-obsidian-gives]] — turned up four things
+`tags` was a field that parsed and did nothing, which is [[What docket is for]] §3 not being met by half.
+Studying Obsidian's documentation properly — see [[What Obsidian gives, and what we take]] — turned up four things
 worth taking and two the documentation is wrong about.
 
 **Tags**, used rather than tolerated. A label says what a task is about and can be a page; a tag

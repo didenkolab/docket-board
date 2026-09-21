@@ -3,7 +3,7 @@
 This repository is a docket vault: a task tracker and a knowledge base made of Markdown files.
 You change it with ordinary file tools. There is no API to call and no server to ask.
 
-[[vault-format]] is normative. This file is the short version — the rules you need in order to not corrupt the
+[[Vault format]] is normative. This file is the short version — the rules you need in order to not corrupt the
 vault.
 
 ## Keys and where files live
@@ -99,7 +99,7 @@ task in a column the board cannot render. Both change in the same edit.
 - Set `updated` to the current UTC time on every change.
 - Leave `order` alone. It is where somebody dragged the card in its column; a task without
   one sorts after the ones that have one, which is where a new task belongs. See
-  [[vault-format]] §3.2.
+  [[Vault format]] §3.2.
 - Never edit `key` or `created`. Changing `title` renames the file too; `docket check`
   reports a name that no longer matches.
 - Append comments under `## Comments`, newest last, in the form
@@ -126,7 +126,7 @@ whether a sprint is running is a question about its dates and today. A task is i
 to it, after `assignee` — `sprint: "[[Sprint 24]]"`, quoted like every other link, by note name.
 One sprint at a time: carrying a task over means pointing the field at the new sprint, and the old
 sprint's retrospective is where it is recorded that the task did not finish. Do not add a list of
-tasks to a sprint page; its contents are its backlinks. See [[vault-format]] §5.3.
+tasks to a sprint page; its contents are its backlinks. See [[Vault format]] §5.3.
 
 ## Writing documentation
 
@@ -155,7 +155,7 @@ argues hard for itself. Getting this wrong in the other direction is worse: a fo
 design page never writes its alternatives down, and the argument gets had again.
 
 Everything else — what each section must contain, how a page is named, superseding, a worked
-example, and what `docket check` can and cannot tell you — is in [[documents]]. Read it before
+example, and what `docket check` can and cannot tell you — is in [[Documents]]. Read it before
 writing a decision or a spec.
 
 Connect pages with `[[wikilinks]]`, and do not write a page whose purpose is to list other pages.
@@ -182,13 +182,13 @@ a field belonging to a type this task is not — which happens after a task is r
 property is left behind holding a value nothing reads.
 
 A field is a property of one task. Anything that joins two tasks is a link: see
-[[how-things-connect]] §3. A choice whose values want a page behind them is a label.
+[[How things connect]] §3. A choice whose values want a page behind them is a label.
 
 ## Making a section
 
 `docs/` is a free tree. A folder exists in git because a file is in it, so a section starts with
 its first page — write `docs/runbooks/Reconciliation.md` and the folder is there. Do not add an
-index page listing the others: [[how-things-connect]] §5 measured what that costs, and it is
+index page listing the others: [[How things connect]] §5 measured what that costs, and it is
 more than it gives.
 
 ## Committing

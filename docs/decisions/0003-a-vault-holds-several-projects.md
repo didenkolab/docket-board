@@ -9,7 +9,7 @@ updated: 2026-08-31
 
 # ADR-0003 — A vault holds several projects, and a key is a path
 
-Supersedes the parts of [[vault-format]] and [[0001-vault-as-source-of-truth]] that said one
+Supersedes the parts of [[Vault format]] and [[0001-vault-as-source-of-truth]] that said one
 vault is one project.
 
 **The identity half of this decision was itself superseded the same day** by
@@ -22,7 +22,7 @@ path. What follows is left as written.
 Two things turned out to be wrong in practice.
 
 A board has to show several projects at once. Real work crosses projects constantly, and
-[[workspace]] only solved it for Obsidian — assembling repositories into one folder does nothing
+[[Workspace]] only solved it for Obsidian — assembling repositories into one folder does nothing
 for the web board, which served exactly one vault. Someone who does not run Obsidian could see
 one project at a time, which is not a board.
 
@@ -56,7 +56,7 @@ the old layout the same link needed an alias on every task to be findable.
 are shared. This is what makes one board across projects mean anything: if two projects
 disagreed about what their columns are, a combined board would either invent a merged set or
 show ragged ones. A team that genuinely needs different workflows uses different vaults, and
-[[workspace]] still assembles those into one Obsidian view.
+[[Workspace]] still assembles those into one Obsidian view.
 
 ## What this costs
 

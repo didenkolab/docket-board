@@ -12,7 +12,7 @@ updated: 2026-08-30T23:33:22Z
 aliases: []
 ---
 
-[[purpose]] §1 says a repository is a project, the way a Space is a project in Jira, and that a
+[[What docket is for]] §1 says a repository is a project, the way a Space is a project in Jira, and that a
 board shows several of them by reading several repositories.
 
 It does not. `docket serve` opens exactly one repository. `docket workspace` clones several
@@ -21,7 +21,7 @@ and the graph crosses the projects. But the server refuses the workspace root, b
 no `docket.yaml` and no `.git` there, so there is no board across projects that live apart.
 
 Today "one board, several projects" means "several projects in one repository". That is a real
-arrangement and it works, but it is not the one [[purpose]] describes, and it makes a project
+arrangement and it works, but it is not the one [[What docket is for]] describes, and it makes a project
 something you cannot hand over on its own.
 
 The design question is where the columns come from, since each repository carries its own

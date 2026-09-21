@@ -14,7 +14,7 @@ aliases: []
 
 Two things were wrong once the board was real.
 
-A board has to show several projects at once — work crosses them constantly — and [[workspace]]
+A board has to show several projects at once — work crosses them constantly — and [[Workspace]]
 only solved that for Obsidian. The web board served exactly one vault, which is not a board.
 
 And `ACME-12` spent a separator on something the filesystem already expresses. The project is a

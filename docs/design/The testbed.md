@@ -71,7 +71,7 @@ because this is the vault where our assumptions are not true:
 ## What it deliberately is not
 
 It is not a performance test. Twenty-nine tasks is a small vault, and the cost of reading files
-rather than querying a database — named honestly in [[git-as-the-database]] — is not what this
+rather than querying a database — named honestly in [[Git as the database]] — is not what this
 measures.
 
 It is not a second demo either. Nobody should be pointed at it to learn the format: it is

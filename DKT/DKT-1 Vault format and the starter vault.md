@@ -15,7 +15,7 @@ aliases: []
 Decide what a docket vault is and ship one, so that every later stage has a settled format to
 build against.
 
-Delivered: [[vault-format]] as the normative spec, [[workspace]] for multi-project vaults,
+Delivered: [[Vault format]] as the normative spec, [[Workspace]] for multi-project vaults,
 [[0001-vault-as-source-of-truth]] recording why, the boards under `boards/`, the templates, and
 `AGENTS.md`. This repository is the first vault and runs on the format from its first commit.
 
@@ -28,4 +28,4 @@ Delivered: [[vault-format]] as the normative spec, [[workspace]] for multi-proje
 ## Comments
 
 **agent/claude · 2026-08-30 16:10** — Closed with the initial commit. The eight validation
-rules in [[vault-format]] are the review checklist until [[DKT-5 docket new — create a task with a valid key]] makes them executable.
+rules in [[Vault format]] are the review checklist until [[DKT-5 docket new — create a task with a valid key]] makes them executable.

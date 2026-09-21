@@ -6,16 +6,16 @@ updated: 2026-08-31
 
 # What Jira models, and what we take
 
-[[purpose]] says the shape people expect is Jira's. This is Jira's actual data model, read out of
+[[What docket is for]] says the shape people expect is Jira's. This is Jira's actual data model, read out of
 Atlassian's documentation, set beside ours — so that what we skip is skipped on purpose.
 
-The companion pages are [[what-obsidian-gives]] and [[git-as-the-database]].
+The companion pages are [[What Obsidian gives, and what we take]] and [[Git as the database]].
 
 ## The three things Jira gets right that we already have
 
 **A project is the unit of everything.** In Jira a work item belongs to exactly one project, and
 the project owns the workflow, the permissions and the key prefix. That is our repository, and
-[[purpose]] §1 says so. Jira has renamed projects to **spaces** in the interface while leaving
+[[What docket is for]] §1 says so. Jira has renamed projects to **spaces** in the interface while leaving
 `project` in the API — the word moved, the model did not.
 
 **One parent field, at every level.** Jira spent years with three parenting fields — `parent`
@@ -135,4 +135,4 @@ that question answered.
 4. Estimates, and iterations, if anybody asks for them.
 
 Everything above 4 is deliberately unscheduled: it is easier to add a property than to remove
-one, and [[vault-format]] gets harder to read with every field nobody uses.
+one, and [[Vault format]] gets harder to read with every field nobody uses.

@@ -47,7 +47,7 @@ in the task template. The template is the source of truth, so this vault was ali
 shared files, printing both paths and the diff. Verified in both directions: clean it says so,
 and with a line added to a board it names the file and exits non-zero.
 
-`AGENTS.md` is deliberately outside the shared set. Here it links to [[vault-format]] by path;
+`AGENTS.md` is deliberately outside the shared set. Here it links to [[Vault format]] by path;
 the template cannot, because a generated vault has no copy of the specification to link to.
 
 One thing is not yet true. The workflow needs a checkout of the tool repository, which is

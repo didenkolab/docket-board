@@ -17,7 +17,7 @@ mappings for fields, statuses, types and people, then write the vault in one rev
 Only `extract` touches the network, so a mapping can be redone any number of times without
 going back to the source.
 
-The constraints this places on the core are already honoured by [[vault-format]]: `aliases`
+The constraints this places on the core are already honoured by [[Vault format]]: `aliases`
 for keys that outlived their system, the `x_` prefix for foreign fields, status as a pair so
 a cancelled-in-done workflow survives the trip, and `_history/` for a history git never saw.
 

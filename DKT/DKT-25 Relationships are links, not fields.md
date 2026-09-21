@@ -12,7 +12,7 @@ updated: 2026-08-30T22:32:39Z
 aliases: []
 ---
 
-[[purpose]] §3 says a relationship is a wikilink or it is not a relationship. Two of ours are
+[[What docket is for]] §3 says a relationship is a wikilink or it is not a relationship. Two of ours are
 strings, and both are invisible in Obsidian — which was checked, not assumed.
 
 `parent: ACME-4` is a plain key. The epic-to-task hierarchy, which is the whole reason an epic

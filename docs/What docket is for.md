@@ -10,7 +10,7 @@ updated: 2026-08-30
 This is the document every other decision is checked against. When something in this project is
 argued about, the answer is here or the answer is wrong.
 
-Related: [[vault-format]], [[0001-vault-as-source-of-truth]], [[roadmap]].
+Related: [[Vault format]], [[0001-vault-as-source-of-truth]], [[Roadmap]].
 
 ## The idea in one paragraph
 

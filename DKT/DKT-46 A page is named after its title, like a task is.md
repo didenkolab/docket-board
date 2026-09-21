@@ -2,17 +2,17 @@
 key: DKT-46
 title: A page is named after its title, like a task is
 type: task
-status: Backlog
-status_category: todo
+status: Done
+status_category: done
 priority: normal
-assignee: 
+assignee:
 labels: ["[[docs]]", "[[format]]"]
 created: 2026-08-31T19:00:00Z
 updated: 2026-08-31T19:00:00Z
 aliases: []
 ---
 
-[[documents]] §10 says a page is named after its title, exactly, for the reason
+[[Documents]] §10 says a page is named after its title, exactly, for the reason
 [[0005-a-file-is-named-after-its-task]] gives about tasks: Obsidian labels a graph node, a file
 explorer row and a quick switcher result with the file name and nothing else. Nine pages under
 `docs/` in this vault do not obey it. They carry the lower-case hyphenated spelling of their
@@ -32,7 +32,7 @@ turns a working reference into a dead one silently, which is the failure the rul
 prevent.
 
 The rule stands in the meantime, and this task is where the exception is recorded rather than
-being a quiet one — [[documents]] §13.
+being a quiet one — [[Documents]] §13.
 
 ## Acceptance
 
@@ -44,6 +44,18 @@ being a quiet one — [[documents]] §13.
       `README.md` resolve, and the path comments in the `docket` source name files that exist.
 - [ ] `docket check` reports no broken link, and `docket graph` reports no note that was reachable
       before and is an island afterwards.
-- [ ] The exception paragraph in [[documents]] §10 is deleted, and §13 stops naming this task.
+- [ ] The exception paragraph in [[Documents]] §10 is deleted, and §13 stops naming this task.
 
 ## Comments
+
+**vadym · 2026-09-21 15:10** — Done. `check` enforces it now, `check --fix` renames and repoints
+the links, and twenty-one pages in this vault were renamed — the rule had been written down and
+enforced for tasks only.
+
+Two carve-outs, both already in [[Documents]]: a decision keeps its number, and index.md is a
+role rather than a title. The second I found by breaking it — renaming the template's index gave
+every scaffolded vault a front page named after the project, and the tests went red.
+
+Underneath was a real bug: `vault.Rename` refused a rename that only changed case, because Stat
+reports the target as existing on a case-insensitive file system. So a task could not be retitled
+from "fix login" to "Fix login" on macOS either.

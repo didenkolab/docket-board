@@ -16,7 +16,7 @@ The board had drag-and-drop and no order. A card dropped above another moved on 
 snapped back on reload, because a column was sorted by key and nothing else. That is not a
 board — it is a list with an animation.
 
-`order` is now a property on the task, described in [[vault-format]] §3.2. A task without one
+`order` is now a property on the task, described in [[Vault format]] §3.2. A task without one
 sorts after every task that has one, so a vault nobody has arranged is a vault sorted by key,
 which is what a board looks like until somebody drags a card. Nothing has to migrate.
 

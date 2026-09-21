@@ -10,7 +10,7 @@ This repository is an **Obsidian vault**. Clone it, open the folder in Obsidian,
 task board, a backlog and a wiki. There is nothing to install and nothing to run: tasks and
 pages are plain Markdown files with YAML frontmatter, and git is the history.
 
-It is also the specification. `docs/spec/vault-format.md` is the normative description of the
+It is also the specification. `docs/spec/Vault%20format.md` is the normative description of the
 format; every vault docket manages looks like this one.
 
 ## Quick start
@@ -67,7 +67,7 @@ Tasks and pages are one file tree, and a wikilink is the only pointer that joins
 `labels` and the relations are links, so an epic has an edge to each of its tasks and a label is
 a hub joining everything that carries it. That is why the graph is worth opening, and why
 Obsidian's backlinks pane answers questions no field was added for. The long version is the
-[vault format](docs/spec/vault-format.md), and the decisions under `docs/decisions/` that say
+[vault format](docs/spec/Vault%20format.md), and the decisions under `docs/decisions/` that say
 why it is that way.
 
 ## Where things are
@@ -85,13 +85,13 @@ why it is that way.
 
 ### Reading order
 
-1. [Vault format](docs/spec/vault-format.md) — the normative spec
+1. [Vault format](docs/spec/Vault%20format.md) — the normative spec
 2. [ADR-0001](docs/decisions/0001-vault-as-source-of-truth.md) — why files and not a database
 3. [ADR-0002](docs/decisions/0002-go-and-a-single-binary.md) — what the tool is written in, and how you get it
 4. [ADR-0003](docs/decisions/0003-a-vault-holds-several-projects.md) — why one vault holds many projects
 5. [ADR-0004](docs/decisions/0004-access-comes-from-git.md) — why access comes from the git host
 6. [ADR-0005](docs/decisions/0005-a-file-is-named-after-its-task.md) — why a file is named after its task
-7. [Roadmap](docs/roadmap.md) — what is built and in what order
+7. [Roadmap](docs/Roadmap.md) — what is built and in what order
 
 ### The rest of the family
 
@@ -101,7 +101,7 @@ why it is that way.
 | [`docket-apps`](https://github.com/didenkolab/docket-apps) | Packs of vocabulary and files a vault takes on — twelve of them |
 | [`docket-template`](https://github.com/didenkolab/docket-template) | What a new vault starts as. `docket init` clones it |
 | [`docket-demo`](https://github.com/didenkolab/docket-demo) | A demonstration: two projects, seven tasks, a page. Open it to see what the format is, in a minute |
-| [`docket-testbed`](https://github.com/didenkolab/docket-testbed) | A fixture, not a demo: a fictional payments team's vault with an eight-stage pipeline, a vocabulary that is not English and six weeks of history. It exists to disagree with us, and it does — see [The testbed](docs/design/the-testbed.md) |
+| [`docket-testbed`](https://github.com/didenkolab/docket-testbed) | A fixture, not a demo: a fictional payments team's vault with an eight-stage pipeline, a vocabulary that is not English and six weeks of history. It exists to disagree with us, and it does — see [The testbed](docs/design/The%20testbed.md) |
 | [`docket-showcase`](https://github.com/didenkolab/docket-showcase) | The whole of it on a team's worth of work: three products, six people, twelve weeks and every app, all invented and built by a generator. Open it to see what a board looks like after a quarter |
 | [`northlight`](https://github.com/didenkolab/northlight) | That invented company's code, beside its vault |
 
@@ -117,7 +117,7 @@ says what changed and how to migrate a vault.
 
 What is built: the vault format, the CLI, the server and board, the MCP endpoint, the Jira and
 Confluence import, twelve apps, and a skill an agent reads to drive all of it. The five points of
-[purpose](docs/purpose.md) are met; [roadmap](docs/roadmap.md) says in what order it happened.
+[purpose](docs/What%20docket%20is%20for.md) are met; [roadmap](docs/Roadmap.md) says in what order it happened.
 
 What is open, honestly:
 

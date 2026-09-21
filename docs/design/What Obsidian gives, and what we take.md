@@ -6,7 +6,7 @@ updated: 2026-08-31
 
 # What Obsidian gives, and what we take
 
-[[purpose]] says this is Obsidian's pattern with task tracking on top. That is only true to the
+[[What docket is for]] says this is Obsidian's pattern with task tracking on top. That is only true to the
 extent we actually use what Obsidian offers, so this is the list — read out of its published
 documentation and checked in the app, not remembered.
 
@@ -16,7 +16,7 @@ Each row says what it is, whether docket uses it, and if not, why not.
 
 | What | How docket uses it |
 |---|---|
-| **Wikilinks** | Every relationship. `parent`, `labels`, and any link written in a body. §3.3 of [[vault-format]]. |
+| **Wikilinks** | Every relationship. `parent`, `labels`, and any link written in a body. §3.3 of [[Vault format]]. |
 | **Graph** | The reason a file is named after its task, and the reason relationships are links. Checked in the app: label and tag nodes join tasks across projects. |
 | **Backlinks** | The task page's "Referenced by". Obsidian's linked mentions, which answer "what else refers to this" without any relationship having been declared. |
 | **Tags** | A second axis beside labels, nested with `/`. The tag pane, the hierarchy and the case-insensitivity all match. |
@@ -49,7 +49,7 @@ where they bite:
 - A `displayName` under `properties:` must use the qualified name — `note.title`, not `title`.
   The published example uses the short form, which is accepted and silently ignored.
 
-Both are in [[vault-format]] §6. The lesson is in [[purpose]]: check it in the graph.
+Both are in [[Vault format]] §6. The lesson is in [[What docket is for]]: check it in the graph.
 
 ## Limits worth remembering
 

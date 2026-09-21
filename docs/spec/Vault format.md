@@ -12,7 +12,7 @@ the same time — the same folder, no export step between them — and it holds 
 projects.
 
 Related: [[0001-vault-as-source-of-truth]], [[0003-a-vault-holds-several-projects]],
-[[0005-a-file-is-named-after-its-task]], [[workspace]], [[roadmap]].
+[[0005-a-file-is-named-after-its-task]], [[Workspace]], [[Roadmap]].
 
 ## 1. Layout
 
@@ -317,7 +317,7 @@ estimate: 3
 ```
 
 A plain unquoted number, written after `priority`, and a field rather than a link deliberately.
-An estimate is the one thing that is supposed to fail the test in [[how-things-connect]] §1:
+An estimate is the one thing that is supposed to fail the test in [[How things connect]] §1:
 standing at a task, nobody needs to know what else in the vault was estimated at three.
 `priority` is the precedent — a property of one task, sorted and totalled, never navigated.
 
@@ -332,7 +332,7 @@ zeroes.
 
 **A task that has children may not carry one.** A container's estimate is the sum of its
 children's, added up by whatever is displaying it and written down nowhere: an epic carrying
-`estimate: 8` whose tasks add to thirteen is two records of one fact, which is what [[purpose]]
+`estimate: 8` whose tasks add to thirteen is two records of one fact, which is what [[What docket is for]]
 §4 exists to refuse. Rule 12 reports an estimate on a task that something else names as its
 parent.
 
@@ -386,7 +386,7 @@ project, and permanent.
 The vocabulary is shared by every project in the vault rather than defined per project. That is
 what makes one board across projects mean anything — see
 [[0003-a-vault-holds-several-projects]]. A team that genuinely needs different workflows uses
-different vaults, and [[workspace]] assembles those into one Obsidian view.
+different vaults, and [[Workspace]] assembles those into one Obsidian view.
 
 ### 4.2 A type has a level
 
@@ -465,7 +465,7 @@ without the tool: it appears in the property editor, it filters in a Base, and i
 there if the binary is deleted. Nothing here invents a store.
 
 **A field is a property of one task.** Every kind above is a scalar for that reason: anything
-that joins two tasks is a link, and [[how-things-connect]] §3 says which mechanism answers which
+that joins two tasks is a link, and [[How things connect]] §3 says which mechanism answers which
 question. A choice whose values want a page behind them is a label.
 
 **A property name may be in any script**, because the vault's words are the vault's — a project
@@ -492,7 +492,7 @@ behind you; `docket check` simply stops having an opinion about a field nobody d
 `docs/` is a free tree of Markdown pages. The tree is free — a page goes wherever it belongs, and
 a wiki that demands a folder for everything stops getting written in — but a page is not
 shapeless. Every page carries `title`, `type` and `updated`, and each of the five values `type`
-may take says where the page lives and what, if anything, it must contain. That is [[documents]],
+may take says where the page lives and what, if anything, it must contain. That is [[Documents]],
 which is normative and is what an agent follows when it writes one. The five kinds, the shape of
 a decision and the rest live there rather than here, because this file is about tasks.
 
@@ -503,7 +503,7 @@ Tasks link to pages and pages link back. That shared link layer is the whole of 
 between the tracker and the knowledge base; there is no other coupling between them.
 
 The principle these two rules come from — what the graph is for, and why each mechanism exists
-— is [[how-things-connect]]. This section is the normative part of it.
+— is [[How things connect]]. This section is the normative part of it.
 
 ### 5.1 A link is a relationship, not a route
 
@@ -599,7 +599,7 @@ for a year, which is the most familiar piece of stale data in any tracker that h
 The body is the goal in more than one line, what was cut and why, and the retrospective. That is
 the part Jira has no room for, written where the work is rather than in a document in another
 tool — and it is also what makes the page worth being a hub at all, because a page of two dates
-teaches nobody anything ([[how-things-connect]] §5).
+teaches nobody anything ([[How things connect]] §5).
 
 **Membership is a wikilink on the task**, written after `assignee`:
 
@@ -613,7 +613,7 @@ why — which is the thing a task belonging to two sprints never manages to say.
 
 The link is on the task rather than a list on the sprint page for one decisive reason: Bases
 filters on a property of the note it is drawing, so a sprint board is `note.sprint` and nothing
-else, and a vault with nothing installed has one only if the task carries the field ([[purpose]]
+else, and a vault with nothing installed has one only if the task carries the field ([[What docket is for]]
 §5). Both directions draw the same undirected edge in the graph, so the choice was never about
 the graph — it was about who maintains the fact and who can read it.
 
@@ -696,7 +696,7 @@ A vault is valid when:
     named by its key in backticks. See 5.3.
 14. Every page under `docs/` says what kind of document it is, and a decision has the shape a
     decision has: the four sections, a number no other decision uses, a `status` from the three
-    and the `date` it was taken, and a `supersedes` written as a link. See [[documents]].
+    and the `date` it was taken, and a `supersedes` written as a link. See [[Documents]].
 15. Every value of a field the vault declared means what its `kind` says: a number parses, a
     date is `YYYY-MM-DD`, a `datetime` is a moment, a choice is on the list, a flag is true or
     false, and a link has a scheme and a host. A required field is present, and a field

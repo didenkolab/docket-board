@@ -7,7 +7,7 @@ updated: 2026-08-30
 
 # Workspace
 
-A vault is one project ([[vault-format]]). A workspace is how several projects become one
+A vault is one project ([[Vault format]]). A workspace is how several projects become one
 Obsidian vault without giving up their separate repositories.
 
 ## Layout

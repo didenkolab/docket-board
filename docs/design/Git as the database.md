@@ -6,7 +6,7 @@ updated: 2026-08-30
 
 # Git as the database
 
-[[purpose]] §4 says every change is a commit and there is no second record. This page is the
+[[What docket is for]] §4 says every change is a commit and there is no second record. This page is the
 argument for why that is a better store for a tracker than a database, and — more usefully —
 what it makes possible that a database-backed tracker cannot do at all.
 
@@ -82,7 +82,7 @@ that merges the code merges the plan for it.
 
 None of these is a reason to keep a database. They are the reason to keep the files small,
 flat, one-thing-per-file and diff-friendly — which the format already does, and which
-[[vault-format]] should keep doing every time it is extended.
+[[Vault format]] should keep doing every time it is extended.
 
 ## What is unbuilt
 

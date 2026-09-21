@@ -7,17 +7,17 @@ status_category: done
 priority: normal
 assignee: agent/claude
 parent: "[[DKT-2 docket CLI]]"
-labels: ["[[cli]]", "[[workspace]]"]
+labels: ["[[cli]]", "[[Workspace]]"]
 created: 2026-08-30T16:10:54Z
 updated: 2026-08-30T17:12:13Z
 aliases: []
 ---
 
 Read `workspace.yaml`, clone the projects that are missing and pull the ones that are present,
-per [[workspace]]. Also `docket workspace init`, which creates the manifest, the `.obsidian/`
+per [[Workspace]]. Also `docket workspace init`, which creates the manifest, the `.obsidian/`
 config and a `.gitignore` that excludes every project folder.
 
-Deliberately not submodules — the reasoning is in [[workspace]].
+Deliberately not submodules — the reasoning is in [[Workspace]].
 
 ## Acceptance
 

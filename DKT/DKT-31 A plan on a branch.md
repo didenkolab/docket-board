@@ -14,7 +14,7 @@ tags: []
 relates: ["[[DKT-30 A release is a tag]]"]
 ---
 
-The largest thing in [[git-as-the-database]], and the one with no counterpart in any tracker.
+The largest thing in [[Git as the database]], and the one with no counterpart in any tracker.
 
 A branch is a proposal about the plan — a release re-scoped, an epic split, a quarter dropped.
 The Branches page lists them and opening one draws the board as it would be, read out of the

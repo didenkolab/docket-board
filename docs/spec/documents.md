@@ -7,11 +7,11 @@ updated: 2026-08-31
 
 # Documents
 
-Normative specification of the knowledge base. [[vault-format]] says what a task is; this says
+Normative specification of the knowledge base. [[Vault format]] says what a task is; this says
 what a page is — the five kinds a document under `docs/` can be, what each is for, where it
 lives, what frontmatter it carries and what it must contain.
 
-Related: [[vault-format]] §5, [[how-things-connect]], [[purpose]].
+Related: [[Vault format]] §5, [[How things connect]], [[What docket is for]].
 
 ## 1. Why there is a shape at all
 
@@ -103,7 +103,7 @@ Four digits, from `0001`, in the order the decisions were taken. **Numbers are n
 never renumbered.** A number is the handle: `ADR-0003` gets said in commit messages, in other
 decisions, in the code and out loud, and renumbering makes every one of those point at something
 else. A gap left by a decision that was deleted stays a gap, for the reason a task key does
-([[vault-format]] §2).
+([[Vault format]] §2).
 
 The rest of the name is the title in lower case with hyphens for spaces. It may drop an article
 or shorten a clause to stay readable in a file explorer — `0001-vault-as-source-of-truth` for
@@ -155,7 +155,7 @@ last touched. The gap between them is informative: a decision dated eight months
 `updated` is today has been annotated since, which is what §4.5 asks for.
 
 `supersedes` is a quoted wikilink to the decision this one replaces, present only when there is
-one. A wikilink because a relationship is a link ([[purpose]] §3) — the earlier decision gets the
+one. A wikilink because a relationship is a link ([[What docket is for]] §3) — the earlier decision gets the
 edge in its backlinks without anybody editing it, so the pair reads from either end.
 
 A decision whose `status` is `superseded` must carry it. That is the one state where a missing
@@ -309,7 +309,7 @@ writer resented — and the discipline the sections were supposed to buy is spen
 What a design page owes its reader instead:
 
 - The first paragraph says what the page is about and what claim it is making, before any detail.
-  [[git-as-the-database]] opens by saying it is the argument for why a repository is a better
+  [[Git as the database]] opens by saying it is the argument for why a repository is a better
   store than a database, and half of what it describes is unbuilt.
 - Somewhere in it, honestly, what the approach costs. Every design page in this vault has that
   paragraph, and it is the paragraph that makes the rest credible.
@@ -324,7 +324,7 @@ may act on every sentence in it without checking anywhere else — which is what
 declares.
 
 `docs/spec/`, and `status: normative` in the frontmatter. No required sections: a spec is
-organised by its subject, and [[vault-format]]'s seven sections are the shape of a vault rather
+organised by its subject, and [[Vault format]]'s seven sections are the shape of a vault rather
 than the shape of a spec.
 
 **A spec is named in lower case with hyphens**, like a decision and unlike everything else:
@@ -342,14 +342,14 @@ and says it is withdrawn, and a new rule takes the next number even when it belo
 in the middle of the list.
 
 A spec and a design page usually come in pairs, and they say different things about the same
-subject: the design page argues and the spec states. [[how-things-connect]] says why a link is
-worth an edge; [[vault-format]] §5.1 says a page listing other pages must not be written. When the
+subject: the design page argues and the spec states. [[How things connect]] says why a link is
+worth an edge; [[Vault format]] §5.1 says a page listing other pages must not be written. When the
 two disagree, the spec is what holds — and the design page is wrong and gets edited, because a
 design page that argues for something the spec forbids will be believed by somebody.
 
 ## 7. Sprint
 
-A sprint is a fortnight, and it is fully specified in [[vault-format]] §5.3. In summary, so that
+A sprint is a fortnight, and it is fully specified in [[Vault format]] §5.3. In summary, so that
 this table is complete: `docs/sprints/`, named after its title, `starts` and `ends` as plain
 `YYYY-MM-DD`, no state field because whether a sprint is running is a question about today, and a
 body that is the goal in more than one line, what was cut and why, and the retrospective.
@@ -367,10 +367,10 @@ anywhere under `docs/`, carries the three properties from §2 and nothing more, 
 required shape.
 
 `page` is the default and most of a knowledge base is pages. It is not a lesser kind and not a
-holding pen for documents nobody classified: [[purpose]] is a `page`, and it is the document every
+holding pen for documents nobody classified: [[What docket is for]] is a `page`, and it is the document every
 other one is checked against.
 
-The one restriction is [[vault-format]] §5.1, and it applies to this kind more than the others
+The one restriction is [[Vault format]] §5.1, and it applies to this kind more than the others
 because this is the kind people write indexes as: **a page whose purpose is to list other pages
 must not be written.**
 
@@ -392,7 +392,7 @@ Two questions, and both have to be yes for a decision:
 The test that settles most cases: **try writing `## Alternatives considered` with two entries a
 colleague would have argued for.** If you cannot, write the design page.
 
-**The common mistake is filing an explanation as a decision.** [[git-as-the-database]] reads like
+**The common mistake is filing an explanation as a decision.** [[Git as the database]] reads like
 one — it argues a position, it has a costs section, it compares itself to the alternative. It is
 correctly a design page, because the fork it appears to describe was taken in
 [[0001-vault-as-source-of-truth]]; what this page does is explain the machine that decision
@@ -428,13 +428,13 @@ exactly.**
 The reason is the one in [[0005-a-file-is-named-after-its-task]], and it applies to pages without
 changing a word. Obsidian labels a graph node, a file explorer row, a backlink and a quick
 switcher result with the file name and nothing else — not with the `title` property, not with an
-alias. Verified in 1.13.7 and recorded in [[purpose]] §2. A file called `notes-2.md` is a node in
+alias. Verified in 1.13.7 and recorded in [[What docket is for]] §2. A file called `notes-2.md` is a node in
 the graph labelled `notes-2`, and a graph of those is a graph of nothing.
 
 So `docs/design/How things connect.md` holds `title: How things connect`, and the title as written
 goes into the name — in whatever language it was written in, with its capitals and its commas.
 Only what a file name or a wikilink cannot hold is replaced, and it is the same list as
-[[vault-format]] §2: `/` and `\` would make folders, `: * ? " < > |` are refused by one file
+[[Vault format]] §2: `/` and `\` would make folders, `: * ? " < > |` are refused by one file
 system or another, and `# ^ [ ]` are wikilink syntax, so a note holding them cannot be linked to.
 
 An em dash `—` is the separator where a name needs one, matching the tasks. **No emoji in a file
@@ -463,10 +463,10 @@ written: a task, with a number, and not a quiet exception.
 
 ## 11. Linking
 
-How a page links is governed by [[how-things-connect]] and it is not restated here. The two tests
+How a page links is governed by [[How things connect]] and it is not restated here. The two tests
 that decide whether to write a link at all are §1 and §2 of that page; whether a page has earned
 the edges it gathers is §5; and what a link inside a context page must carry is §5a. The normative
-consequences are [[vault-format]] §5.1 and §5.2.
+consequences are [[Vault format]] §5.1 and §5.2.
 
 The one thing this document adds is about the other end:
 
@@ -477,12 +477,12 @@ a graph answers that a list cannot. Writing a page is not finished until somethi
 and the link that fixes an orphan is the one that already wanted to exist: the decision links the
 design page that explains what it produced, the spec links the design page that argued for it, the
 task links the page that gives it context. It is never a line added to a front page. A front page
-that gains an entry every time somebody writes a page is the index [[vault-format]] §5.1 refuses,
+that gains an entry every time somebody writes a page is the index [[Vault format]] §5.1 refuses,
 and it will hold a fifth of the vault's edges within a year.
 
 ## 12. What is checked, and what is not
 
-Rule 14 of [[vault-format]] §7 is this document, and it reports:
+Rule 14 of [[Vault format]] §7 is this document, and it reports:
 
 - A page that does not say what kind it is.
 - A `decision` missing any of its four sections, naming the ones it does have.
@@ -511,7 +511,7 @@ judgement is:
   check there is and is almost always false.
 - Whether this should have been a design page at all (§9).
 - Whether a sentence in a spec is a rule or an opinion in the indicative mood.
-- Whether a hub page earned its edges ([[how-things-connect]] §5).
+- Whether a hub page earned its edges ([[How things connect]] §5).
 
 The mechanical half is automated so that review attention goes to the other half. **A document
 that passes `docket check` is not a good document; it is a document with nothing obviously

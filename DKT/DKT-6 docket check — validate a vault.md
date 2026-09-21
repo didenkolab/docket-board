@@ -13,7 +13,7 @@ updated: 2026-08-30T17:12:13Z
 aliases: []
 ---
 
-Implement the eight validation rules from [[vault-format]] §7 and report findings with file
+Implement the eight validation rules from [[Vault format]] §7 and report findings with file
 and line. Rules 1–7 need only `tasks/` and `project.yaml`; rule 8 — link resolution — needs
 the whole vault.
 

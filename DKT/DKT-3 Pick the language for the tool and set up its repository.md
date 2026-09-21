@@ -16,7 +16,7 @@ aliases: []
 The `docket` repository exists but holds only a README. Before any command is written, settle
 what it is written in and how it is distributed.
 
-The earlier private prototype was Go, and stage 3 and stage 4 in [[roadmap]] plan to port
+The earlier private prototype was Go, and stage 3 and stage 4 in [[Roadmap]] plan to port
 substantial parts of it — an importer and an HTTP server — rather than rewrite them. That is
 an argument for Go, not a decision.
 

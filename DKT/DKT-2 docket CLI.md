@@ -16,7 +16,7 @@ A command-line tool that does by hand what the format currently asks people and 
 carefully: scaffold a vault, allocate a key, validate, and assemble a workspace.
 
 It comes after the format on purpose. Everything it does is doable by hand, and building it
-first would have frozen a format that had not settled yet. See [[roadmap]].
+first would have frozen a format that had not settled yet. See [[Roadmap]].
 
 ## Acceptance
 

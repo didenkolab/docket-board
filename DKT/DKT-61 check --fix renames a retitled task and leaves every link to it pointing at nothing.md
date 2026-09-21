@@ -19,7 +19,7 @@ that validates a relation matches on the **key** inside the link rather than on 
 and the key did not change.
 
 The result is a vault that is valid to the tool and broken in Obsidian, which is the one outcome
-[[vault-format]] exists to prevent: Obsidian resolves the name of a note and does not consult
+[[Vault format]] exists to prevent: Obsidian resolves the name of a note and does not consult
 aliases, so a link naming the old title draws no edge, produces no backlink and resolves to
 nothing.
 

@@ -29,7 +29,7 @@ The fix was committed on `main` because the alternative — the full scaffold pr
 to an article. This task is the record that it has to be folded in the next time the showcase is
 rebuilt for any other reason.
 
-The procedure is in [[public-release-and-showcase]]: `git reset --hard scaffold`, edit, commit as
+The procedure is in [[Public release and the showcase]]: `git reset --hard scaffold`, edit, commit as
 the owner, `git tag -f scaffold`, replay, then force-with-lease both `main` and `scaffold`.
 
 Anything else above the story that has drifted goes in the same pass — `hooks/`, `docket.yaml`

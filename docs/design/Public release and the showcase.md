@@ -37,7 +37,7 @@ a demo and a showcase — and nothing else. Concretely:
 | docket-apps | none — history rewritten 2026-09-06 | one | clean | done |
 | docket-board | none | seven identities over 104 commits | clean | rewrite authors; keep `agent@docket.local` |
 | docket-template | none | three identities | clean | rewrite authors |
-| docket-testbed | none | four fictional authors, one agent, two real | clean | rewrite only the real identities; the four fictional ones are the fixture's history and are documented in [[the-testbed]] |
+| docket-testbed | none | four fictional authors, one agent, two real | clean | rewrite only the real identities; the four fictional ones are the fixture's history and are documented in [[The testbed]] |
 | docket-demo | none | `claude@example.com` and two demo identities | one finding: `board.base` is stale | rewrite authors; regenerate the board |
 | docket-test | **23 blobs in history** | one identity | clean | **not published.** It is the laboratory for checks against live boards and holds copies of live data by design. It stays private and is not part of the family a reader sees. |
 
@@ -50,7 +50,7 @@ elsewhere is re-cloned afterwards, never pulled.
 - `core/README.md` names `docket-board` as where the format lives and `docket-demo` as the first
   thing to open. After this work it also names `docket-showcase` as the second: "to see the
   whole of it on a team's worth of work".
-- This vault's README and [[the-testbed]] describe the two other vaults. A third, the showcase,
+- This vault's README and [[The testbed]] describe the two other vaults. A third, the showcase,
   is added beside them with the same honesty: everything in it is invented.
 
 ## 2. The showcase
@@ -102,7 +102,7 @@ All twelve apps from `docket-apps` are installed, and each one has data to show:
 | estimation, portfolio, workload, time-in-status, anomalies | programs over the data above; the showcase makes sure each has something to draw — unestimated stories, an epic roll-up, one overloaded person, a task stuck in review, an adrift task |
 
 Around the tasks: six people pages under `people/`, eight label pages, `docs/index.md`,
-a design page per product, six decisions in the shape [[documents]] requires, six sprints
+a design page per product, six decisions in the shape [[Documents]] requires, six sprints
 (four finished with retrospectives, one running, one planned), and attachments — the test
 results chart the tests app draws, and one architecture diagram.
 
@@ -147,7 +147,7 @@ README and the scaffolding are committed by the owner as `vadym@didenkolab.com`.
 - `docket report time-in-status` shows a spread, not a column of zeros.
 - The coverage page links features to stories; `people --from-git` finds the same six people
   in `northlight` that the vault names.
-- `docket-board` has this page and [[the-testbed]] updated to mention the third vault;
+- `docket-board` has this page and [[The testbed]] updated to mention the third vault;
   `core/README.md` names the showcase.
 - Both repositories exist under `didenkolab`, private, ready to be flipped.
 

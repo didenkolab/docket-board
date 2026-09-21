@@ -14,7 +14,7 @@ relates: ["[[DKT-32 A vault whose words are its own]]"]
 ---
 
 Two ways a vault quietly ruins its own graph, and a rule for each. The principle behind both is
-[[how-things-connect]].
+[[How things connect]].
 
 **A link is a relationship, not a route.** A page whose purpose is to list other pages connects
 everything on it, so it lands in the middle of the graph and collapses the distance between
@@ -37,7 +37,7 @@ regression is; they need the list.
 
 ## Acceptance
 
-- [x] The rules are normative in [[vault-format]] §5.1 and §5.2.
+- [x] The rules are normative in [[Vault format]] §5.1 and §5.2.
 - [x] `docket check` rule 11 catches a set of one and a label said twice.
 - [x] Every new vault carries the rules in its `AGENTS.md`.
 - [x] The three vaults comply, and the graph was measured before and after.

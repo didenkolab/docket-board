@@ -6,7 +6,7 @@ status: Done
 status_category: done
 priority: normal
 assignee: agent/claude
-labels: ["[[vault-format]]"]
+labels: ["[[Vault format]]"]
 created: 2026-08-31T17:00:00Z
 updated: 2026-08-31T18:30:00Z
 aliases: []
@@ -14,7 +14,7 @@ relates: []
 ---
 
 An estimate is a scalar, so it is a field. That needs saying, because
-[[how-things-connect]] is strict about fields that should have been links — and the test it
+[[How things connect]] is strict about fields that should have been links — and the test it
 gives ("would this be an edge in the graph?") is one an estimate is supposed to fail. Nobody
 standing at a task needs to know what else was estimated at three. `priority` is the precedent:
 a property of a task, not a relationship.
@@ -28,7 +28,7 @@ vault chose.
 ## The one thing that is computed
 
 A container's estimate is the sum of its children. Never stored: an epic carrying `estimate: 8`
-whose tasks add to thirteen is two records of one fact, which is what [[purpose]] §4 exists to
+whose tasks add to thirteen is two records of one fact, which is what [[What docket is for]] §4 exists to
 refuse. So `docket check` refuses an estimate on a task that has children, and the interface
 adds them up on the way past.
 
@@ -51,6 +51,6 @@ guarantees a container carries no number. The cost is that a container whose chi
 elsewhere contributes nothing, so every total is shown beside how many of its tasks nobody has
 sized. A total on its own reads as the whole of the work, and it never is.
 
-Found by putting real data in [[the-testbed]]: it has two non-epic parents — a task with
+Found by putting real data in [[The testbed]]: it has two non-epic parents — a task with
 sub-tasks and a story with one — which is the case anybody assuming "container means epic" would
 have got wrong.

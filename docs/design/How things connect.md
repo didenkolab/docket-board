@@ -11,7 +11,7 @@ to use is not a matter of taste, and getting it wrong does not produce a slightl
 it produces a graph nobody opens, which costs the product its whole premise.
 
 This page is the principle. The rules it produces are normative in
-[[vault-format]] §5.1, §5.2 and §5.3; `docket check` enforces the mechanical parts.
+[[Vault format]] §5.1, §5.2 and §5.3; `docket check` enforces the mechanical parts.
 
 ## What the graph is for
 
@@ -244,5 +244,5 @@ The sprint splits the same way. That a `sprint` names a page which exists is mec
 checked. Whether that page was worth the edges it draws is judgement, and nothing but a reader
 can tell.
 
-The alternative is not "a slightly messier graph". It is [[purpose]] §3 quietly becoming false:
+The alternative is not "a slightly messier graph". It is [[What docket is for]] §3 quietly becoming false:
 open the repository in Obsidian and see the graph — of what.

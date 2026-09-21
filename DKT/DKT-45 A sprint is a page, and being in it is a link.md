@@ -6,7 +6,7 @@ status: Done
 status_category: done
 priority: normal
 assignee: agent/claude
-labels: ["[[vault-format]]"]
+labels: ["[[Vault format]]"]
 created: 2026-08-31T17:00:00Z
 updated: 2026-08-31T18:30:00Z
 aliases: []
@@ -31,7 +31,7 @@ Both directions draw the same undirected edge, so the choice is about who mainta
 can read it. Obsidian Bases filters on a property of the note it is drawing — `note.sprint` —
 so a sprint board in Obsidian is only possible if the task carries the field. A list on the
 sprint page would make the sprint invisible to the one client that must work with nothing
-installed ([[purpose]] §5).
+installed ([[What docket is for]] §5).
 
 It also matches how the work actually moves: pulling one task into a sprint is one file and one
 commit, and re-planning is a branch — [[DKT-31 A plan on a branch]] already reads one.
@@ -53,7 +53,7 @@ The mechanism is fine. The `sprint` property cost thirteen per cent of the testb
 which is what a label costs. What was not fine was the sprint pages' prose: written the obvious
 way, citing each task by wikilink, it cost twenty-eight per cent more, made the three sprints the
 three most connected notes in the vault, and pushed the largest cluster from thirty of
-forty-three notes to forty-three of forty-six. That is the blob [[how-things-connect]] §5 exists
+forty-three notes to forty-three of forty-six. That is the blob [[How things connect]] §5 exists
 to describe — at a worse number than the index pages that were deleted for it. One page linked
 fourteen tasks while holding three.
 
@@ -62,7 +62,7 @@ how many of them it does not even contain. Rewriting the three pages took the va
 eighty-nine edges and twenty-one per cent, and an island of five notes fell out of the blob: an
 epic with no estimates, no sprint and nobody on it, which had been held in only by sprint pages
 saying "we did not take this again". That island is the fourth question at the top of
-[[how-things-connect]] — what is nobody looking after — being answered for the first time.
+[[How things connect]] — what is nobody looking after — being answered for the first time.
 
 Twenty-one per cent is still above the eighteen that got indexes deleted, and the newest sprint
 is still the most connected note. Recorded rather than explained away: a sprint is not a cheap

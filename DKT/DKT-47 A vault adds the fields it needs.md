@@ -6,7 +6,7 @@ status: Done
 status_category: done
 priority: normal
 assignee: agent/claude
-labels: ["[[vault-format]]"]
+labels: ["[[Vault format]]"]
 created: 2026-08-31T20:00:00Z
 updated: 2026-08-31T22:00:00Z
 aliases: []
@@ -19,7 +19,7 @@ with a spreadsheet beside it. The importer had already carried eighteen out of a
 
 `docket.yaml` declares them: a property name, a kind, the types that carry it, whether it is
 required. Seven kinds, all scalars — anything joining two tasks is a link, and
-[[how-things-connect]] §3 decides which mechanism answers which question. Rule 15 checks that a
+[[How things connect]] §3 decides which mechanism answers which question. Rule 15 checks that a
 value means what the declaration says, not whether it is right.
 
 Two things found by pointing it at real data. It caught my own declaration: Jira's «Рейтинг» is

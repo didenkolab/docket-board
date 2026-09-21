@@ -1,14 +1,14 @@
 ---
-title: docket design
+title: The design agreed on 2026-08-30
 type: design
 status: accepted
 date: 2026-08-30
 updated: 2026-08-30
 ---
 
-# docket — design
+# The design agreed on 2026-08-30
 
-The design agreed on 2026-08-30, from which [[vault-format]], [[workspace]] and
+The design agreed on 2026-08-30, from which [[Vault format]], [[Workspace]] and
 [[0001-vault-as-source-of-truth]] were written. Kept as the record of what was decided and
 what was rejected.
 
@@ -34,7 +34,7 @@ Three artefacts:
 
 1. **Project vault** — one repository, one project, one vault. Self-contained.
 2. **Workspace** — a repository holding an Obsidian config and a manifest, which assembles
-   several project repositories into one vault. See [[workspace]].
+   several project repositories into one vault. See [[Workspace]].
 3. **`docket` tool** — CLI and later server: `init`, `new`, `check`, `workspace sync`, `serve`,
    `import`. Lives in its own repository and ships no documentation of its own; this vault is
    the documentation.
@@ -86,4 +86,4 @@ dependencies that change deliberately; a tracker changes constantly.
 ## Stages
 
 Format and vault, then CLI, then server and web UI, then import from Jira and Confluence.
-Detail in [[roadmap]].
+Detail in [[Roadmap]].

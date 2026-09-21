@@ -6,7 +6,7 @@ updated: 2026-08-31
 
 # Roadmap
 
-What this is for is [[purpose]]. All five of its points are met; what is left is at the bottom
+What this is for is [[What docket is for]]. All five of its points are met; what is left is at the bottom
 of this page, and it is smaller than what is above it.
 
 Released: [v0.3.0](https://github.com/didenkolab/docket/releases/tag/v0.3.0) — binaries for six
@@ -23,7 +23,7 @@ nothing until the next stage lands.
 
 ## 1. Format and vault — done
 
-The vault format ([[vault-format]]), the workspace layout ([[workspace]]), the boards, the
+The vault format ([[Vault format]]), the workspace layout ([[Workspace]]), the boards, the
 templates and the agent instructions. This repository is the first vault and runs on it from
 day one.
 
@@ -33,7 +33,7 @@ graph, full history in git. No installation.
 ## 2. CLI — done
 
 `docket init` scaffolds a vault. `docket new` creates a task with a valid key and a filled
-template. `docket check` runs the ten validation rules from [[vault-format]]. `docket workspace
+template. `docket check` runs the ten validation rules from [[Vault format]]. `docket workspace
 sync` clones and pulls projects from a manifest. Released as a single binary for six platform
 pairs; see [[0002-go-and-a-single-binary]].
 
@@ -85,7 +85,7 @@ was thinking.
 A pipeline of `extract → plan → apply`: pull a cold snapshot of the source, propose mappings
 for fields, statuses, types and people, then write the vault in one reviewable commit.
 
-The constraints it places on the core were honoured in advance by [[vault-format]]: `aliases`
+The constraints it places on the core were honoured in advance by [[Vault format]]: `aliases`
 for keys that outlived their system, `x_` for foreign fields, status as a pair so a
 cancelled-in-done workflow survives the trip, and `_history/` for a history git never saw.
 
@@ -94,7 +94,7 @@ against a stub server, and everything downstream against snapshots built in test
 
 ## Not done, and central
 
-These are not extras. They are places where the product does not yet do what [[purpose]] says
+These are not extras. They are places where the product does not yet do what [[What docket is for]] says
 it is for, found by checking it against that document rather than against a list of features.
 
 [[DKT-25 Relationships are links, not fields]] is done: `parent` and `labels` are wikilinks now,
@@ -107,7 +107,7 @@ own project; a write is a commit in the repository that owns it.
 
 ## What the two studies changed
 
-[[what-obsidian-gives]] and [[what-jira-models]] are the inventories: what each of them offers,
+[[What Obsidian gives, and what we take]] and [[What Jira models, and what we take]] are the inventories: what each of them offers,
 what we take, and what we refuse. Both were read out of their documentation and checked in the
 app, and both turned up things worth having.
 
@@ -128,7 +128,7 @@ has to be declared rather than guessed.
 tag is the release, and what shipped is `git log v1.1.0..v1.2.0` with the task files parsed. It
 is computed, so it cannot be stale, and there is nothing to set on a task.
 
-**[[DKT-31 A plan on a branch]]** — the largest thing in [[git-as-the-database]]. A branch is a
+**[[DKT-31 A plan on a branch]]** — the largest thing in [[Git as the database]]. A branch is a
 proposal about the plan, and the Branches page draws the board it would produce, read out of the
 object database. No tracker can do this: a plan change in Jira is applied immediately to the one
 live instance.
@@ -172,7 +172,7 @@ the save at the bottom of it.
 
 ## What is left
 
-The five points of [[purpose]] are met and the format is settled. What has been built since is
+The five points of [[What docket is for]] are met and the format is settled. What has been built since is
 in the tasks; what remains is short.
 
 **Not code.** An OAuth application on the private GitLab, so signing in there works the way it
@@ -188,7 +188,7 @@ it is a task and not a commit.
 The graph is configured and measurable, `DKT-48`, and every change now goes both ways,
 `DKT-49`.
 
-There is a second vault to judge new work in. [[the-testbed]] is a fictional team'"'"'s board with an
+There is a second vault to judge new work in. [[The testbed]] is a fictional team'"'"'s board with an
 eight-stage pipeline and a vocabulary that is not English — [[DKT-32 A vault whose words are its own]]
 — and a third that is not fictional: a real project of eleven hundred tasks, imported, which
 found four defects in the import pipeline on its first run.

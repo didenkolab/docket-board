@@ -14,7 +14,7 @@ tags: []
 relates: ["[[DKT-25 Relationships are links, not fields]]"]
 ---
 
-[[what-jira-models]] set Jira's model beside ours, and the largest gap was this: we could say two
+[[What Jira models, and what we take]] set Jira's model beside ours, and the largest gap was this: we could say two
 tasks were connected and not **how**.
 
 Jira ships five link types in a table with an admin screen over it. Here the property name is the

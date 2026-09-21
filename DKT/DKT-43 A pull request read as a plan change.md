@@ -23,7 +23,7 @@ which tasks moved and where, which were added, which were dropped, whose accepta
 changed and how. Not a YAML diff on a hosting site — the diff is the mechanism, not the
 meaning, and reading one is how a plan change gets approved without being understood.
 
-[[git-as-the-database]] calls this the point where this stops being a tracker in git and
+[[Git as the database]] calls this the point where this stops being a tracker in git and
 becomes a way of working, and names it as the one worth doing next. It is still true.
 
 Two smaller things from the same page, both worth doing and neither large: two branches side by
