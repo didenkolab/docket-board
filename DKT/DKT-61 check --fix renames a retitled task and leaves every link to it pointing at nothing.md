@@ -2,8 +2,8 @@
 key: DKT-61
 title: check --fix renames a retitled task and leaves every link to it pointing at nothing
 type: bug
-status: Backlog
-status_category: todo
+status: Done
+status_category: done
 priority: high
 assignee:
 labels: ["[[check]]"]
@@ -55,13 +55,29 @@ Found while writing the agent skill, by checking a claim the skill was about to 
 
 ## Acceptance
 
-- [ ] `docket check --fix`, when it renames a file whose name drifted from its title, rewrites
+- [x] `docket check --fix`, when it renames a file whose name drifted from its title, rewrites
       every link naming the old note — in bodies and in frontmatter — in the same pass.
-- [ ] `docket check` reports a link whose key resolves but whose note name does not, with the
+- [x] `docket check` reports a link whose key resolves but whose note name does not, with the
       file, the line and the name it should carry.
-- [ ] A test covers the reproduction above: retitle by hand, `--fix`, and assert both that the
+- [x] A test covers the reproduction above: retitle by hand, `--fix`, and assert both that the
       inbound link was rewritten and that a vault left in the old state is a finding.
-- [ ] `docket check --fix` on the vaults in `docket-board`, `docket-demo`, `docket-showcase` and
+- [x] `docket check --fix` on the vaults in `docket-board`, `docket-demo`, `docket-showcase` and
       `docket-testbed` still reports no findings afterwards.
 
 ## Comments
+
+**vadym · 2026-09-21 10:55** — Fixed in 525bc24 and b0d5c9d. Three things, and the third was the
+one worth finding.
+
+`check` now reports a link naming a title its task no longer has, and says what to write instead.
+`Relink` rewrites such a link, for parents and for every declared relation. And `--fix` renames
+before it relinks rather than after: a link names a note, so the names have to be right before
+the links are written — relinking first wrote names the tasks were about to stop having.
+
+Then the third: `Apply` was calling `vault.Rename` while the server's own retitle path calls
+`vault.Retitle`, which moves the file *and* repoints every link that named it, in bodies as well
+as frontmatter. Two implementations of one operation, and `--fix` had the worse of them. It uses
+`Retitle` now, so a reference in prose — one task explaining itself by naming another — survives
+a retitle as well.
+
+Verified on the four vaults: no findings, and `--fix` changes nothing in any of them.

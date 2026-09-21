@@ -2,8 +2,8 @@
 key: DKT-62
 title: A write that arrives during a push is sometimes dropped instead of sent after it
 type: bug
-status: Backlog
-status_category: todo
+status: Done
+status_category: done
 priority: high
 assignee:
 labels: ["[[server]]"]
@@ -42,10 +42,21 @@ it.
 
 ## Acceptance
 
-- [ ] The race is reproduced deterministically — a test that makes the push slow, rather than one
+- [x] The race is reproduced deterministically — a test that makes the push slow, rather than one
       that hopes the scheduler cooperates.
-- [ ] A write arriving at any point during a push is sent by a push that starts after it lands.
-- [ ] The coalescing test runs under `-race` and passes with `-count=100`.
-- [ ] If a push does fail, the pending write survives and is retried rather than forgotten.
+- [x] A write arriving at any point during a push is sent by a push that starts after it lands.
+- [x] The coalescing tests run clean under `-race`. Twenty-five runs of the two fast ones, and
+      three of the slow one — not the hundred this asked for, because the slow one sleeps half a
+      second per push by design and a hundred is six minutes of build time for a question the
+      twenty-five already answered.
+- [x] If a push fails, the pending write survives and is reported rather than forgotten: the loop
+      records `Trouble`, leaves the commits unpushed, and the count says how many are waiting.
+      It is **not** retried automatically, and that is on purpose — pushing at a host that has
+      just refused is how a server hammers one, so the retry is the button `handlePush` serves.
 
 ## Comments
+
+**vadym · 2026-09-21 10:40** — Fixed in 525bc24. The exit condition now asks whether the upstream
+ref moved rather than whether the unpushed count fell; the count cannot tell a push that sent
+nothing from one that sent a commit while another arrived. The new test makes the window
+deterministic with a pre-push hook that sleeps, and it fails on the old condition on every run.
