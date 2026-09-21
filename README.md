@@ -105,7 +105,7 @@ why it is that way.
 | [`docket-showcase`](https://github.com/didenkolab/docket-showcase) | The whole of it on a team's worth of work: three products, six people, twelve weeks and every app, all invented and built by a generator. Open it to see what a board looks like after a quarter |
 | [`northlight`](https://github.com/didenkolab/northlight) | That invented company's code, beside its vault |
 
-Every repository is private today. Nothing has been published.
+All of them are public.
 
 ## State of the project
 
