@@ -1,7 +1,10 @@
 # docket-board
 
-The board and knowledge base of the docket project itself — kept in docket's own format, which is
-what makes it the working example.
+**Start here.** This is where everything about the docket project is collected: what it is, where
+each piece lives, what state it is in, and how to check that for yourself.
+
+It is also the board and knowledge base of the project itself — kept in docket's own format,
+which is what makes it the working example rather than a description of one.
 
 This repository is an **Obsidian vault**. Clone it, open the folder in Obsidian, and you get a
 task board, a backlog and a wiki. There is nothing to install and nothing to run: tasks and
@@ -14,7 +17,7 @@ format; every vault docket manages looks like this one.
 
 ```bash
 git clone https://github.com/vadymdidenkolab/docket-board.git
-open -a Obsidia docket-board     # macOS. Elsewhere: Obsidian → Open folder as vault
+open -a Obsidian docket-board    # macOS. Elsewhere: Obsidian → Open folder as vault
 ```
 
 The left pane is the file tree — `DKT/` is the work, `docs/` is the wiki. Open `boards/board`
@@ -102,7 +105,46 @@ why it is that way.
 | [`docket-showcase`](https://github.com/vadymdidenkolab/docket-showcase) | The whole of it on a team's worth of work: three products, six people, twelve weeks and every app, all invented and built by a generator. Open it to see what a board looks like after a quarter |
 | [`northlight`](https://github.com/vadymdidenkolab/northlight) | That invented company's code, beside its vault |
 
-Only `docket-template` is public today; the rest need access.
+Every repository is private today. Nothing has been published.
+
+## State of the project
+
+**Released: [v0.5.0](https://github.com/vadymdidenkolab/docket/releases/tag/v0.5.0)**, the first
+under this name — binaries for six platform pairs and a container image, built from the tag by
+`release.yml`. The project was called **igile** until 2026-09-21; the repositories are new and
+the old ones are gone. [`docket/CHANGELOG.md`](https://github.com/vadymdidenkolab/docket/blob/main/CHANGELOG.md)
+says what changed and how to migrate a vault.
+
+What is built: the vault format, the CLI, the server and board, the MCP endpoint, the Jira and
+Confluence import, twelve apps, and a skill an agent reads to drive all of it. The five points of
+[purpose](docs/purpose.md) are met; [roadmap](docs/roadmap.md) says in what order it happened.
+
+What is open, honestly:
+
+| | |
+|---|---|
+| `DKT-57` | The tests app's **Run the scenarios** button cannot land a result. Two routes work: a commit from CI, and `hooks/import-cucumber.sh` |
+| `DKT-63` | The showcase README is fixed on `main` and stale at the `scaffold` tag |
+| The Confluence half of the import | Never pointed at a real space |
+| An OAuth application on a self-hosted GitLab | Not code: a registration somebody has to make |
+
+Ten more in the backlog, none of them blocking. `DKT/` is the whole list, and it is a folder of
+files — `docket export --open` is the same answer as data.
+
+### Checking it yourself
+
+Five commands, no trust required:
+
+```bash
+git clone https://github.com/vadymdidenkolab/docket.git && cd docket
+go test ./...                                   # the suite, offline and with no git identity
+go build -o docket ./cmd/docket
+./docket check ../docket-board                  # and every other vault
+./docket serve --programs --auth none --author "You <you@example.com>" ../docket-showcase
+```
+
+The last one is the point: a board, a wiki and twelve apps' pages over a quarter of invented work
+at <http://127.0.0.1:8080>. Or take the release binary and skip the build.
 
 ## Contributing
 
