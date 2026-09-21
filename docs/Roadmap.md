@@ -1,7 +1,7 @@
 ---
 title: Roadmap
 type: page
-updated: 2026-08-31
+updated: 2026-09-21
 ---
 
 # Roadmap
@@ -9,14 +9,22 @@ updated: 2026-08-31
 What this is for is [[What docket is for]]. All five of its points are met; what is left is at the bottom
 of this page, and it is smaller than what is above it.
 
-Released: [v0.3.0](https://github.com/didenkolab/docket/releases/tag/v0.3.0) — binaries for six
-platform pairs, and a container image for two architectures.
+Released: [v0.6.0](https://github.com/didenkolab/docket/releases/tag/v0.6.0) — binaries for six
+platform pairs and a container image, installable with `brew`, with `scoop`, with the install
+script or with `go install`.
 
 v0.2.0 was a board an individual could run. v0.3.0 is the one a team can: access that belongs to
 the repository, every change sent as it is made and what arrived taken back, a branch readable as
-a proposal, the vault'"'"'s own words for its estimates, its sprints and its fields, fifteen rules
+a proposal, the vault's own words for its estimates, its sprints and its fields, fifteen rules
 that `docket check` enforces, and an import that has finally been run against a live instance —
 eleven hundred issues, which found four defects nothing else could.
+
+v0.5.0 was the first release carrying the name docket — the tool was called **igile** until
+2026-09-21 — and v0.6.0 is the first under `github.com/didenkolab`. v0.5.0 still declares the
+old module path, so `go install` resolved against it fails outright, which is the whole reason
+v0.6.0 exists.
+
+Everything is public as of 2026-09-21. What is not done is [[What is left]].
 
 Five stages. Each one is usable on its own — nothing here is a prerequisite that produces
 nothing until the next stage lands.
